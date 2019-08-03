@@ -88,6 +88,7 @@
 - belongs_to :product
 - belongs_to :user
 - has_many :evaluation
+- has_many :deals
 
 ## creditテーブル
 |Column|Type|Options|
@@ -132,10 +133,42 @@
 ### Association
 - belongs_to :user
 
-## categoryテーブル
- ＊＊＊＊＊＊＊＊＊＊
+## parentテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+
+### Association
+- belongs_to :child
+- has_many :products
+
+## childテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+|parent|references|null: false, foreign_key: true|
+
+###Association
+- belongs_to :parent
+- belongs_to :grandchild
 
 
+## grandchildテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|
+|child|references|null: false, foreign_key: true|
 
-<!-- ## pointテーブル
-## salesテーブル　は別途検討 -->
+
+### Association
+- belongs_to :parent
+- belongs_to :grandchild
+
+## dealsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|sales|integer|
+
+### Associsation
+- belongs_to :seller
