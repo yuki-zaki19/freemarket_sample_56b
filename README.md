@@ -137,27 +137,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
+|ancestry|string|index: true|
 
 ### Association
 - belongs_to :child
 - has_many :products
 
-## childテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|
-|parent|references|null: false, foreign_key: true|
-
-###Association
-- belongs_to :parent
-- belongs_to :grandchild
-
-
-## grandchildテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|
-|child|references|null: false, foreign_key: true|
 
 
 ### Association
