@@ -13,17 +13,17 @@
           %tr
             %th 出品者
             %td
-              = link_to  "/products/show"  do
+              = link_to  "product_path", method: :get  do
                 ユーザー
           %tr
             %th カテゴリー
             %td
-              = link_to  "/products/show"  do
+              = link_to  "product_path", method: :get  do
                 レディース
           %tr
             %th ブランド
             %td
-              = link_to  "/products/show"  do
+              = link_to  "product_path", method: :get  do
                 ユーザー
           %tr
             %th 商品のサイズ
@@ -40,7 +40,7 @@
           %tr
             %th 配送元地域
             %td
-              = link_to  "/products/show"  do
+              = link_to  "product_path", method: :get  do
                 神奈川県
           %tr
             %th 発送日の目安
@@ -77,12 +77,11 @@
         %button.message-btn コメントする
     .product__link-prev-next.clearfix
       .product__link-prev
-        = link_to "/products/show"  do
+        = link_to "product_path", method: :get  do
           前のページ
-          -# %i.fa.fa-chevron-left👈
           
       .product__link-next
-        = link_to "/products/show"  do
+        = link_to "product_path", method: :get  do
           次のページ
     .product__sns
       .product__sns-box
@@ -94,7 +93,7 @@
           .PT pinterest
     .product__other-items
       .product__other-items--header
-        = link_to "/products/show", class: "other-items-header" do
+        = link_to "product_path", method: :get,  class: "other-items-header" do
           〇〇さんのその他の出品
       .product__other-items-content.clearfix
         .product__other-items-box
@@ -123,7 +122,7 @@
           .product__other-items-box--body
             ww
       .product__other-items--header
-        = link_to "/products/show", class: "other-items-header" do
+        = link_to "product_path", method: :get, class: "other-items-header" do
           カテゴリのその他の出品
       .product__other-items-content.clearfix
         .product__other-items-box
