@@ -192,13 +192,6 @@ body {
     text-decoration-line: none;
     position: relative;
   }
-  // .fa-chevron-left{
-  //   color: $mercari_blue;
-  //   float: left;
-  //   position: absolute;
-  //   left:0px;
-  //   top:0%;
-  // }
   &__link-next a{
     float: right;
     color: $mercari_blue;
@@ -282,7 +275,7 @@ body {
   &__bottom{
     width:1020px;
     margin:0 auto;
-    paddinng: 16px 0;
+    padding: 16px 0;
   }
 }
 
