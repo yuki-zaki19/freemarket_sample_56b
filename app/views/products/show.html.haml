@@ -1,0 +1,158 @@
+%body
+  .header
+    ヘッダー
+
+  .product
+    .product__details
+      .product__details-name
+        %h1 たまご
+      .product__details-main-content.clearfix
+        .product__details-photo
+          🥚
+        %table.product__details-table
+          %tr
+            %th 出品者
+            %td
+              = link_to  "product_path", method: :get  do
+                ユーザー
+          %tr
+            %th カテゴリー
+            %td
+              = link_to  "product_path", method: :get  do
+                レディース
+          %tr
+            %th ブランド
+            %td
+              = link_to  "product_path", method: :get  do
+                ユーザー
+          %tr
+            %th 商品のサイズ
+            %td フリー
+          %tr
+            %th 商品の状態
+            %td 新品、未使用
+          %tr
+            %th 送料の負担
+            %td 送料込み（出品者負担）
+          %tr
+            %th 配送の方法
+            %td 未定
+          %tr
+            %th 配送元地域
+            %td
+              = link_to  "product_path", method: :get  do
+                神奈川県
+          %tr
+            %th 発送日の目安
+            %td 1〜2日で発送
+
+
+
+      .product__details-price-box
+        .product__details-price
+          ¥2,000
+        .product__details-price-tax
+          (税込)
+        .product__details-price-shipping-fee
+          送料込み
+      .product__details-buy-btn
+        %button.buy-btn 購入する
+      .product__details-description
+        .product__details-description-inner
+          新鮮たまご  美味しいです
+      .product__details-btn.clearfix
+        .product__details-btn-left
+          .product__details-btn-left-like
+            いいね
+          .product__details-btn-left-report
+            報告
+        .product__details-btn-right
+          安全への取り組み
+
+    .product__messages
+      .product__messages-notice
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .product__messages-textarea
+        %textarea.message-textarea
+        %button.message-btn コメントする
+    .product__link-prev-next.clearfix
+      .product__link-prev
+        = link_to "product_path", method: :get  do
+          前のページ
+          
+      .product__link-next
+        = link_to "product_path", method: :get  do
+          次のページ
+    .product__sns
+      .product__sns-box
+        %li.product__sns-link
+          .FB facebook
+        %li.product__sns-link
+          .TW twetter
+        %li.product__sns-link
+          .PT pinterest
+    .product__other-items
+      .product__other-items--header
+        = link_to "product_path", method: :get,  class: "other-items-header" do
+          〇〇さんのその他の出品
+      .product__other-items-content.clearfix
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+      .product__other-items--header
+        = link_to "product_path", method: :get, class: "other-items-header" do
+          カテゴリのその他の出品
+      .product__other-items-content.clearfix
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+        .product__other-items-box
+          .product__other-items-box--photo
+            ww
+          .product__other-items-box--body
+            ww
+    .product__bottom
+      メルカリ＞＞たまご
+  .app-banner
+    アプリ　バナー
+  .footer
+    フッター

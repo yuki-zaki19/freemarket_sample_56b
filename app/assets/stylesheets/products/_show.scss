@@ -1,0 +1,299 @@
+body {
+  background-color: $mercari_grey;
+}
+
+.header{
+  height: 100px;
+  background-color: $mercari_white;
+}
+
+.product{
+  &__details{
+    display: block;
+    box-sizing: border-box;
+    width: 700px;
+    margin: 40px auto 0 auto;
+    padding: 24px 40px 40px 40px;
+    background-color: $mercari_white;
+  }
+  &__details-name{
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  &__details-main-content{
+    margin: 16px 0 0 0;
+  }
+  .clearfix:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+  &__details-photo{
+    background-color:#fafafa;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 375px;
+    float: left;
+    font-size: 300px;
+    text-align: center;
+  }
+  &__details-table{
+    float: right;
+    height: 420px;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+    .product__details-table th{
+      width: 39%;
+      text-align: left;
+      font-weight: 400;
+      background-color: #fafafa;
+      border: 1px solid #f5f5f5;
+      padding: 8px;
+    }
+
+    .product__details-table td{
+      width: 61%;
+      background-color: #fff;
+      border: 1px solid #f5f5f5;
+      padding: 8px;
+    }
+    .product__details-table td a{
+      text-decoration-line: none;
+      color: $mercari_blue
+    }
+
+  
+  &__details-price-box{
+    margin: 24px 0 0 0;
+    text-align: center;
+    width: 620px;
+  }
+  &__details-price{
+    margin: 0 16px 0 0;
+    font-size: 32px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  &__details-price-tax{
+    font-size: 10px;
+    display: inline-block;
+  }
+  &__details-price-shipping-fee{
+    font-size: 16ps;
+    display: inline-block;
+  }
+  .buy-btn{
+    height: 60px;
+    width: 100%;
+    background-color: $mercari_red;
+    color: white;
+    margin: 16px 0 0 0;
+    text-align: center;
+    line-height: 60px;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  &__details-buy-btn a{
+    text-decoration-line: none;
+    color: #fff
+  }
+
+  &__details-description{
+    padding: 32px 0 0 0;
+    line-height: 1.5;
+    font-size: 18px;
+  }
+  &__details-description-inner{
+    white-space: pre-wrap;
+  }
+  &__details-btn{
+    margin: 16px 0 0 0;
+  }
+  &__details-btn-left{
+    float: left;
+  }
+  &__details-btn-left-like{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: $mercari_grey;
+    border-radius:40px;
+  }
+  &__details-btn-left-report{
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: $mercari_grey;
+    border-radius:40px;
+  }
+
+  &__details-btn-right{
+    float: right;
+    color: $mercari_blue;
+  }
+  .clearfix:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.product{
+
+  &__messages{
+    width: 700px;
+    margin: 8px auto;
+    padding: 24px;
+    background-color: $mercari_white;
+    display: block;
+    box-sizing: border-box;
+  }
+  &__messages-notice{
+    background-color: #fff6de;
+    padding: 8px;
+  }
+  .message-textarea{
+    box-sizing: border-box;
+    margin: 8px 0 0 0;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 104px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .message-btn{
+    width:100%;
+    margin: 8px 0 0 0;
+    text-align: center;
+    background-color: #aaa;
+    line-height: 48px;
+    color: white;
+    font-size: 14px;
+  }
+}
+
+.product{
+  &__link-prev-next{
+    width: 700px;
+    margin: 24px auto 0;
+  }
+  &__link-prev a{
+    float:left;
+    color: $mercari_blue;
+    font-size: 14px;
+    padding: 0 0 0 14px;
+    text-decoration-line: none;
+    position: relative;
+  }
+  &__link-next a{
+    float: right;
+    color: $mercari_blue;
+    font-size: 14px;
+    padding: 0 14px 0 0 ;
+    text-decoration-line: none;
+
+  }
+  .clearfix:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.product{
+  &__sns{
+    width: 700px;
+    margin: 24px auto;
+    padding: 32px 0 24px 0;
+    background-color: $mercari_white;
+  }
+  &__sns-box{
+    margin: 16px 0 0;
+    text-align: center;
+  }
+  &__sns-link{
+    display: inline-block;
+    margin: 0 8px 8px 0;
+  }
+}
+
+.product{
+  &__other-items{
+    width: 700px;
+    margin: 0 auto;
+  }
+  .other-items-header {
+      font-size: 22px;
+      margin: 24px 0 8px 0;
+      text-decoration-line: none;
+      color: $mercari_blue;
+      font-weight: bold;
+    }
+  &__other-items-content{
+    width: 720px;
+    margin: 0 auto;
+    overflow: hidden;
+
+
+  }
+  &__other-items-box{
+    width: 220px;
+    margin: 0 20px 20px 0;
+    float:left;
+
+  
+    &--photo{
+      width: 220px;
+      height: 220px;
+      background-color: antiquewhite;
+      
+    }
+    &--body{
+      height: 110px;
+      padding: 16px;
+      box-sizing: border-box;
+      background-color: green;
+
+    }
+  
+  }
+  .clearfix:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.product{
+  &__bottom{
+    width:1020px;
+    margin:0 auto;
+    padding: 16px 0;
+  }
+}
+
+.app-banner{
+  width:1440px;
+  height:260px;
+  background-color: aquamarine;
+}
+.footer{
+  width: 1440px;
+  height: 391px;
+  background-color: antiquewhite;
+}
+
+
+
+  
+
+  
+
+
