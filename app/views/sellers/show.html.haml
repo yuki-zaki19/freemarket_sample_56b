@@ -1,6 +1,47 @@
-.header
-  .header__icon-box
-    .header__icon
+.buy-header　ヘッダー
 
-.buy-confirm
-  おはよう
+.buy-comfirm
+  .buy-comfirm__header
+    %h2 購入内容の確認
+  .buy-comfirm__buy
+    .buy-comfirm__buy__inner
+      .buy-comfirm__buy__inner__item
+        .buy-comfirm__buy__inner__item__photo
+          写真写真写真写真写真写真写真写真写真
+        .buy-comfirm__buy__inner__item__name
+          %p たまご
+      .buy-comfirm__buy__inner__subtotal-price
+        ¥2,000
+        .buy-comfirm__buy__inner__subtotal-price__shipping-fee
+          %p 送料込み
+      .buy-comfirm__buy__inner__total-price
+        .buy-comfirm__buy__inner__total-price__cell
+          支払い金額
+        .buy-comfirm__buy__inner__total-price__cell
+          %p ¥2,000
+      %button.buy-comfirm__buy__inner__buy-btn
+        購入する
+  .buy-comfirm__delivery
+    .buy-comfirm__delivery__inner
+      %h3 配送先
+      .buy-comfirm__delivery__inner__address
+        〒100-0001
+        %br 東京都千代田区千代田1番1号
+      .buy-comfirm__delivery__inner__edit-btn
+        = link_to "変更する　>", "seller_path", method: :get  
+  .buy-comfirm__pay-method
+    .buy-comfirm__pay-method__inner
+      %h3 支払い方法
+      .buy-comfirm__pay-method__inner__info
+        **** **** 1111
+        %br 01/23
+        %br visa
+      .buy-comfirm__pay-method__inner__edit-btn
+        = link_to "変更する　>", "seller_path", method: :get  
+
+.buy-footer  フッター
+
+
+      
+
+  
