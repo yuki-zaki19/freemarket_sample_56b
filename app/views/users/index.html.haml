@@ -1,1 +1,146 @@
-hello
+.main-box
+  .main
+    .main__user
+      %img{class: 'main-header', src: "/assets/image.png", width: "100"}
+        %a{ href: '#', class: 'main-header__box'}
+          %img{class: 'main-header__box__user', src: "/assets/member_photo_noimage.png"}
+          .main-header__box__name
+            user
+          .main-header__box__date
+            .main-header__box__date__box
+              評価
+              .main-header__box__date__box__mun
+                0
+            .main-header__box__date__box
+              出品数
+              .main-header__box__date__box__mun
+                0
+      .user-info
+        .info-tab
+          %a{class: 'info-tab__btm active'}
+            お知らせ
+          %a{class: 'info-tab__btm'}
+            やることリスト
+        .info-content
+          .info-content__details
+            %a{class: 'info-content__details__news'}
+              %img{class: 'info-content__details__news__icon', src: "/assets/mercari_icon.png", width: "48", height: "48" }
+              .info-content__details__news__com
+                .info-content__details__news__com__text
+                  《お買い物応援キャンペーン》1,000円の商品を"実質1円"で購入できます！
+                .info-content__details__news__com__time
+                  = fa_icon 'clock-o'
+                  1時間
+              = fa_icon 'angle-right icom'
+          .info-content__list
+            %a{class: 'info-content__list__btm',href: '#'}
+              一覧を見る
+      .user-buy-products
+        .user-buy-products__header
+          購入した商品
+        .info-tab
+          %li{class: 'info-tab__btm active'}
+            取引中
+          %li{class: 'info-tab__btm'}
+            過去の取引
+        .info-content
+          .info-content__details
+            .info-content__details__none
+              取り引中の商品がありません
+    .main__user-bar
+      .side-nav
+        %ul{class: 'user-list'}
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm choice'}
+              マイページ
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              お知らせ
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              やることリスト
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              出品する
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              出品した商品-出品中
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              出品した商品-取引中
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              出品した商品-売却済み
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              購入した商品-取引中
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              購入した商品-過去の取引
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              ニュース一覧
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              評価一覧
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              ガイド
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              お問い合わせ
+              = fa_icon 'angle-right side-bar'
+        .com
+          メルペイ
+        %ul{class: 'user-list'}
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              売上・振込申請
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              ポイント
+              = fa_icon 'angle-right side-bar'
+        .com
+          設定
+        %ul{class: 'user-list'}
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              プロフィール
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              発送元・お届け先住所変更
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              支払い方法
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              メール/パスワード
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              本人情報
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              電話番号の確認
+              = fa_icon 'angle-right side-bar'
+          %li{class: 'user-list__box'}
+            %a{ href: '#', class: 'user-list__box__btm'}
+              ログアウト
+              = fa_icon 'angle-right side-bar'
