@@ -86,6 +86,8 @@
   height: 74px;
   background-color: $mercari_deep_grey;
   &__btm{
+    color: $mercari_black;
+    text-decoration: none;
     line-height:74px;
     text-align:center;
     width: 50%;
