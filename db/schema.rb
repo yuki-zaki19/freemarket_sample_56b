@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_064935) do
+ActiveRecord::Schema.define(version: 2019_08_06_012242) do
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40, null: false
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 2019_08_04_064935) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "sellers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "seller_user_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "buyer_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_user_id"], name: "index_sellers_on_buyer_user_id"
+    t.index ["product_id"], name: "index_sellers_on_product_id"
+    t.index ["seller_user_id"], name: "index_sellers_on_seller_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,4 +69,7 @@ ActiveRecord::Schema.define(version: 2019_08_04_064935) do
   end
 
   add_foreign_key "products", "users"
+  add_foreign_key "sellers", "products"
+  add_foreign_key "sellers", "users", column: "buyer_user_id"
+  add_foreign_key "sellers", "users", column: "seller_user_id"
 end
