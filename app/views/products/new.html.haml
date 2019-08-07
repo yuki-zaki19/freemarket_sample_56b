@@ -1,0 +1,233 @@
+.product-contents
+  %header.product-header
+    %h1
+      = link_to('#', {}) do
+        = image_tag "/assets/mercari_logo_horizontal.png", :class => "header-image"
+
+  %main.product-main
+    %section.center-box
+      .exhibition-content
+        .exhibition-content__header
+          商品の情報を入力
+        .exhibition-content__form
+          .exhibition-content__form__upload-box
+            %h3.upload-box-header
+              出品画像
+              %span.header_required
+                必須
+            %p
+              最大10枚までアップロードできます
+            .upload-dropbox
+          .exhibition-content__form__explain
+            .product-name-form
+              %label
+                商品名
+                %span.form_required
+                  必須
+              %div
+                %input{type: "text", class: "input-name", placeholder: "商品名（必須40文字まで）"}
+            .product-explain-form
+              %label
+                商品の説明
+                %span.form_required
+                  必須
+              %div
+                %textarea{class: "input-explain", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+          .deal-product
+            .deal-sub-head
+              .deal-sub-head__name 
+                商品の詳細
+            .deal-form-box
+              .form-category
+                %label
+                  カテゴリー
+                  %span.form_required
+                    必須
+              .select-form
+                %i.fa.fa-angle-down
+                %select.select-list
+                  %option{value: 0} ---
+                  %option{value: 1} レディース
+                  %option{value: 2} メンズ
+                  %option{value: 3} ベビー、キッズ
+                  %option{value: 4} インテリア・住まい・小物
+                  %option{value: 5} 本・音楽・ゲーム
+                  %option{value: 6} おもちゃ・ホビー・グッズ
+                  %option{value: 7} コスメ・香水・美容
+                  %option{value: 8} 家電・スマホ・カメラ
+                  %option{value: 9} スポーツ・レジャー
+                  %option{value: 10} ハンドメイド
+                  %option{value: 11} チケット
+                  %option{value: 12} 自動車・オートバイ
+                  %option{value: 13} その他
+              .form-state
+                %label
+                  商品の状態
+                  %span.form_required
+                    必須
+              .select-form
+                %i.fa.fa-angle-down
+                %select.select-list
+                  %option{value: 0} ---
+                  %option{value: 1} 新品・未使用
+                  %option{value: 2} 未使用に近い
+                  %option{value: 3} 目立った傷や汚れなし
+                  %option{value: 4} やや傷や汚れあり
+                  %option{value: 5} 傷や汚れあり
+                  %option{value: 6} 全体的に状態が悪い
+          .deal-delivery
+            .deal-sub-head
+              .deal-sub-head__name 
+                配送について
+            = link_to('#', class:'form-question') do
+              ?
+            .deal-form-box
+              .form-price
+                %label
+                  配送料の負担
+                  %span.form_required
+                    必須
+              .select-form
+                %i.fa.fa-angle-down
+                %select.select-list
+                  %option{value: 0} ---
+                  %option{value: 1} 送料込み（出品者負担）
+                  %option{value: 2} 着払い（購入者負担）
+              .form-region
+                %label
+                  発送元の地域
+                  %span.form_required
+                    必須
+              .select-form
+                %i.fa.fa-angle-down
+                %select.select-list
+                  %option{value: 0} ---
+                  %option{value: 1} 北海道
+                  %option{value: 2} 青森県
+                  %option{value: 3} 岩手県
+                  %option{value: 4} 宮城県
+                  %option{value: 5} 秋田県
+                  %option{value: 6} 山形県
+                  %option{value: 7} 福島県
+                  %option{value: 8} 茨城県
+                  %option{value: 9} 栃木県
+                  %option{value: 10} 群馬県
+                  %option{value: 11} 埼玉県
+                  %option{value: 12} 千葉県
+                  %option{value: 13} 東京都
+                  %option{value: 14} 神奈川県
+                  %option{value: 15} 新潟県
+                  %option{value: 16} 富山県
+                  %option{value: 17} 石川県
+                  %option{value: 18} 福井県
+                  %option{value: 19} 山梨県
+                  %option{value: 20} 長野県
+                  %option{value: 21} 岐阜県
+                  %option{value: 22} 静岡県
+                  %option{value: 23} 愛知県
+                  %option{value: 24} 三重県
+                  %option{value: 25} 滋賀県
+                  %option{value: 26} 京都府
+                  %option{value: 27} 大阪府
+                  %option{value: 28} 兵庫県
+                  %option{value: 29} 奈良県
+                  %option{value: 30} 和歌山県
+                  %option{value: 31} 鳥取県
+                  %option{value: 32} 島根県
+                  %option{value: 33} 岡山県
+                  %option{value: 34} 広島県
+                  %option{value: 35} 山口県
+                  %option{value: 36} 徳島県
+                  %option{value: 37} 香川県
+                  %option{value: 38} 愛媛県
+                  %option{value: 39} 高知県
+                  %option{value: 40} 福岡県
+                  %option{value: 41} 佐賀県
+                  %option{value: 42} 長崎県
+                  %option{value: 43} 熊本県
+                  %option{value: 44} 大分県
+                  %option{value: 45} 宮崎県
+                  %option{value: 46} 鹿児島県
+                  %option{value: 47} 沖縄県
+              .form-date
+                %label
+                  発送までの日数
+                  %span.form_required
+                    必須
+              .select-form
+                %i.fa.fa-angle-down
+                %select.select-list
+                  %option{value: 0} ---
+                  %option{value: 1} １日〜２日で発送
+                  %option{value: 2} ２日〜３日で発送
+                  %option{value: 3} ４日〜７日で発送
+          .deal-price
+            .deal-sub-head
+              .deal-sub-head__name 
+                販売価格(300~9,999,999)
+            = link_to('#', class:'form-question') do
+              ?
+            .deal-form-box
+              .price-box
+                .input-price
+                  .clearfix
+                    %label
+                      価格
+                      %span.form_required 必須
+                    .right-sell-box
+                      ¥
+                      .price-box
+                        %input{type: "text", class: "input-sell-box", placeholder: "例) 300"}
+                .fee 
+                  .clearfix
+                    .fee-name 販売手数料 (10%)
+                    .fee-num -
+                .profit
+                  .clearfix
+                    .profit-name 販売利益
+                    .profit-num -
+          .deal-btn-box
+            .deal-btn-explain
+              %p
+                = link_to('#') do
+                  禁止されてる出品
+                、
+                = link_to('#') do
+                  行為
+                を必ずご確認ください。
+              %p
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to('#') do
+                  偽ブランドの販売
+                は犯罪であり処罰される可能性があります。
+              %p
+                また、出品をもちまして
+                = link_to('#') do
+                  加盟店規約
+                に同意したことになります。
+
+            = button_tag('出品する', type: 'submit', class: "btn-exhibition" )
+            = link_to('#', class:'back-exhibition') do
+              もどる
+
+
+
+
+
+
+  %footer.product-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to('#', {}) do
+            プライバシーポリシー
+        %li
+          = link_to('#', {}) do
+            メルカリ利用規約
+        %li
+          = link_to('#', {}) do
+            特定商取引に関する表記
+    = link_to('#', class:'bottom-image') do
+      = image_tag(src= "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?917505326")
+    %p
+      %small© 2019 Mercari
