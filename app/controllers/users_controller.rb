@@ -12,5 +12,7 @@ class UsersController < ApplicationController
   def edit
   end
   
-end
+  def logout
+  end
 
+end

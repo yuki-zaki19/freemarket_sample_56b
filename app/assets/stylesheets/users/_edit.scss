@@ -58,3 +58,21 @@
   cursor: pointer;
   text-align: center;
 }
+
+.logout-box{
+  padding: 64px 190px;
+}
+
+.user-logout-btn{
+  background: $mercari_red;
+  border: 1px solid $mercari_red;
+  color: $mercari_white;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
