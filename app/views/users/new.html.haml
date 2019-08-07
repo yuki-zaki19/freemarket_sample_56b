@@ -1,0 +1,19 @@
+-# １ページ目
+.sign-up__header
+
+.sign-up__content
+  .sign-up__content__header
+    %h2 新規会員登録
+  .sign-up__content__registation
+    .sign-up__content__registation__box
+      %button.sign-up__content__registation__box__mail
+        %i.fa.fa-envelope-o
+          =link_to "メールアドレスで登録する", "/users/sign_up" 
+      %button.sign-up__content__registation__box__facebook
+        %i.fa.fa-facebook-official
+        Facebookで登録する
+      %button.sign-up__content__registation__box__google
+        %i.fa.fa-google
+        Googleで登録する
+
+.sign-up__footer
