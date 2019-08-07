@@ -1,0 +1,111 @@
+.main-box
+  .main
+    .main__user
+      .input-bar
+        .input-bar__title
+          プロフィール
+        .input-bar__form-edit
+          = form_with  do |f|
+            .image-edit
+              = image_tag "/assets/member_photo_noimage.png", class: 'image-edit-icom'
+              = f.text_field :nickname, class: 'form-edit-box', placeholder: '例)AYA☆セール中'
+            .form-edit-input
+              = f.text_area :comment, class: 'come-text-area', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+              = f.submit '変更する', class: 'user-prof-edit-btn'
+    .main__user-bar
+      .side-nav
+        %ul.user-list
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              マイページ
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              お知らせ
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              やることリスト
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              出品する
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              出品した商品-出品中
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              出品した商品-取引中
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              出品した商品-売却済み
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              購入した商品-取引中
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              購入した商品-過去の取引
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              ニュース一覧
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              評価一覧
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              ガイド
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              お問い合わせ
+              = fa_icon 'angle-right side-bar'
+        .com
+          メルペイ
+        %ul.user-list
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              売上・振込申請
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              ポイント
+              = fa_icon 'angle-right side-bar'
+        .com
+          設定
+        %ul.user-list
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm choice' do
+              プロフィール
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              発送元・お届け先住所変更
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              支払い方法
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              メール/パスワード
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              本人情報
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              電話番号の確認
+              = fa_icon 'angle-right side-bar'
+          %li.user-list__box
+            = link_to '#',class: 'user-list__box__btm' do
+              ログアウト
+              = fa_icon 'angle-right side-bar'
