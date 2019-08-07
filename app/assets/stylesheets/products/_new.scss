@@ -1,5 +1,3 @@
-@import "font-awesome";
-
 .product-contents{
   background-color: $mercari_grey;
   height: 100%;
@@ -705,6 +703,30 @@
       small{
       font-size: 13px;
        }
+    }
+  }
+// 出品ボタンのcss仮置き
+  .fotter-exhibition-btn{
+    bottom: 32px;
+    right: 32px;
+    width: 160px;
+    height: 160px;
+    font-size: 22px;
+    position: fixed;
+    border-radius: 50%;
+    background: #ea352d;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    
+    &__name{
+      margin: 26px 0 0;
+
+    }
+    i.fa.fa-camera{
+      margin: 4px 0 0;
+      font-size: 54px;
+
     }
   }
 }
