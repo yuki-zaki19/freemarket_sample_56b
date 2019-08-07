@@ -124,7 +124,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|postal-code|integer|
+|postal_code|integer|
 |prefecture|string|
 |city|string|
 |address|string or integer|

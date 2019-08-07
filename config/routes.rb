@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   resources :users
   resources :products
   resources :sellers
-
-
+  resources :identifications
 end
