@@ -1,0 +1,60 @@
+.image-edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 72px 16px 24px;
+  width: 100%;
+  background-image:url('/assets/image.png'); 
+}
+
+.image-edit-icom{
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.form-edit-box{
+  width: 220px;
+  margin: 0 0 0 8px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: $mercari_white;
+  line-height: 1.5;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.form-edit-input{
+  padding: 40px 16px;
+}
+
+.come-text-area{
+  min-height: 216px;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: $mercari_white;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.user-prof-edit-btn{
+  margin: 16px 0 0;
+  background: $mercari_red;
+  border: 1px solid $mercari_red;
+  color: $mercari_white;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
