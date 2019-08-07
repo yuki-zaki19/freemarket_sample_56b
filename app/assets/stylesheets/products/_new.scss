@@ -1,0 +1,710 @@
+@import "font-awesome";
+
+.product-contents{
+  background-color: $mercari_grey;
+  height: 100%;
+
+  .product-header{
+    width: 100%;
+    text-align: center;
+    height: 128px;
+
+    h1{
+      display: inline-block;
+      margin-top: 40px;
+      height: 49px;
+      width: 193px;
+
+      a{
+        height: 49px;
+        width: 185px;
+        line-height: 49px;
+        margin: 0 8px 0 0; 
+
+        img.header-image{
+          object-fit: cover;
+          height: 100%;
+          width: 100%;  
+          
+        }
+      }
+    }
+  }
+
+  .product-main{
+    height: 2016px;
+
+    .center-box{
+      height: 100%;
+      width: 700px;
+      margin: 0 auto;
+      background-color: $mercari_white;
+
+      .exhibition-content{
+        height: 100%;
+
+        &__header{
+          text-align: center;
+          font-size: 22px;
+          font-weight: bold;
+          padding: 32px 16px;
+          box-sizing: border-box;
+        }
+
+        &__form{
+          border-top: 1px solid #eee;
+          height: 1919px;
+            
+          &__upload-box{
+            height: 303px;
+            box-sizing: border-box;
+            width: 620px;
+            padding: 40px;
+
+            h3.upload-box-header{
+              font-size: 16px;
+              font-weight: bold;
+
+              .header_required{
+                background-color: $mercari_red;
+                color: $mercari_white;
+                font-size: 12px;
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+              }
+            }
+            p{
+              margin: 8px 0 0;
+              line-height: 1.5;
+              font-size: 13px;
+            }
+
+            .upload-dropbox{
+              display: block;
+              width: 620px;
+              margin: 16px auto 0;
+              height: 160px;
+              border-style: dashed;
+              border-width: thin;
+              background-color: $mercari_grey;
+              border-color: rgb(121, 120, 120);
+            }
+          }
+          &__explain{
+            height: 355px;
+            border-top: 1px solid #eee;
+            padding: 40px;
+            box-sizing: border-box;
+
+            .product-name-form{
+              font-size: 0;
+              line-height: 0;
+              box-sizing: border-box;
+              margin-top: 10px;
+
+
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+
+              div{
+                .input-name{
+                  margin: 8px 0 0;
+                  width: 100%;
+                  height: 48px;
+                  padding: 10px 16px 8px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: #fff;
+                  line-height: 1.5;
+                  font-size: 16px;
+                  box-sizing: border-box;
+
+                }
+              }
+            }
+
+            .product-explain-form{
+              margin: 30px 0 0;
+              box-sizing: border-box;
+
+              label{
+                font-size: 14px;
+                font-weight: 600;
+
+                span.form_required{
+                  background-color: $mercari_red;
+                  color: $mercari_white;
+                  font-size: 12px;
+                  margin: 0 0 0 8px;
+                  padding: 2px 4px;
+                  border-radius: 2px;
+                }
+              }
+
+              div{
+                .input-explain{
+                  margin: 8px 0 0;
+                  width: 100%;
+                  height: 142px;
+                  padding: 10px 16px 8px;
+                  border: 1px solid #ccc;
+                  background: #fff;
+                  line-height: 1.5;
+                  font-size: 16px;
+                  box-sizing: border-box;
+                }
+              }
+            }
+          }
+
+          .deal-product{
+            height: 261px;
+            border-top: 1px solid #eee;
+            padding: 40px;
+            box-sizing: border-box;
+
+            .deal-sub-head{
+              float: left;
+
+              .deal-sub-head__name{
+                color: #888;
+                font-size: 14px;
+                font-weight: bold;
+              }
+            }
+
+            .deal-form-box{
+              float: right;
+              width: 400px;
+              font-size: 0;
+              line-height: 0;
+              margin-top: 10px;
+
+              .form-category{
+
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+              }
+
+              .select-form{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+              }
+
+              .form-state{
+                margin: 40px 0 0;
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+              }
+              .select-form{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+
+                i.fa.fa-angle-down{
+                  z-index: 2;
+                  color: #888;
+                  font-size: 28px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 200;
+                  line-height: 1;
+                  position: relative;
+                  left: 365px;
+                  top: 10px;
+                }
+                .select-list{
+                  width: 400px;
+                  z-index: 1;
+                  -webkit-appearance: none;
+                  height: 50px;
+                  position: absolute;
+                  left: 630px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          
+          .deal-delivery{
+            height: 371px;
+            border-top: 1px solid #eee;
+            padding: 40px;
+            box-sizing: border-box;
+            display:block;
+
+            .deal-sub-head{
+              float: left;
+
+              .deal-sub-head__name{
+                color: #888;
+                font-size: 14px;
+                font-weight: bold;
+              }
+            }
+
+            .form-question{
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border-radius: 50%;
+              background: #0099e8;
+              color: #fff;
+              line-height: 14px;
+              font-size: 12px;
+              text-align: center;
+              text-decoration: none;
+              vertical-align: 3px;
+            }
+          
+            .deal-form-box{
+              float: right;
+              width: 400px;
+              font-size: 0;
+              line-height: 0;
+              margin-top: 10px;
+
+              .form-price{
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+              }
+              .select-form{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+
+                i.fa.fa-angle-down{
+                  z-index: 2;
+                  color: #888;
+                  font-size: 28px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 200;
+                  line-height: 1;
+                  position: relative;
+                  left: 365px;
+                  top: 10px;
+                }
+                .select-list{
+                  width: 400px;
+                  z-index: 1;
+                  -webkit-appearance: none;
+                  height: 50px;
+                  position: absolute;
+                  left: 630px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+
+              .form-region{
+                margin: 40px 0 0;
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+              }
+              .select-form{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+
+                i.fa.fa-angle-down{
+                  z-index: 2;
+                  color: #888;
+                  font-size: 28px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 200;
+                  line-height: 1;
+                  position: relative;
+                  left: 365px;
+                  top: 10px;
+                }
+                .select-list{
+                  width: 400px;
+                  z-index: 1;
+                  -webkit-appearance: none;
+                  height: 50px;
+                  position: absolute;
+                  left: 630px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+
+              .form-date{
+                margin: 40px 0 0;
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+                  span.form_required{
+                    background-color: $mercari_red;
+                    color: $mercari_white;
+                    font-size: 12px;
+                    margin: 0 0 0 8px;
+                    padding: 2px 4px;
+                    border-radius: 2px;
+                  }
+                }
+              }
+              .select-form{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+
+                i.fa.fa-angle-down{
+                  z-index: 2;
+                  color: #888;
+                  font-size: 28px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 200;
+                  line-height: 1;
+                  position: relative;
+                  left: 365px;
+                  top: 10px;
+                }
+                .select-list{
+                  width: 400px;
+                  z-index: 1;
+                  -webkit-appearance: none;
+                  height: 50px;
+                  position: absolute;
+                  left: 630px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+
+          .deal-price{
+            height: 299px;
+            border-top: 1px solid #eee;
+            padding: 40px;
+            box-sizing: border-box;
+            display: block;
+
+            .deal-sub-head{
+              float: left;
+
+              .deal-sub-head__name{
+                color: #888;
+                font-size: 14px;
+                font-weight: bold;
+              }
+            }
+
+            .form-question{
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border-radius: 50%;
+              background: #0099e8;
+              color: #fff;
+              line-height: 14px;
+              font-size: 12px;
+              text-align: center;
+              text-decoration: none;
+              vertical-align: 3px;
+            }
+          }
+          .deal-form-box{
+            float: right;
+            width: 400px;
+            line-height: 0;
+
+            .price-box{
+
+              .input-price{
+                padding: 0 0 24px;
+                border: 0;
+                height: 48px;
+
+                .clearfix:after{
+                  content: '';
+                  display: block;
+                  clear: both;
+                }
+                  label{
+                    height: 48px;
+                    width: 200px;
+                    line-height: 48px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    float: left;
+    
+                    span.form_required{
+                      background-color: $mercari_red;
+                      color: $mercari_white;
+                      font-size: 12px;
+                      margin: 0 0 0 8px;
+                      padding: 2px 4px;
+                      border-radius: 2px;
+                    }
+                  }
+                  .right-sell-box{
+                    float: right;
+                    height: 48px;
+                    width: 200px;
+                    font-size: 12px;
+
+                    .price-box{
+                      margin: 0 0 0 5%;
+                      display: inline-block;
+
+                      .input-sell-box{
+                        height: 48px;
+                        padding: 10px 16px 8px;
+                        border-radius: 4px;
+                        border: 1px solid #ccc;
+                        background: #fff;
+                        line-height: 1.5;
+                        font-size: 14px;
+                        box-sizing: border-box;
+                        text-align: right;
+                        width: 160px;
+                      }
+                    }
+                  }
+              }
+
+              .fee{
+                padding: 24px 0;
+                border-top: 1px solid #ccc;
+                height: 63px;
+                box-sizing: border-box;
+                .clearfix:after{
+                  content: '';
+                  display: block;
+                  clear: both;
+                }
+                .fee-name{
+                  font-size: 13px;
+                  margin-top: 6px;
+                  float: left;
+                }
+                .fee-num{
+                  float: right;
+                  margin-top: 6px;
+                  font-size: 11px;
+                }
+              }
+
+              .profit{
+                padding: 24px 0;
+                border-top: 1px solid #ccc;
+                height: 63px;
+                box-sizing: border-box;
+                .clearfix:after{
+                  content: '';
+                  display: block;
+                  clear: both;
+                }
+                .profit-name{
+                  font-size: 16px;
+                  margin-top: 6px;
+                  float: left;
+                  font-weight: 600;
+                }
+                .profit-num{
+                  float: right;
+                  margin-top: 10px;
+                  font-size: 34px;
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+
+          .deal-btn-box{
+            height: 329px;
+            border-top: 1px solid #eee;
+            padding: 40px;
+            box-sizing: border-box;
+            display: block;
+
+            .deal-btn-explain{
+              line-height: 1.5;
+              font-size: 14px;
+
+              a{
+                color: $mercari_blue;
+                text-decoration: none;
+              }
+            }
+          }
+
+          .btn-exhibition{
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            width: 620px;
+            height: 50px;
+            margin: 40px 0 0;
+            font-size: 14px;
+            cursor: pointer;
+          }
+
+          a.back-exhibition{
+          width: 279px;
+          height: 50px;
+          margin: 24px auto 0;
+          background: #aaa;
+          border: 1px solid #aaa;
+          color: $mercari_white;
+          text-decoration: none;
+          line-height: 48px;
+          display: block;
+          text-align: center;
+          font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  
+  .product-footer{
+    height: 220px;
+    width: 456px;
+    margin: 0 auto;
+    padding: 40px 0;
+    text-align: center;
+    box-sizing: border-box;
+
+    nav{
+
+      ul{
+        font-size: 0;
+        
+        ul.clearfix:after{
+          content: '';
+          display: block;
+          clear: both;
+        }
+  
+        li{
+          display: inline-block;
+          font-size: 12px;
+          margin: 0 0 0 16px;
+          
+          a{
+            color: $mercari_black;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    .bottom-image{
+      text-align: center;
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+      display: block;
+
+      img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;  
+      }
+    }
+    
+    p{
+      margin: 8px 0 0;
+
+      small{
+      font-size: 13px;
+       }
+    }
+  }
+}
