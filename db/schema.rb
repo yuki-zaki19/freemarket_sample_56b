@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_012242) do
+ActiveRecord::Schema.define(version: 2019_08_06_101357) do
+
+  create_table "identifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "postal_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "address"
+    t.string "building"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identifications_on_user_id"
+  end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 40, null: false
@@ -68,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_012242) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "identifications", "users"
   add_foreign_key "products", "users"
   add_foreign_key "sellers", "products"
   add_foreign_key "sellers", "users", column: "buyer_user_id"
