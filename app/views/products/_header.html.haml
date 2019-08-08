@@ -1,0 +1,52 @@
+.header
+  .header__inner
+    .header__inner__top
+      %h1
+        =link_to '#' do
+          %img{alt:"メルカリ", src:"/assets/mercari_logo_horizontal.png", height:"40", width:"134"}
+      %form.header__inner__top__form
+        %input{type:"search",name:"keyword",placeholder:"何かお探しですか？"}
+        %i.header__inner__top__form__icon
+    .header__inner__list
+      %nav.header__inner__list__left
+        %ul.header__inner__list__left__box
+          %li.header__inner__list__left__box__parent
+            = link_to "カテゴリーから探す"
+            %i.header__inner__list__left__box__parent__icon
+          %li.header__inner__list__left__box__cousin
+            = link_to "ブランドから探す"
+            %i.header__inner__list__left__box__cousin__icon
+      .header__inner__list__right
+        %ui.header__inner__list__right__box
+          .header__inner__list__right__box__like
+            %i.header__inner__list__right__box__like__icon
+              =link_to "いいね！一覧"
+          .header__inner__list__right__box__notice
+            %i.header__inner__list__right__box__notice__icon
+              =link_to "お知らせ"
+          .header__inner__list__right__box__do
+            %i.header__inner__list__right__box__do__icon
+              =link_to "やることリスト"
+          .header__inner__list__right__box__my
+            .header__inner__list__right__box__my__text
+              =link_to "マイページ"
+            .header__inner__list__right__box__my__image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
