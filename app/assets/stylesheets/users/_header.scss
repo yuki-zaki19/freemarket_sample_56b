@@ -20,6 +20,22 @@
       -webkit-box-pack: justify;
       justify-content: space-between;
       height: 40px;
+      &__left{
+        width: 134px;
+        height: 36px;
+        h1{
+          width:134px;
+          height: 36px;
+        }
+        a{
+          width:134px;
+          height: 36px;
+        }
+        img{
+          width:134px;
+          height: 36px;
+        }
+      }
       &__form{
         position: relative;
         margin-left: 45px;
