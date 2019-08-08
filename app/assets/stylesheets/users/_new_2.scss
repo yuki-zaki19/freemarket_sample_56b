@@ -1,0 +1,110 @@
+*{
+  box-sizing: border-box;
+}
+
+.user-info__header{
+  width: 100%;
+  height: 128px;
+  text-align: center;
+
+  &__mercari-icon{
+    width: 195px;
+    height: 49px;
+    margin: 40px 0 0;
+    display: inline-block;
+
+    a{
+      width: 195px;
+      height: 49px;
+
+      .user-info__header__mercari-icon__image{
+        width: 195px;
+        height: 49px;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;  
+
+      }
+    }
+  }
+  .user-info__header__progress{
+    padding: 4px 0 0 44px;
+    border: 0;
+    width: 552px;
+    height: 72px;
+    display: inline-block;
+    vertical-align: top;
+
+    &__flat-bar{
+      z-index: 1;
+      position: relative;
+      top: 37px;
+
+
+      &__left{
+        z-index: 2;
+        display: inline-block;
+        content: '';
+        height: 2px;
+        background: $mercari_red;
+        position: relative;
+        vertical-align: bottom;
+        // 以下1行のpxを調整して、ビューを整える（必要であればmarginでも調整）
+        width: 0px;
+      }
+      &__right{
+        z-index: 2;
+        display: inline-block;
+        content: '';
+        height: 2px;
+        background: #ccc;
+        position: relative;
+        vertical-align: bottom;
+        // 以下２行のpxを調整して、ビューを整える
+        margin-right: 25px;
+        width: 419px;
+      }
+    }
+    &__current-now{
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 32px 0 0;
+      color: $mercari_red;
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+
+      &__round{
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: $mercari_red;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+
+    &__current{
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 32px 0 0;
+      color: #888;
+      position: relative;
+
+
+      &__round{
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: #ccc;
+        border-radius: 50%;
+        position: relative;
+
+      }
+    }
+
+  }
+
+}
