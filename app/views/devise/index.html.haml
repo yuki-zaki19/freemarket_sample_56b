@@ -1,9 +1,9 @@
 .main-box
   .main
     .main__user
-      = image_tag "/assets/image.png", class: 'main-header', width: "100"
+      = image_tag "image.png", class: 'main-header', width: "100"
       = link_to '#', class: 'main-header__box' do
-        = image_tag "/assets/member_photo_noimage.png", class: 'main-header__box__user'
+        = image_tag "member_photo_noimage.png", class: 'main-header__box__user'
         .main-header__box__name
           user
         .main-header__box__date
@@ -22,7 +22,7 @@
         .info-content
           .info-content__details
             = link_to '#',class: 'info-content__details__news' do
-              = image_tag "/assets/mercari_icon.png", class: 'info-content__details__news__icon', width: "48", height: "48"
+              = image_tag "mercari_icon.png", class: 'info-content__details__news__icon', width: "48", height: "48"
               .info-content__details__news__com
                 .info-content__details__news__com__text
                   《お買い物応援キャンペーン》1,000円の商品を"実質1円"で購入できます！

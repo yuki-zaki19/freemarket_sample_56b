@@ -116,7 +116,6 @@
                   }
                 }
 
-              div{
                 .input-name{
                   margin: 8px 0 0;
                   width: 100%;
@@ -130,7 +129,6 @@
                   box-sizing: border-box;
 
                 }
-              }
             }
 
             .product-explain-form{
@@ -151,7 +149,7 @@
                 }
               }
 
-              div{
+              
                 .input-explain{
                   margin: 8px 0 0;
                   width: 100%;
@@ -163,7 +161,7 @@
                   font-size: 16px;
                   box-sizing: border-box;
                 }
-              }
+              
             }
           }
 
@@ -239,7 +237,7 @@
                 line-height: 1.5;
                 cursor: pointer;
 
-                i.fa.fa-angle-down{
+                .fa-angle-down{
                   z-index: 2;
                   color: #888;
                   font-size: 28px;
