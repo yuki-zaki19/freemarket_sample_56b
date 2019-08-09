@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'card'
+      get "new_3"
     end
   end
   resources :products

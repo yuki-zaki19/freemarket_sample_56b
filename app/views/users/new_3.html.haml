@@ -1,0 +1,32 @@
+-# 3ページ目（電話番号）
+
+.sign-up__header
+
+.sign-up__tel-authentication
+  .sign-up__tel-authentication__header
+    %h2 電話番号の確認
+  .sign-up__tel-authentication__body
+    .sign-up__tel-authentication__body__content
+      .sign-up__tel-authentication__body__content__tel
+        .sign-up__tel-authentication__body__content__tel__title
+        携帯電話の番号
+        %br
+        %input.sign-up__tel-authentication__body__content__tel__form{:placeholder => "携帯電話の番号を入力", :type => "text"}
+        .sign-up__tel-authentication__body__content__tel__discription
+        本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して印象を行います行います。
+      .sign-up__tel-authentication__body__content__btn-group
+        %button.sign-up__tel-authentication__body__content__btn-group__btn
+          SMSを送信する
+        .sign-up__tel-authentication__body__content__btn-group__discription
+        *電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        .sign-up__tel-authentication__body__content__btn-group__reason
+          = link_to "#", method: :get  do
+            電話番号の確認が必要な理由　>
+
+.sign-up__footer
+
+
+
+
+
+    
