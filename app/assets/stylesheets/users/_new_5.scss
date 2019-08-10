@@ -15,18 +15,16 @@
     &__main{
       max-width: 343px;
       margin: 0 auto;
+      label{
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+        line-height: 1;
+      }
     }
   }
 }
 
-.main-inputcredit__box__main{
-  label{
-    font-weight: 600;
-    font-size: 14px;
-    color: #333;
-    line-height: 1;
-  }
-}
 .card-box-number{
   font-size:0;
   &__icom{
@@ -69,26 +67,24 @@
     margin: 8px 0 0;
     display: inline-block;
     width: calc(50% - 2px);
+    span{
+      font-size: 14px;
+      color: #333;
+      line-height: 1;
+      padding-left: 10px;
+    }
   }
   &__year{
     margin: 8px 0 0;
     float: right;
     width: calc(50% - 2px);
+    span{
+      font-size: 14px;
+      color: #333;
+      line-height: 1;
+      padding-left: 10px;
+    }
   }
-}
-
-.card-box-limit__moon span{
-  font-size: 14px;
-  color: #333;
-  line-height: 1;
-  padding-left: 10px;
-}
-
-.card-box-limit__year span{
-  font-size: 14px;
-  color: #333;
-  line-height: 1;
-  padding-left: 10px;
 }
 
 .card-box-secrity{
