@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'logout'
       get 'card'
       get "new_3"
+      get "new_4"
     end
   end
   resources :products

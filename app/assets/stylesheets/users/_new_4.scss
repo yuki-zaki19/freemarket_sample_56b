@@ -1,0 +1,105 @@
+
+.sign-up__shipping-address{
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  &__header h2{
+    font-size: 22px;
+    padding: 32px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: bold;
+  }
+  &__body{
+    padding: 40px 40px 64px;
+    border-top: 1px solid #f5f5f5;
+    &__content{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+  }
+}
+.sign-up__shipping-address__body__content__form-group__prep-select{
+  position: relative;
+  &__prep-form{
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  &__chevron{
+    position: absolute;
+    right: 12px;
+    top: 45%;
+    z-index: 2;
+    color: #888;
+    font-size: 8px;
+  }
+}
+
+
+.sign-up__shipping-address__form{
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.required-field{
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background-color: $mercari-red;
+  width: 32px;
+  display: inline-block;
+}
+.optional-field{
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background-color: grey;
+  width: 32px;
+  display: inline-block;
+}
+.sign-up__shipping-address__title{
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+}
+.sign-up__shipping-address__body__content__form-group{
+  margin-top: 32px;
+}
+.sign-up__shipping-address__body__content__form-group-first{
+  margin-top: 0;
+}
+
+.sign-up__shipping-address__next-btn{
+  margin-top: 32px;
+  width: 100%;
+  color: #fff;
+  background-color: $mercari-red;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+
+
