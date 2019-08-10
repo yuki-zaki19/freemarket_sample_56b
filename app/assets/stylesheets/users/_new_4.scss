@@ -3,6 +3,38 @@
   width: 700px;
   margin: 0 auto;
   background-color: white;
+  &__form{
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }  
+  &__title{
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+  }  
+  &__form-group{
+    margin-top: 32px;
+  }
+  &__form-group-first{
+    margin-top: 0;
+  }  
+  &__next-btn{
+    margin-top: 32px;
+    width: 100%;
+    color: #fff;
+    background-color: $mercari-red;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }  
   &__header h2{
     font-size: 22px;
     padding: 32px;
@@ -42,21 +74,6 @@
     }
   }
 }
-
-
-
-.sign-up__shipping-address__form{
-  width: 100%;
-  margin: 8px 0 0;
-  height: 48px;
-  padding: 10px 16px 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  line-height: 1.5;
-  font-size: 16px;
-}
-
 .required-field{
   margin: 0 0 0 8px;
   padding: 2px 4px;
@@ -79,28 +96,3 @@
   width: 32px;
   display: inline-block;
 }
-.sign-up__shipping-address__title{
-  display: inline-block;
-  font-weight: 600;
-  font-size: 14px;
-}
-.sign-up__shipping-address__body__content__form-group{
-  margin-top: 32px;
-}
-.sign-up__shipping-address__body__content__form-group-first{
-  margin-top: 0;
-}
-
-.sign-up__shipping-address__next-btn{
-  margin-top: 32px;
-  width: 100%;
-  color: #fff;
-  background-color: $mercari-red;
-  line-height: 48px;
-  font-size: 14px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-
-
