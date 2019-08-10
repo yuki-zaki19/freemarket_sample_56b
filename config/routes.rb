@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       get 'card'
       get "new_3"
       get "new_4"
+      get "new_5"
+      get "new_6"
+      
     end
   end
   resources :products

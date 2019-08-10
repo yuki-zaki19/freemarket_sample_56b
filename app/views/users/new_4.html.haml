@@ -11,19 +11,19 @@
         .sign-up__shipping-address__title
           お名前
         .required-field 必須
-        %input.sign-up__shipping-address__form{:placeholder => "例）山田", :type => "text"}
-        %input.sign-up__shipping-address__form{:placeholder => "例）彩", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder: "例）山田", type: "text"}
+        %input.sign-up__shipping-address__form{placeholder: "例）彩", type: "text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           お名前カナ
         .required-field 必須
-        %input.sign-up__shipping-address__form{:placeholder => "例）ヤマダ", :type => "text"}
-        %input.sign-up__shipping-address__form{:placeholder => "例）アヤ", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder:"例）ヤマダ", type: "text"}
+        %input.sign-up__shipping-address__form{placeholder:"例）アヤ", type:"text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           郵便番号
         .required-field 必須
-        %input.sign-up__shipping-address__form{:placeholder => "例）123-4567", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder: "例）123-4567", type:"text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           都道府県
@@ -67,7 +67,7 @@
             %option{ value: "34"} 広島県
             %option{ value: "35"} 山口県
             %option{ value: "36"} 徳島県
-            %option{ value:"37"} 香川県
+            %option{ value: "37"} 香川県
             %option{ value: "38"} 愛媛県
             %option{ value: "39"} 高知県
             %option{ value: "40"} 福岡県
@@ -83,23 +83,23 @@
         .sign-up__shipping-address__title
           市町村区
         .required-field 必須
-        %input.sign-up__shipping-address__form{:placeholder => "例）横浜市緑区", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder: "例）横浜市緑区", type: "text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           番地
         .required-field 必須
-        %input.sign-up__shipping-address__form{:placeholder => "例）青山1-1-1", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder:"例）青山1-1-1", type:"text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           番地
         .optional-field 任意
-        %input.sign-up__shipping-address__form{:placeholder => "例）柳ビル103", :type => "text"}
+        %input.sign-up__shipping-address__form{placeholder:"例）柳ビル103", type:"text"}
       .sign-up__shipping-address__body__content__form-group
         .sign-up__shipping-address__title
           電話
         .optional-field 任意
-        %input.sign-up__shipping-address__form{:placeholder => "例）09012345678", :type => "text"}
-      %button.sign-up__shipping-address__next-btn{:onclik => "location.href= '/users/new'"}
+        %input.sign-up__shipping-address__form{placeholder:"例）09012345678", type:"text"}
+      %button.sign-up__shipping-address__next-btn
         次へ進む
 
 .sign-up__footer

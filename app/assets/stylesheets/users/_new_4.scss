@@ -16,32 +16,33 @@
     &__content{
       max-width: 343px;
       margin: 0 auto;
+      &__form-group__prep-select{
+        position: relative;
+        &__prep-form{
+          -webkit-appearance: none;
+          width: 100%;
+          margin: 8px 0 0;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        &__chevron{
+          position: absolute;
+          right: 12px;
+          top: 45%;
+          z-index: 2;
+          color: #888;
+          font-size: 8px;
+        }
+      }
     }
   }
 }
-.sign-up__shipping-address__body__content__form-group__prep-select{
-  position: relative;
-  &__prep-form{
-    -webkit-appearance: none;
-    width: 100%;
-    margin: 8px 0 0;
-    height: 48px;
-    padding: 10px 16px 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background: #fff;
-    line-height: 1.5;
-    font-size: 16px;
-  }
-  &__chevron{
-    position: absolute;
-    right: 12px;
-    top: 45%;
-    z-index: 2;
-    color: #888;
-    font-size: 8px;
-  }
-}
+
 
 
 .sign-up__shipping-address__form{
