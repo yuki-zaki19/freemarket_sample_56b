@@ -1,0 +1,165 @@
+.main-inputcredit{
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  &__header{
+    font-weight: 600;
+    font-size: 22px;
+    padding: 32px;
+    line-height: 1.5;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  &__box{
+    padding: 24px 16px 40px;
+    &__main{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.main-inputcredit__box__main{
+  label{
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+  }
+}
+.card-box-number{
+  font-size:0;
+  &__icom{
+    margin: 8px 0 0;
+    font-size: 0;
+    display: flex;
+    &__list{
+      height: 20px;
+      margin: 0 0 0 8px;
+    }
+  }
+}
+
+.card-box-com{
+  display:inline-block;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  background: #ea352d;
+}
+
+.cardbox-input{
+  display: block;
+  width: 100%;
+  margin: 8px 0 0;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.card-box-limit{
+  margin-top: 32px;
+  &__moon{
+    margin: 8px 0 0;
+    display: inline-block;
+    width: calc(50% - 2px);
+  }
+  &__year{
+    margin: 8px 0 0;
+    float: right;
+    width: calc(50% - 2px);
+  }
+}
+
+.card-box-limit__moon span{
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  padding-left: 10px;
+}
+
+.card-box-limit__year span{
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  padding-left: 10px;
+}
+
+.card-box-secrity{
+  margin-top: 32px;
+  &__link{
+    position: relative;
+    margin: 8px 0 0;
+    text-align: right;
+    color: #0099e8;
+    &__question{
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      text-align: center;
+    }
+    &__open{
+      display: inline-block;
+      text-align: right;
+      color: #0099e8;
+    }
+  }
+}
+
+.moon-box__selecter{
+  width: calc(100% - 38px);
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.year-box__selecter{
+  width: calc(100% - 38px);
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.fa-limit-select{ 
+  font-size: 10px;
+  margin: 0 6px 0 -15px;
+  top: 8px;
+  pointer-events: none;
+  position: relative;
+  left: 130px;
+  color: #888;
+  transform: translate(0, -50%);
+  font-family: 'icon-font';
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
