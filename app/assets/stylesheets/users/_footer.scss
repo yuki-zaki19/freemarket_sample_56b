@@ -1,0 +1,249 @@
+.image{
+  background-image: image-url("bg_pc.jpg");
+  background-position: center;
+  background-size: cover;
+  height:260px;
+  width: 100%;
+  &__banner{
+    display: block;
+    margin-left: 345px;
+    margin-right: 345px;
+    height: 260px;
+    &__left{
+      float: left;
+      height: 166px;
+      width: 420px;
+      position: relative;
+      top: 40px;
+      h2{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 24px;
+        line-height: 1.4;
+        display: block;
+        font-weight: bold;
+        color: #fff;
+      }
+      p{
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 35px;
+        margin: 10px 0 0;
+      }
+      &__icon{
+        margin: 20px 0 0;
+        figure{
+          float: left;
+          width: 68px;
+          height: 68px;
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border-bottom-left-radius: 10px;
+          background-color: #fff;
+        }
+      &__mercari{
+        width: 68px;
+        height: 68px;
+      }
+      &__app{
+        display: flex;
+        margin-left: 92px;
+        width: 282px;
+        height: 68px;
+        align-items: center;
+        &__apple{
+          margin-top: 8px;
+        }
+        &__google{
+          margin: 6px 0 0 20px;
+          height: 58px;
+          width: 140px;
+          object-fit: cover;
+        }
+      }
+      }
+      }
+    &__right{
+      width: 300px;
+      height: 100%;
+      text-align: center; 
+      float: left;
+      img{
+        width: 100%;
+      }
+    }
+    }
+  }
+
+
+
+.footer{
+  padding: 0 20px 10px 20px;
+  background: #212121;
+  color: #fff;
+  width:100%;
+  &__main{
+    width: 1020px;
+    height: 298px;
+    margin: 0 auto;
+    &__cell{
+      padding: 0 20px 0 0;
+      width: 20%;
+      height: 241px;
+      display: block;
+      float: left;
+      margin-top: 18px;
+      &__header{
+        color: #fff;
+        font-size: 16px;
+        font-weight: 100;
+        h2{
+          font-size: 22px;
+        }
+        &__text{
+          margin: 16px 0 0;
+          display: block;
+          opacity: .7;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1.5em;
+          white-space: nowrap;
+          a:visited{
+            color: #fff;
+          }
+          a:hover{
+            text-decoration:underline;
+          }
+        }
+        &__icon{
+          margin: 14px 0 0;
+          color: #fff;
+          display: inline-block;
+          height:42px;
+          width: 26%;
+          a{
+            opacity: 1;
+            color: #fff;
+            font-size: 38px;
+            line-height: 1.5em;
+          }
+          &__twitter:before{
+            display: inline-block;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            height: 24px;
+            font-family: FontAwesome;
+            content: "\f099";
+          }
+          &__faceboock:before{
+            display: inline-block;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            height: 24px;
+            font-family: FontAwesome;
+            content: "\f082";
+          }
+        }
+      }
+    }
+    &__width{
+      margin-top: 18px;
+      margin-left: 15px;
+      padding: 0 40px 0 0;
+      width: 42%;
+      height:170px;
+      display: block;
+      float: left;
+      &__header{
+        color: #fff;
+        font-size: 16px;
+        font-weight: 100;
+        line-height: 1.4;
+      }
+      &__cell{
+        padding: 0 10px 0 0;
+        float: left;
+        vertical-align: top;
+        width: 50%;
+        &__text{
+          margin: 16px 0 0;
+          display: block;
+          opacity: .7;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1.5em;
+        }
+        a:visited{
+          color: #fff;
+        }
+        a:hover{
+          text-decoration:underline;
+        }
+    }
+      }
+      &__country{
+        width: 9%;
+        margin-top: 18px;
+        float:left;
+        height:88px;
+        padding: 0;
+        &__header{
+            color: #fff;
+            font-size: 16px;
+            font-weight: 100;
+            line-height: 1.4;
+            h2{
+              font-size: 22px;
+            }
+        }
+        &__cell{
+          margin: 16px 0 0;
+          display: block;
+          opacity: .7;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1.5em;
+        }
+        a:visited{
+          color: #fff;
+        }
+        a:hover{
+          text-decoration:underline;
+        }
+      }
+    }
+    &__bottom{
+      margin: 30px auto 20px;
+      width: 1020px;
+      align-items: center;
+        a{
+        font-size: 12px;
+        line-height: 1.5em;
+        zoom: 1.5;
+        }
+      &__mercari{
+        height: auto;
+        width: 85px;
+        font-size: 12px;
+        line-height: 1.5em
+      }
+      &__right{
+        width: 745px;
+        display: inline-block;
+        margin: 8px 0 0;
+        text-align: center;
+        vertical-align: sub;
+        font-size: 12px;
+        position: relative;
+        bottom: 20px;
+      }
+    }
+  }
