@@ -4,8 +4,12 @@
 
 .main-box{
   background-color: $mercari_grey;
-  display: flex;
-	align-items: center;
+  align-items: center;
+  &__header{
+    width: 100%;
+    min-height: 100px;
+    background-color: aqua;
+  }
 }
 
 .main{
@@ -13,6 +17,7 @@
   flex-flow: row-reverse;
   height: auto;
   margin: 40px auto;
+  width: 1020px;
   &__user{
     width: 700px;
     margin-left: 40px;
@@ -30,7 +35,7 @@
   text-align: center;
   &__box{
     position: absolute;
-    top: 84px;
+    top: 184px;
     margin: auto;
     width: 700px;
     height: 111px;
