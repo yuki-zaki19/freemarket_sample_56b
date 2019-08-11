@@ -1,4 +1,6 @@
 .main-box
+  .main-box__header
+    = render 'products/header'
   .main
     .main__user
       .input-bar
@@ -102,3 +104,4 @@
             = link_to '#',class: 'user-list__box__btm choice' do
               ログアウト
               = fa_icon 'angle-right side-bar'
+= render 'users/footer'

@@ -1,4 +1,6 @@
 .main-box
+  .main-box__header
+    = render 'products/header'
   .main
     .main__user
       = image_tag "image.png", class: 'main-header', width: "100"
@@ -141,3 +143,4 @@
             = link_to '#',class: 'user-list__box__btm' do
               ログアウト
               = fa_icon 'angle-right side-bar'
+= render 'users/footer'
