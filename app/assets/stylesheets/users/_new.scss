@@ -22,11 +22,19 @@
       &__mail {
           width: 100%;
           color: #fff;
-          background-color: $mercari-red;
+          background-color:$mercari-red;
           line-height: 48px;
           font-size: 14px;
           border: 1px solid transparent;
           border-radius: 4px;
+          a:visited{
+            color:#fff;
+          }
+          i:before{
+          font-size: 20px;
+          position: relative;
+          right: 60px;
+          }
       }
       &__facebook {
           margin: 16px 0 0;
@@ -37,6 +45,15 @@
           border-radius: 4px;
           width: 100%;
           line-height: 48px;
+          a:visited{
+            color:#fff;
+          }
+          i:before{
+            font-size: 33px;
+            position: relative;
+            right: 75px;
+            top: 6px;
+            }
       }
       &__google{
           margin: 16px 0 0;
@@ -48,6 +65,14 @@
           border-radius: 4px;
           width: 100%;
           line-height: 48px;
+          a:visited{
+            color: #333;
+          }
+          i:before{
+            font-size: 20px;
+            position: relative;
+            right: 85px;
+            }
       }
     }
   }
