@@ -108,3 +108,63 @@
   }
 
 }
+
+.user-info__content{
+  padding: 40px 40px 64px;
+  
+}
+
+.user-info__footer{
+  height: 220px;
+  width: 456px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  box-sizing: border-box;
+
+  nav{
+
+    ul{
+      font-size: 0;
+      
+      ul.clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      li{
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 0 0 16px;
+        
+        a{
+          color: $mercari_black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .bottom-image{
+    text-align: center;
+    width: 80px;
+    height: 65px;
+    margin: 40px auto 0;
+    display: block;
+
+    img{
+      object-fit: cover;
+      height: 100%;
+      width: 100%;  
+    }
+  }
+  
+  p{
+    margin: 8px 0 0;
+
+    small{
+    font-size: 13px;
+     }
+  }
+}
