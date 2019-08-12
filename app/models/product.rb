@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :contacts
   has_many_attached :images
   # has_many :photos
-  # belongs_to :category
+  belongs_to :category
   # accepts_nested_attributes_for :photos
 
 end
