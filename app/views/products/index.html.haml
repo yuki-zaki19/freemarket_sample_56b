@@ -2,8 +2,31 @@
 
 .top-page-main
   .top-main
-    .top-main__header
-      .top-main__header__back
+    .top-main-headerbox
+      %div
+        .top-main__header
+          .top-main__header__back
+      %div
+        .top-main__header2
+          .top-main__header__back2
+            .top-main__header__back2__box
+              .top-main__header__back2__box__left
+                %h2.top-main__header__back2__box__left__top
+                  スマホでかんたん
+                  %br
+                  フリマアプリ　　　
+                %p.top-main__header__back2__box__left__center
+                  メルカリはスマホカメラからすぐに出品できる
+                  %br
+                  購入時も安心な独自システムのアプリです
+                .top-main__header__back2__box__left__bottom
+                  .top-main__header__back2__box__left__bottom__icon
+                    = link_to('#', {}) do
+                      = image_tag "app_store.png", :class =>"image__banner__left__icon__app__apple"
+                    = link_to('#', {}) do
+                      = image_tag "google_play.png", :class =>"image__banner__left__icon__app__google"
+              .top-main__header__back2__box__right
+                = image_tag "main_content_pc.png"
     .top-main__pickup
       %h2.top-main__pickup__head
         ピックアップカテゴリー
