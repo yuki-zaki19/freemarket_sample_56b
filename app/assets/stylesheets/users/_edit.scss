@@ -63,7 +63,7 @@
   padding: 64px 190px;
 }
 
-.user-logout-btn{
+.user-logout-btn {
   background: $mercari_red;
   border: 1px solid $mercari_red;
   color: $mercari_white;
@@ -75,4 +75,6 @@
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+  width: 100%;
+  display: inline-block;
 }

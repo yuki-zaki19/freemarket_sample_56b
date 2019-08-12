@@ -2,9 +2,9 @@
   .main
     .main__user
       .input-bar
-        = form_with  do |f|
-          .logout-box
-            = f.submit 'ログアウト', class: 'user-logout-btn'
+        .logout-box
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'user-logout-btn'
+
     .main__user-bar
       .side-nav
         %ul.user-list

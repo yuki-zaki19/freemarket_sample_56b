@@ -8,12 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'logout'
-      get 'card'
-      get "new_3"
-      get "new_4"
-      get "new_5"
-      get "new_6"
-      
+      get 'card'      
     end
   end
   resources :products

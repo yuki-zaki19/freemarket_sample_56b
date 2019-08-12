@@ -1,3 +1,15 @@
+.sign-up-page-6{
+  display: none;
+  z-index: 8888;
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
 .sign-up__complete{
   width: 700px;
   margin: 0 auto;
@@ -15,7 +27,7 @@
     &__content{
       max-width: 343px;
       margin: 0 auto;
-      &__next-btn a{
+      &__next-btn {
         display: block;
         margin-top: 32px;
         width: 100%;

@@ -1,9 +1,20 @@
+.sign-up-page-4{
+  display: none;
+  z-index: 4444;
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  overflow-y: scroll;
+  height: 100vh;
 
+}
 .sign-up__shipping-address{
   width: 700px;
   margin: 0 auto;
   background-color: white;
-  &__form{
+  &__form {
     width: 100%;
     margin: 8px 0 0;
     height: 48px;
@@ -34,6 +45,7 @@
     font-size: 14px;
     border: 1px solid transparent;
     border-radius: 4px;
+    text-align: center;
   }  
   &__header h2{
     font-size: 22px;

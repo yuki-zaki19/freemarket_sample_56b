@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   def show
   end
 
+
+  def create
+    binding.pry
+  end
+
   def new
   end
 
