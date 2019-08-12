@@ -11,7 +11,12 @@ class ProductsController < ApplicationController
     @product = Product.new
     @category_parent_array =  ["--"]
     Category.where(ancestry:  nil).each do |parent|
-      @category_parent_array << parent.name
+      @category_parent_array << [parent.name,parent.id]
+    end
+    @parent = Category.where(id: params[:id])
+    respond_to do |format|
+      format.html
+      format.json
     end
   end
 
