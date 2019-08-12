@@ -30,7 +30,7 @@
   }
 
   .product-main{
-    height: 2016px;
+    min-height: 2016px;
 
     .center-box{
       height: 100%;
@@ -51,13 +51,12 @@
 
         &__form{
           border-top: 1px solid #eee;
-          height: 1919px;
+          min-height: 1919px;
             
           &__upload-box{
-            height: 303px;
-            box-sizing: border-box;
-            width: 620px;
+            min-height: 303px;
             padding: 40px;
+            display: block;
 
             h3.upload-box-header{
               font-size: 16px;
@@ -77,16 +76,79 @@
               line-height: 1.5;
               font-size: 13px;
             }
+            div{
+              max-width: 620px;
+              
+              #insert-image-box{
+                margin-top: 16px;
+                width: auto;
 
-            .upload-dropbox{
-              display: block;
-              width: 620px;
-              margin: 16px auto 0;
-              height: 160px;
-              border-style: dashed;
-              border-width: thin;
-              background-color: $mercari_grey;
-              border-color: rgb(121, 120, 120);
+                .upload-product{
+                  height: 160px;
+                  position: relative;
+                  display: inline-block;
+                  border: 1px solid #eee;
+                  vertical-align: top;
+                  margin: 0 2px 10px 2px;
+                  background-color: $mercari_grey;
+
+                  &__image{
+                    height: 114px;
+                    width: 116px;
+                    text-align: center;
+                  }
+                  
+                  &__button{
+                    width: 116px;
+
+                    a.upload-product__button__edit{
+                      color: $mercari-blue;
+                      display: inline-block;
+                      width: 50%;
+                      background: #f5f5f5;
+                      line-height: 37px;
+                      text-align: center;
+                    }
+
+                    a{
+                      border-left: 1px solid #eee;
+                      color: $mercari-blue;
+                      display: inline-block;
+                      width: 50%;
+                      background: #f5f5f5;
+                      line-height: 37px;
+                      text-align: center;
+
+                    }
+
+                  }
+                }
+              }
+
+              .upload-dropbox{
+                min-width: 110px;
+                box-sizing: border-box;
+                margin: 16px auto 0;
+                height: 160px;
+                border: 1px dashed #ccc;
+                border-width: thin;
+                background-color: $mercari_grey;
+                cursor: pointer;
+          
+                #display-none{
+                  display: none;
+                }
+
+                .image_preview{
+                  width: 620px;
+                  height: 160px;
+                  text-align: center;
+                  display: table-cell;
+                  vertical-align: middle;
+                  font-size: 14px;
+                  cursor: pointer;
+                }
+              }
             }
           }
           &__explain{
@@ -129,7 +191,7 @@
                   box-sizing: border-box;
 
                 }
-            }
+              }
 
             .product-explain-form{
               margin: 30px 0 0;
@@ -149,7 +211,6 @@
                 }
               }
 
-              
                 .input-explain{
                   margin: 8px 0 0;
                   width: 100%;
@@ -161,7 +222,6 @@
                   font-size: 16px;
                   box-sizing: border-box;
                 }
-              
             }
           }
 
@@ -237,7 +297,7 @@
                 line-height: 1.5;
                 cursor: pointer;
 
-                .fa-angle-down{
+                i.fa.fa-angle-down{
                   z-index: 2;
                   color: #888;
                   font-size: 28px;
@@ -254,8 +314,8 @@
                   z-index: 1;
                   -webkit-appearance: none;
                   height: 50px;
-                  position: absolute;
-                  left: 630px;
+                  position: relative;
+                  bottom: 30px;
                   padding: 0 16px;
                   border-radius: 4px;
                   border: 1px solid #ccc;
@@ -269,11 +329,12 @@
           }
           
           .deal-delivery{
-            height: 371px;
+            min-height: 371px;
             border-top: 1px solid #eee;
             padding: 40px;
             box-sizing: border-box;
             display:block;
+            overflow: hidden;
 
             .deal-sub-head{
               float: left;
@@ -345,8 +406,65 @@
                   z-index: 1;
                   -webkit-appearance: none;
                   height: 50px;
-                  position: absolute;
-                  left: 630px;
+                  position: relative;
+                  bottom: 30px;
+                  padding: 0 16px;
+                  border-radius: 4px;
+                  border: 1px solid #ccc;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+                }
+              }
+
+              #form-shipping{
+                margin: 40px 0 0;
+                label{
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+                span.form_required{
+                  background-color: $mercari_red;
+                  color: $mercari_white;
+                  font-size: 12px;
+                  margin: 0 0 0 8px;
+                  padding: 2px 4px;
+                  border-radius: 2px;
+                  font-weight: 600;
+
+                }
+              }
+              #select-form-shipping{
+                .select-form-shipping-box{
+                height: 48px;
+                margin: 8px 0 0;
+                background: 0;
+                font-size: 16px;
+                line-height: 1.5;
+                cursor: pointer;
+
+                }
+
+                i.fa.fa-angle-down{
+                  z-index: 2;
+                  color: #888;
+                  font-size: 28px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 200;
+                  line-height: 1;
+                  position: relative;
+                  left: 365px;
+                  top: 10px;
+                }
+                .select-list{
+                  width: 400px;
+                  z-index: 1;
+                  -webkit-appearance: none;
+                  height: 50px;
+                  position: relative;
+                  bottom: 25px;
                   padding: 0 16px;
                   border-radius: 4px;
                   border: 1px solid #ccc;
@@ -397,8 +515,8 @@
                   z-index: 1;
                   -webkit-appearance: none;
                   height: 50px;
-                  position: absolute;
-                  left: 630px;
+                  position: relative;
+                  bottom: 30px;
                   padding: 0 16px;
                   border-radius: 4px;
                   border: 1px solid #ccc;
@@ -449,8 +567,8 @@
                   z-index: 1;
                   -webkit-appearance: none;
                   height: 50px;
-                  position: absolute;
-                  left: 630px;
+                  position: relative;
+                  bottom: 30px;
                   padding: 0 16px;
                   border-radius: 4px;
                   border: 1px solid #ccc;
@@ -504,7 +622,7 @@
               .input-price{
                 padding: 0 0 24px;
                 border: 0;
-                height: 48px;
+                height: 68px;
 
                 .clearfix:after{
                   content: '';
@@ -569,7 +687,7 @@
                   margin-top: 6px;
                   float: left;
                 }
-                .fee-num{
+                #fee-num{
                   float: right;
                   margin-top: 6px;
                   font-size: 11px;
@@ -592,7 +710,7 @@
                   float: left;
                   font-weight: 600;
                 }
-                .profit-num{
+                #profit-num{
                   float: right;
                   margin-top: 10px;
                   font-size: 34px;
