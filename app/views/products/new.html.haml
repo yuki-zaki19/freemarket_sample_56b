@@ -1,4 +1,5 @@
 .product-contents
+
   %header.product-header
     %h1
       = link_to('#', {}) do
@@ -9,7 +10,7 @@
       .exhibition-content
         .exhibition-content__header
           商品の情報を入力
-        .exhibition-content__form
+        = form_with model:@product,class: "exhibition-content__form", local: true  do |f|
           .exhibition-content__form__upload-box
             %h3.upload-box-header
               出品画像
@@ -17,128 +18,134 @@
                 必須
             %p
               最大10枚までアップロードできます
-            .upload-dropbox
-            = form_with model:@product , local: true  do |f|
-              = f.file_field :images, multiple: true
-              .exhibition-content__form__explain
-                .product-name-form
-                  %label
-                    商品名
-                    %span.form_required
-                      必須
-                      = f.text_field :name, class: 'input-name', placeholder: '商品名（必須40文字まで）'
-                .product-explain-form
-                  %label
-                    商品の説明
-                    %span.form_required
-                      必須
-                    = f.text_area :explain, class: 'input-explain', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-              .deal-product
-                .deal-sub-head
-                  .deal-sub-head__name 
-                    商品の詳細
-                .deal-form-box
-                  .form-category
+            %div
+              #insert-image-box
+              .upload-dropbox
+                %label
+                  = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                  .image_preview
+                    ドラッグアンドドロップ
+                    %br
+                      またはクリックしてファイルをアップロード
+          .exhibition-content__form__explain
+            .product-name-form
+              %label
+                商品名
+                %span.form_required
+                  必須
+                  = f.text_field :name, class: 'input-name', placeholder: '商品名（必須40文字まで）'
+            .product-explain-form
+              %label
+                商品の説明
+                %span.form_required
+                  必須
+                = f.text_area :explain, class: 'input-explain', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .deal-product
+            .deal-sub-head
+              .deal-sub-head__name 
+                商品の詳細
+            .deal-form-box
+              .form-category
+                %label
+                  カテゴリー
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon 'angle-down'
+                -# = f.select :category, @category_parent_array,{},class: 'select-list'
+                %select.select-list
+              .form-state 
+                %label
+                  商品の状態
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.select :state, [["---",0],["新品・未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]],{},class: 'select-list'
+
+          .deal-delivery.clearfix
+            .deal-sub-head
+              .deal-sub-head__name 
+                配送について
+            = link_to('#', class:'form-question') do
+              ?
+
+            .deal-form-box
+              .form-price
+                %label
+                  配送料の負担
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.select :burden, [["---",0],["送料込み（出品者負担）",1],["着払い（購入者負担）",2]],{},class: 'select-list',id: 'select-list-burden'
+              #form-shipping
+                -# javascript側からの追加
+              #select-form-shipping
+                -# javascript側からの追加
+              .form-region
+                %label
+                  発送元の地域
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.select :region, [["---",0],["北海道",1],["青森県",2],["岩手県",3],["宮城県",4],["秋田県",5],["山形県",6],["福島県",7],["茨城県",8],["栃木県",9],["群馬県",10],["埼玉県",11],["千葉県",12],["東京都",13],["神奈川県",14],["新潟県",15],["富山県",16],["石川県",17],["福井県",18],["山梨県",19],["長野県",20],["岐阜県",21],["静岡県",22],["愛知県",23],["三重県",24],["滋賀県",25],["京都府",26],["大阪府",27],["兵庫県",28],["奈良県",29],["和歌山県",30],["鳥取県",31],["島根県",32],["岡山県",33],["広島県",34],["山口県",35],["徳島県",36],["香川県",37],["愛媛県",38],["高知県",39],["福岡県",40],["佐賀県",41],["長崎県",42],["熊本県",43],["大分県",44],["宮崎県",45],["鹿児島県",46],["沖縄県",47]],{},class: 'select-list'
+              .form-date
+                %label
+                  発送までの日数
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.select :leadtime, [["---",0],["１日〜２日で発送",1],["２日〜３日で発送",2],["４日〜７日で発送",3]],{},class: 'select-list'
+          .deal-price
+            .deal-sub-head
+              .deal-sub-head__name 
+                販売価格(300~9,999,999)
+            = link_to('#', class:'form-question') do
+              ?
+            .deal-form-box
+              .price-box
+                .input-price
+                  .clearfix
                     %label
-                      カテゴリー
-                      %span.form_required
-                        必須
-                  .select-form
-                    = fa_icon 'angle-down'
-                    -# = f.select :category, @category_parent_array,{},class: 'select-list'
-                    %select.select-list
-                  .form-state 
-                    %label
-                      商品の状態
-                      %span.form_required
-                        必須
-                  .select-form
-                    = fa_icon "angle-down"
-                    = f.select :state, [["---",0],["新品・未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]],{},class: 'select-list'
-
-              .deal-delivery
-                .deal-sub-head
-                  .deal-sub-head__name 
-                    配送について
-                = link_to('#', class:'form-question') do
-                  ?
-                .deal-form-box
-                  .form-price
-                    %label
-                      配送料の負担
-                      %span.form_required
-                        必須
-                  .select-form
-                    = fa_icon "angle-down"
-                    = f.select :burden, [["---",0],["送料込み（出品者負担）",1],["着払い（購入者負担）",2]],{},class: 'select-list'
-                  .form-region
-                    %label
-                      発送元の地域
-                      %span.form_required
-                        必須
-                  .select-form
-                    = fa_icon "angle-down"
-                    = f.select :region, [["--",0],["北海道",1],["青森県",2],["岩手県",3],["宮城県",4],["秋田県",5],["山形県",6],["福島県",7],["茨城県",8],["栃木県",9],["群馬県",10],["埼玉県",11],["千葉県",12],["東京都",13],["神奈川県",14],["新潟県",15],["富山県",16],["石川県",17],["福井県",18],["山梨県",19],["長野県",20],["岐阜県",21],["静岡県",22],["愛知県",23],["三重県",24],["滋賀県",25],["京都府",26],["大阪府",27],["兵庫県",28],["奈良県",29],["和歌山県",30],["鳥取県",31],["島根県",32],["岡山県",33],["広島県",34],["山口県",35],["徳島県",36],["香川県",37],["愛媛県",38],["高知県",39],["福岡県",40],["佐賀県",41],["長崎県",42],["熊本県",43],["大分県",44],["宮崎県",45],["鹿児島県",46],["沖縄県",47]],{},class: 'select-list'
-                  .form-date
-                    %label
-                      発送までの日数
-                      %span.form_required
-                        必須
-                  .select-form
-                    = fa_icon "angle-down"
-                    = f.select :leadtime, [["---",0],["１日〜２日で発送",1],["２日〜３日で発送",2],["４日〜７日で発送",3]],{},class: 'select-list'
-              .deal-price
-                .deal-sub-head
-                  .deal-sub-head__name 
-                    販売価格(300~9,999,999)
-                = link_to('#', class:'form-question') do
-                  ?
-                .deal-form-box
-                  .price-box
-                    .input-price
-                      .clearfix
-                        %label
-                          価格
-                          %span.form_required 必須
-                        .right-sell-box
-                          ¥
-                          .price-box
-                            = f.text_field :price, class: "input-sell-box", placeholder: "例) 300"
-                    .fee 
-                      .clearfix
-                        .fee-name 販売手数料 (10%)
-                        .fee-num -
-                    .profit
-                      .clearfix
-                        .profit-name 販売利益
-                        .profit-num -
-              .deal-btn-box
-                .deal-btn-explain
-                  %p
-                    = link_to('#') do
-                      禁止されてる出品
-                    、
-                    = link_to('#') do
-                      行為
-                    を必ずご確認ください。
-                  %p
-                    またブランド品でシリアルナンバー等がある場合はご記載ください。
-                    = link_to('#') do
-                      偽ブランドの販売
-                    は犯罪であり処罰される可能性があります。
-                  %p
-                    また、出品をもちまして
-                    = link_to('#') do
-                      加盟店規約
-                    に同意したことになります。
-                = f.submit "出品する",class: "btn-exhibition" 
-                = link_to('#', class:'back-exhibition') do
-                  もどる
-
-
-
-
-
+                      価格
+                      %span.form_required 必須
+                    .right-sell-box
+                      ¥
+                      .price-box
+                        = f.text_field :price, class: "input-sell-box", id: "input-price",placeholder: "例) 300"
+                .fee 
+                  .clearfix
+                    .fee-name 販売手数料 (10%)
+                    #fee-num -
+                .profit
+                  .clearfix
+                    .profit-name 販売利益
+                    #profit-num -
+          .deal-btn-box
+            .deal-btn-explain
+              %p
+                = link_to('#') do
+                  禁止されてる出品
+                、
+                = link_to('#') do
+                  行為
+                を必ずご確認ください。
+              %p
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                = link_to('#') do
+                  偽ブランドの販売
+                は犯罪であり処罰される可能性があります。
+              %p
+                また、出品をもちまして
+                = link_to('#') do
+                  加盟店規約
+                に同意したことになります。
+            = f.submit "出品する",class: "btn-exhibition" 
+            = link_to('#', class:'back-exhibition') do
+              もどる
 
   %footer.product-footer
     %nav
