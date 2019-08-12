@@ -19,10 +19,52 @@
   &__back{
     background-size:100% 100%;
     background-image: image-url("index_keyvisual.png");
-    height: 390px;
+    height: 290px;
     max-width: 50%;
     background-color: #dbdada;
     margin: 0 auto;
+  }
+  &__header2{
+    background-color: #dbdada;
+  }
+  &__back2{
+    background-size:100% 100%;
+    background-image: image-url("main_bg_pc.jpg");
+    height: 290px;
+    background-color: #dbdada;
+    margin: 0 auto;
+    &__box{
+      display: flex;
+      max-width: 730px;
+      height: 100%;
+      margin: 0 auto;
+      &__left{
+        margin-top: 30px;
+        &__top{
+          font-size: 40px;
+          line-height: 1.2;
+          font-weight: 600;
+        }
+        &__center{
+          margin: 16px 0 0;
+          font-size: 16px;
+          line-height: 1.77778;
+        }
+        &__bottom{
+          &__icon{
+            display: flex;
+            margin-right: 92px;
+            width: 282px;
+            height: 68px;
+            align-items: center;
+          }
+        }
+      }
+      &__right img{
+        height: 100%;
+        width: auto;
+      }
+    }
   }
 }
   &__pickup{
@@ -87,4 +129,39 @@
     }
   }
 }
+}
+
+
+.slick-dots {
+  bottom: 25px;
+  li button{
+    &::before{
+      height: 15px;
+      width: 15px;
+      background-color: rgb(116, 116, 116);
+      border-radius: 50%;
+    }
+  }
+}
+
+.slick-prev{
+  left: 50px;
+  height: 80px;
+  width: 80px;
+  background-image: image-url("carousel-prev.png");
+  z-index: 100;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slick-next{
+  right: 50px;
+  height: 80px;
+  width: 80px;
+  background-image: image-url("carousel-next.png");
+  z-index: 100;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
