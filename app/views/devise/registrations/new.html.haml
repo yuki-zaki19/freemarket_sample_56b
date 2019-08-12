@@ -179,7 +179,7 @@
             %i.fa.fa-chevron-down.birthday-form__select__chevron
           年 
           .birthday-form           
-            %select.birthday-form__select{name: "month"}>
+            %select.birthday-form__select{name: "month"}
               %option{value: ""} -
               %option{value: "1"} 1
               %option{value: "2"} 2
@@ -196,7 +196,7 @@
             %i.fa.fa-chevron-down.birthday-form__select__chevron
           月
           .birthday-form           
-            %select.birthday-form__select{name:"day"}>
+            %select.birthday-form__select{name:"day"}
               %option{value: ""} -
               %option{value: "1"} 1
               %option{value: "2"} 2
@@ -250,7 +250,7 @@
     .user-info__header
       .user-info__header__mercari-icon
         = link_to(root_path, {}) do
-          = image_tag "mercari_logo_horizontal.png", :class => "user-info__header__mercari-icon__image"
+          = image_tag "mercari_logo_horizontal.png", class: "user-info__header__mercari-icon__image"
       .user-info__header__progress
         .user-info__header__progress__flat-bar
           .user-info__header__progress__flat-bar__left
@@ -299,7 +299,7 @@
     .user-info__header
       .user-info__header__mercari-icon
         = link_to(root_path, {}) do
-          = image_tag "mercari_logo_horizontal.png", :class => "user-info__header__mercari-icon__image"
+          = image_tag "mercari_logo_horizontal.png", class: "user-info__header__mercari-icon__image"
       .user-info__header__progress
         .user-info__header__progress__flat-bar
           .user-info__header__progress__flat-bar__left
@@ -381,7 +381,7 @@
     .user-info__header
       .user-info__header__mercari-icon
         = link_to(root_path, {}) do
-          = image_tag "mercari_logo_horizontal.png", :class => "user-info__header__mercari-icon__image"
+          = image_tag "mercari_logo_horizontal.png", class: "user-info__header__mercari-icon__image"
       .user-info__header__progress
         .user-info__header__progress__flat-bar
           .user-info__header__progress__flat-bar__left
@@ -406,60 +406,60 @@
       .main-inputcredit__header
         支払い方法
       .main-inputcredit__box
-        = form_with do |f|
-          .main-inputcredit__box__main
-            .card-box-number
-              %label
-                カード番号
-              %span.card-box-com
-                必須
-                %br
-              = f.text_field :postal_code, class: 'cardbox-input', placeholder: '半角数字のみ'
-              %ul.card-box-number__icom
-                %li
-                  = image_tag "visa.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "master-card.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "saison-card.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "jcb.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "american_express.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "dinersclub.svg", class: 'card-box-number__icom__list'
-                %li
-                  = image_tag "discover.svg", class: 'card-box-number__icom__list'
-            .card-box-limit
-              %label
-                有効期限
-              %span.card-box-com
-                必須
+        .main-inputcredit__box__main
+          .card-box-number
+            %label
+              カード番号
+            %span.card-box-com
+              必須
               %br
-              .card-box-limit__moon
-                = fa_icon 'angle-down limit-select'
-                = f.select :prefecture, ["01","02","03","04","05","06","07","08","09","10","11","12"],{}, class: "moon-box__selecter"
-                %span
-                  月
-              .card-box-limit__year
-                = fa_icon 'angle-down limit-select'
-                = f.select :prefecture, ["19","20","21","22","23","24","25","26","27","28","29",],{}, class: "year-box__selecter"
-                %span
-                  年
-            .card-box-secrity
-              %label
-                セキュリティコード
-              %span.card-box-com
-                必須
-                %br
-              %input.cardbox-input{placeholder: "カード背面4桁もしくは3桁の番号", type: "text"}
-              .card-box-secrity__link
-                .card-box-secrity__link__question
-                  ?
-                .card-box-secrity__link__open
-                  カード裏面の番号とは？
-            .identification-registration-btn
-              次へ進む
+            %input.cardbox-input{placeholder:"半角数字のみ", type:"text"}
+
+            %ul.card-box-number__icom
+              %li
+                = image_tag "visa.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "master-card.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "saison-card.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "jcb.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "american_express.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "dinersclub.svg", class: 'card-box-number__icom__list'
+              %li
+                = image_tag "discover.svg", class: 'card-box-number__icom__list'
+          .card-box-limit
+            %label
+              有効期限
+            %span.card-box-com
+              必須
+            %br
+            .card-box-limit__moon
+              = fa_icon 'angle-down limit-select'
+              = select  ["01","02","03","04","05","06","07","08","09","10","11","12"],{}, class: "moon-box__selecter"
+              %span
+                月
+            .card-box-limit__year
+              = fa_icon 'angle-down limit-select'
+              = select  ["19","20","21","22","23","24","25","26","27","28","29",],{}, class: "year-box__selecter"
+              %span
+                年
+          .card-box-secrity
+            %label
+              セキュリティコード
+            %span.card-box-com
+              必須
+              %br
+            %input.cardbox-input{placeholder: "カード背面4桁もしくは3桁の番号", type: "text"}
+            .card-box-secrity__link
+              .card-box-secrity__link__question
+                ?
+              .card-box-secrity__link__open
+                カード裏面の番号とは？
+          .identification-registration-btn
+            次へ進む
             
     = render partial: "users/signup_footer"
 
@@ -469,7 +469,7 @@
     .user-info__header
       .user-info__header__mercari-icon
         = link_to(root_path, {}) do
-          = image_tag "mercari_logo_horizontal.png", :class => "user-info__header__mercari-icon__image"
+          = image_tag "mercari_logo_horizontal.png", class: "user-info__header__mercari-icon__image"
       .user-info__header__progress
         .user-info__header__progress__flat-bar
           .user-info__header__progress__flat-bar__left
@@ -498,6 +498,6 @@
           .sign-up__complete__body__content__form-group
             ありがとうございます。
             %br 会員登録が完了しました。
-            = f.submit "メルカリをはじめる", class:"sign-up__complete__body__content__next-btn"
+          = f.submit "メルカリをはじめる", class:"sign-up__complete__body__content__next-btn"
 
     = render partial: "users/signup_footer"

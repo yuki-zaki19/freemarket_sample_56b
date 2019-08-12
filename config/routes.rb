@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'logout'
-      get 'card'      
+      get 'card'
     end
   end
   resources :products
