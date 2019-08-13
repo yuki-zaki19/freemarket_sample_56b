@@ -1,6 +1,7 @@
 .sign-up-page
 = form_with model: @user, url: user_registration_path, class: 'new_user', local: true do |f|
 
+  -# 2ページ目
   .sign-up-page-2
     = render partial: "users/signup_header"
   .user-info__content
@@ -244,7 +245,6 @@
 
   = render partial: "users/signup_footer"
 
-
   -# 3ページ目
   .sign-up-page-3
     .user-info__header
@@ -292,7 +292,6 @@
                 電話番号の確認が必要な理由　>
 
     = render partial: "users/signup_footer"
-
 
   -# 4ページ目
   .sign-up-page-4
@@ -374,8 +373,6 @@
 
     = render partial: "users/signup_footer"
 
-
-
   -# 5ページ目
   .sign-up-page-5
     .user-info__header
@@ -414,7 +411,6 @@
               必須
               %br
             %input.cardbox-input{placeholder:"半角数字のみ", type:"text"}
-
             %ul.card-box-number__icom
               %li
                 = image_tag "visa.svg", class: 'card-box-number__icom__list'
@@ -463,7 +459,6 @@
             
     = render partial: "users/signup_footer"
 
-
   -# 6ページ目
   .sign-up-page-6
     .user-info__header
@@ -489,7 +484,6 @@
         .user-info__header__progress__current-now
           完了
           .user-info__header__progress__current-now__round
-
     .sign-up__complete
       .sign-up__complete__header
         %h2 会員登録完了
