@@ -10,7 +10,7 @@
       .exhibition-content
         .exhibition-content__header
           商品の情報を入力
-        = form_with model:@product,class: "exhibition-content__form", local: true  do |f|
+        = form_with model:@product, class: "exhibition-content__form", local: true do |f|
           .exhibition-content__form__upload-box
             %h3.upload-box-header
               出品画像
@@ -52,8 +52,14 @@
                     必須
               .select-form
                 = fa_icon 'angle-down'
-                -# = f.select :category, @category_parent_array,{},class: 'select-list'
-                %select.select-list
+                = f.select :category, @category_parent_array,{},class: 'select-list',id: 'parent-list'
+                -# %select.select-list
+              #select-form-children
+              #select-form-grandchild
+              #form-size
+              #select-form-size
+              #form-brand
+              #select-form-brand
               .form-state 
                 %label
                   商品の状態
