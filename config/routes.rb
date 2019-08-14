@@ -11,7 +11,12 @@ Rails.application.routes.draw do
       get 'card'
     end
   end
-  resources :products
+  resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   resources :sellers
   resources :identifications
 end
