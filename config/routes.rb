@@ -9,11 +9,6 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'card'
-      get "new_3"
-      get "new_4"
-      get "new_5"
-      get "new_6"
-      
     end
   end
   resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do

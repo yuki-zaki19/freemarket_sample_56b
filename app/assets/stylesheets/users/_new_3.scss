@@ -1,3 +1,14 @@
+.sign-up-page-3{
+  display: none;
+  z-index: 2222;
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  overflow-y: scroll;
+  height: 100vh;
+}
 .sign-up__tel-authentication{
   width: 700px;
   margin: 0 auto;
@@ -50,6 +61,7 @@
           font-size: 14px;
           border: 1px solid transparent;
           border-radius: 4px;
+          text-align: center;
         }
         &__discription{
           margin: 8px 0 0;

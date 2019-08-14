@@ -1,3 +1,14 @@
+.sign-up-page-5{
+  display: none;
+  z-index: 6666;
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  overflow-y: scroll;
+  height: 100vh;
+}
 .main-inputcredit{
   width: 700px;
   margin: 0 auto;
@@ -24,7 +35,6 @@
     }
   }
 }
-
 .card-box-number{
   font-size:0;
   &__icom{
@@ -37,7 +47,6 @@
     }
   }
 }
-
 .card-box-com{
   display:inline-block;
   margin: 0 0 0 8px;
@@ -47,7 +56,6 @@
   font-size: 12px;
   background: #ea352d;
 }
-
 .cardbox-input{
   display: block;
   width: 100%;
@@ -60,7 +68,6 @@
   line-height: 1.5;
   font-size: 16px;
 }
-
 .card-box-limit{
   margin-top: 32px;
   &__moon{
@@ -86,7 +93,6 @@
     }
   }
 }
-
 .card-box-secrity{
   margin-top: 32px;
   &__link{
@@ -112,7 +118,6 @@
     }
   }
 }
-
 .moon-box__selecter{
   width: calc(100% - 38px);
   position: relative;
@@ -127,7 +132,6 @@
   cursor: pointer;
   -webkit-appearance: none;
 }
-
 .year-box__selecter{
   width: calc(100% - 38px);
   position: relative;
