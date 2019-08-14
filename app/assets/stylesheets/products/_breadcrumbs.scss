@@ -1,0 +1,23 @@
+.breadcrumbs{
+  border-top: 1px solid #eee;
+  background: #f5f5f5;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+  margin: 0 auto;
+  padding: 12px 66px;
+  white-space: normal;
+  height: 49px;
+  a{
+    font-size: 14px;
+    color: #333;
+  }
+  span{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  a:hover{
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+}

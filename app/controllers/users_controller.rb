@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
   end
 
-
   def create
   end
 
@@ -20,5 +19,14 @@ class UsersController < ApplicationController
   end
 
   def card
+  end
+
+  def exhibit
+  end
+
+  def trade
+  end
+
+  def sale
   end
 end
