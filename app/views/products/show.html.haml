@@ -5,7 +5,7 @@
   .product
     .product__details
       .product__details-name
-        %h1 たまご
+        = @product.name
       .product__details-main-content.clearfix
         .product__details-photo
           🥚
@@ -14,52 +14,58 @@
             %th 出品者
             %td
               = link_to  "product_path", method: :get  do
-                ユーザー
+                = @user.nickname
           %tr
             %th カテゴリー
             %td
               = link_to  "product_path", method: :get  do
-                レディース
+                カテゴリ
           %tr
             %th ブランド
             %td
               = link_to  "product_path", method: :get  do
-                ユーザー
+                = @product.brand
           %tr
             %th 商品のサイズ
-            %td フリー
+            %td 
+              = @product.size
           %tr
             %th 商品の状態
-            %td 新品、未使用
+            %td 
+              = @product.state
           %tr
             %th 送料の負担
-            %td 送料込み（出品者負担）
+            %td 
+              = @product.burden
           %tr
             %th 配送の方法
-            %td 未定
+            %td
+              = @product.shipping
           %tr
             %th 配送元地域
             %td
               = link_to  "product_path", method: :get  do
-                神奈川県
+                = @product.region
           %tr
             %th 発送日の目安
-            %td 1〜2日で発送
+            %td
+              = @product.leadtime
 
 
 
       .product__details-price-box
         .product__details-price
-          ¥2,000
+          = @product.price
         .product__details-price-tax
           (税込)
         .product__details-price-shipping-fee
-          送料込み
+          = @product.burden
       .product__details-buy-btn
-        %button.buy-btn 購入する
+        - unless current_user.id == @product.user_id
+          %button.buy-btn 購入する
       .product__details-description
         .product__details-description-inner
-          新鮮たまご  美味しいです
+          = @product.explain
       .product__details-btn.clearfix
         .product__details-btn-left
           .product__details-btn-left-like
@@ -91,65 +97,45 @@
           .TW twetter
         %li.product__sns-link
           .PT pinterest
+
     .product__other-items
       .product__other-items--header
         = link_to "product_path", method: :get,  class: "other-items-header" do
-          〇〇さんのその他の出品
+          =@user.nickname
+          さんのその他の出品
       .product__other-items-content.clearfix
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
+        - @my_products.each do |my_product|
+          .product__other-items-box
+            = link_to product_path(my_product.id) do
+              .product__other-items-box--photo
+                ww
+              .product__other-items-box--body
+                .product__other-items-box--body__name
+                  = my_product.name
+                .product__other-items-box--body__num
+                  .product__other-items-box--body__num__price
+                    =my_product.price
+                  .product__other-items-box--body__num__like
+                    ♡
+
       .product__other-items--header
         = link_to "product_path", method: :get, class: "other-items-header" do
           カテゴリのその他の出品
       .product__other-items-content.clearfix
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
-        .product__other-items-box
-          .product__other-items-box--photo
-            ww
-          .product__other-items-box--body
-            ww
+        - @brand.each do |brand|
+          .product__other-items-box
+            = link_to product_path(brand.id) do
+              .product__other-items-box--photo
+                ww
+              .product__other-items-box--body
+                .product__other-items-box--body__name
+                  = brand.name
+                .product__other-items-box--body__num
+                  .product__other-items-box--body__num__price
+                    =brand.price
+                  .product__other-items-box--body__num__like
+                    ♡
+
     .product__bottom
       メルカリ＞＞たまご
   .footer

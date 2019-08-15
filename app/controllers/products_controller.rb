@@ -2,16 +2,31 @@ class ProductsController < ApplicationController
   
   def index
     @parents = Category.where(ancestry:  nil)
+    @products = Product.all
+    @ladys_products = Product.where("category_id <= ?", 199).order('created_at DESC').limit(4)
+    @mens_products = Product.where("category_id >= ?", 200).where("category_id <= ?", 345).order('created_at DESC').limit(4)
+    @babys_products = Product.where("category_id >= ?", 346).where("category_id <= ?", 480).order('created_at DESC').limit(4)
+    @beauties_products = Product.where("category_id >= ?", 798).where("category_id <= ?", 897).order('created_at DESC').limit(4)
+
+    @chanel = Product.where(brand: "シャネル").order('created_at DESC').limit(4)
+    @vuitton = Product.where(brand: "ルイ ヴィトン").order('created_at DESC').limit(4)
+    @nike = Product.where(brand: "ナイキ").order('created_at DESC').limit(4)
+    @supreme = Product.where(brand: "シュプリーム").order('created_at DESC').limit(4)
+
   end
 
   def show
+    @product = Product.find(params[:id])
+    @user = User.find(@product.user_id )
+    @my_products = Product.where(user_id: @product.user_id).where.not(id: params[:id]).order('created_at DESC').limit(6)
+    @brand = Product.where(brand: @product.brand).where.not(id: params[:id]).order('created_at DESC').limit(6)
   end
 
   def new
     @product = Product.new
     @category_parent_array =  ["---"]
     Category.where(ancestry:  nil).each do |parent|
-      @category_parent_array << [parent.name,parent.id]
+    @category_parent_array << [parent.name,parent.id]
     end
   end
 
