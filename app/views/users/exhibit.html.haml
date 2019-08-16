@@ -3,52 +3,25 @@
     = render 'products/header'
   .main
     .main__user
-      = image_tag "image.png", class: 'main-header', width: "100"
-      = link_to '#', class: 'main-header__box' do
-        = image_tag "member_photo_noimage.png", class: 'main-header__box__user'
-        .main-header__box__name
-          user
-        .main-header__box__date
-          .main-header__box__date__box
-            評価
-            .main-header__box__date__box__mun
-              0
-          .main-header__box__date__box
-            出品数
-            .main-header__box__date__box__mun
-              0
-      .user-info
+      .user-sale-products
+        .user-sale-products__header
+          出品した商品
         .info-tab
-          = link_to 'お知らせ','/users/news',class: 'info-tab__btm active'
-          = link_to 'やることリスト','/users/task',class: 'info-tab__btm'
-        .info-content
-          .info-content__details
-            = link_to '#',class: 'info-content__details__news' do
-              = image_tag "mercari_icon.png", class: 'info-content__details__news__icon', width: "48", height: "48"
-              .info-content__details__news__com
-                .info-content__details__news__com__text
-                  《お買い物応援キャンペーン》1,000円の商品を"実質1円"で購入できます！
-                .info-content__details__news__com__time
-                  = fa_icon 'clock-o'
-                  1時間
-                = fa_icon 'angle-right icom'
-          .info-content__list
-            = link_to '一覧を見る','#',class: 'info-content__list__btm'
-      .user-buy-products
-        .user-buy-products__header
-          購入した商品
-        .info-tab
-          = link_to '取引中','/users/transaction',class: 'info-tab__btm active'
-          = link_to '過去の取引','/users/past',class: 'info-tab__btm'
+          %li.info-tab__btm.active
+            出品中
+          %li.info-tab__btm
+            取引中
+          %li.info-tab__btm
+            売却済み
         .info-content
           .info-content__details
             .info-content__details__none
-              取り引中の商品がありません
+              出品中の商品がありません
     .main__user-bar
       .side-nav
         %ul.user-list
           %li.user-list__box
-            = link_to '/users',class: 'user-list__box__btm choice' do
+            = link_to '/users',class: 'user-list__box__btm' do
               マイページ
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -64,7 +37,7 @@
               出品する
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/exhibit',class: 'user-list__box__btm' do
+            = link_to '/users/exhibit',class: 'user-list__box__btm choice' do
               出品した商品-出品中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
