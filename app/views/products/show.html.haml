@@ -13,13 +13,13 @@
           %tr
             %th 出品者
             %td
-              = link_to  "product_path", method: :get  do
+              = link_to  "product_path", method: :get  do 
                 = @user.nickname
           %tr
             %th カテゴリー
             %td
-              = link_to  "product_path", method: :get  do
-                カテゴリ
+              = link_to category_products_path(category_id: @product.category_id ), method: :get do
+                = @product.category_id
           %tr
             %th ブランド
             %td

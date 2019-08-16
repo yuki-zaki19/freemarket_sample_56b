@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'category/:category_id' => 'products#all_categories', as: "category" 
     end
   end
   resources :sellers

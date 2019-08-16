@@ -37,7 +37,7 @@
       .top-main__pickup__select
         %h3.top-main__pickup__select__center
           .top-main__pickup__select__center__text
-            =link_to "レディース 新着アイテム"
+            =link_to "レディース", category_products_path(category_id: 1), method: :get
         .top-main__pickup__select__item
           - @ladys_products.each do |ladys_product|
             .top-main__pickup__select__item__box
@@ -54,12 +54,12 @@
                       ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
-            =link_to "すべての商品を見る"
+            =link_to "すべての商品を見る", category_products_path(category_id: 1), method: :get
 
       .top-main__pickup__select
         %h3.top-main__pickup__select__center
           .top-main__pickup__select__center__text
-            =link_to "メンズ 新着アイテム"
+            =link_to "メンズ 新着アイテム",category_products_path(category_id: 200), method: :get
         .top-main__pickup__select__item
           - @mens_products.each do |mens_product|
             .top-main__pickup__select__item__box
@@ -76,12 +76,12 @@
                       ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
-            =link_to "すべての商品を見る"
+            =link_to "すべての商品を見る",category_products_path(category_id: 200), method: :get
 
       .top-main__pickup__select
         %h3.top-main__pickup__select__center
           .top-main__pickup__select__center__text
-            =link_to "ベビー・キッズ 新着アイテム"
+            =link_to "ベビー・キッズ 新着アイテム",category_products_path(category_id: 346), method: :get
         .top-main__pickup__select__item
           - @babys_products.each do |babys_product|
             .top-main__pickup__select__item__box
@@ -98,12 +98,12 @@
                       ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
-            =link_to "すべての商品を見る"
+            =link_to "すべての商品を見る",category_products_path(category_id: 346), method: :get
 
       .top-main__pickup__select
         %h3.top-main__pickup__select__center
           .top-main__pickup__select__center__text
-            =link_to "コスメ・香水・美容 新着アイテム"
+            =link_to "コスメ・香水・美容 新着アイテム",category_products_path(category_id: 798), method: :get
         .top-main__pickup__select__item
           - @beauties_products.each do |beauties_product|
             .top-main__pickup__select__item__box
@@ -120,7 +120,7 @@
                       ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
-            =link_to "すべての商品を見る"
+            =link_to "すべての商品を見る",category_products_path(category_id: 798), method: :get
 
     -# ブランド一覧        
     .top-main__pickup
