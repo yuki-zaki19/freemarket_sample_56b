@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :set_product
+  before_action :set_user
   
   def index
     @parents = Category.where(ancestry:  nil)
@@ -16,8 +18,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    @user = User.find(@product.user_id )
     @my_products = Product.where(user_id: @product.user_id).where.not(id: params[:id]).order('created_at DESC').limit(6)
     @brand = Product.where(brand: @product.brand).where.not(id: params[:id]).order('created_at DESC').limit(6)
   end
@@ -81,4 +81,13 @@ class ProductsController < ApplicationController
   def create_params
     params.require(:product).permit(:name, :price, :category_id, :brand, :size, :state, :burden, :shipping, :region, :leadtime, :explain, images: [] ).merge(user_id: "1", status: "1")
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(@product.user_id )
+  end
+
 end
