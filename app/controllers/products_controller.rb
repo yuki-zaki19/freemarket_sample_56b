@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product
-  before_action :set_user
+  before_action :set_product, only:[:show]
+  before_action :set_user, only:[:show]
   
   def index
     @parents = Category.where(ancestry:  nil)
@@ -24,35 +24,41 @@ class ProductsController < ApplicationController
 
   def all_categories
     id = params[:category_id]
-    if id >= "1" && id <= "199"
-      @category_products = Product.where("category_id <= ?", 199).order('created_at DESC')
-    elsif id >= "200" && id <= "345"
-      @category_products = Product.where("category_id >=?", 199).where("category_id <= ?", 345).order('created_at DESC')
-    elsif id >= "346" && id <= "480"
-      @category_products = Product.where("category_id >= ?", 346).where("category_id <= ?", 480).order('created_at DESC')
-    elsif id >= "481" && id <= "624"
-      @category_products = Product.where("category_id >= ?", 481).where("category_id <= ?", 624).order('created_at DESC')
-    elsif id >= "625" && id <= "684"
-      @category_products = Product.where("category_id >= ?", 625).where("category_id <= ?", 684).order('created_at DESC')
-    elsif id >= "685" && id <= "797"
-      @category_products = Product.where("category_id >=?", 685).where("category_id <= ?", 797).order('created_at DESC')
-    elsif id >= "798" && id <= "897"
-      @category_products = Product.where("category_id >= ?", 798).where("category_id <= ?", 897).order('created_at DESC')
-    elsif id >= "898" && id <= "983"
-      @category_products = Product.where("category_id >= ?", 898).where("category_id <= ?", 983).order('created_at DESC')
-    elsif id >= "984" && id <= "1092"
-      @category_products = Product.where("category_id >= ?", 984).where("category_id <= ?", 1092).order('created_at DESC')
-    elsif id >= "1093" && id <= "1146"
-      @category_products = Product.where("category_id >= ?", 1093).where("category_id <= ?", 1146).order('created_at DESC')
-    elsif id >= "1147" && id <= "1206"
-      @category_products = Product.where("category_id >= ?", 1147).where("category_id <= ?", 1206).order('created_at DESC')
-    elsif id >= "1207" && id <= "1269"
-      @category_products = Product.where("category_id >= ?", 1207).where("category_id <= ?", 1269).order('created_at DESC')
-    elsif id >= "1270" && id <= "1338"
-      @category_products = Product.where("category_id >= ?", 1270).where("category_id <= ?", 1338).order('created_at DESC')
+    id = id.to_i
+    if id >= 1 && id <= 199
+      method(1,199)
+    elsif id >= 200 && id <= 345
+      method(200,345)
+    elsif id >= 346 && id <= 480
+      method(346,480)
+    elsif id >= 481 && id <= 624
+      method(481,624)
+    elsif id >= 625 && id <= 684
+      method(625,684)
+    elsif id >= 685 && id <= 797
+      method(685,797)
+    elsif id >= 798 && id <= 897
+      method(798,897)
+    elsif id >= 898 && id <= 983
+      method(898,983)
+    elsif id >= 984 && id <= 1092
+      method(984,1092)
+    elsif id >= 1093 && id <= 1146
+      method(1093,1146)
+    elsif id >= 1147 && id <= 1206
+      method(1147,1206)
+    elsif id >= 1207 && id <= 1269
+      method(1207,1269)
+    elsif id >= 1270 && id <= 1338
+      method(1270,1338)
     else
       redirect_to :root
     end
+  end
+
+  def method (a,b)
+    @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).order('created_at DESC')
+
   end
 
   def new
