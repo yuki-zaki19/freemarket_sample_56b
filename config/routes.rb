@@ -9,6 +9,13 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'card'
+      get 'exhibit'
+      get 'trade'
+      get 'sale'
+      get 'news'
+      get 'past'
+      get 'task'
+      get 'transaction'
     end
   end
   resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do

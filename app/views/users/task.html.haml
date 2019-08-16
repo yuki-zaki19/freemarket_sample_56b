@@ -3,20 +3,21 @@
     = render 'products/header'
   .main
     .main__user
-      .input-bar
-        .input-bar__title
-          支払い方法
-        .input-bar__card-main
-          .input-bar__card-main__title
-            クレジットカード
-          .input-bar__card-main__box
-            .input-bar__card-main__box__btm
-              = link_to '#',class: 'credit-card-btm' do
-                = fa_icon 'credit-card'
-                クレジットカードを追加する
-          .input-bar__card-main__textbtm 
-            = link_to '支払い方法について','#',class: 'input-bar__card-main__textbtm__link'
-            = fa_icon 'angle-right document__btm'
+      .user-info
+        .info-tab
+          = link_to 'お知らせ','/users/news',class: 'info-tab__btm'
+          = link_to 'やることリスト','/users/task',class: 'info-tab__btm active'
+        .info-content
+          .info-content__details
+            = link_to '#',class: 'info-content__details__news' do
+              = image_tag "mercari_icon.png", class: 'info-content__details__news__icon', width: "48", height: "48"
+              .info-content__details__news__com
+                .info-content__details__news__com__text
+                  ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
+                .info-content__details__news__com__time
+                  = fa_icon 'clock-o'
+                  1時間
+                  = fa_icon 'angle-right icom'
     .main__user-bar
       .side-nav
         %ul.user-list
@@ -29,7 +30,7 @@
               お知らせ
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/task',class: 'user-list__box__btm' do
+            = link_to '/users/task',class: 'user-list__box__btm choice' do
               やることリスト
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -95,7 +96,7 @@
               発送元・お届け先住所変更
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/card',class: 'user-list__box__btm choice' do
+            = link_to '/users/card',class: 'user-list__box__btm' do
               支払い方法
               = fa_icon 'angle-right side-bar'
           %li.user-list__box

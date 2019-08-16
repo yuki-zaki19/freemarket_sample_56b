@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() { 
 
-  document.getElementById('display-none').onchange = function(event){
+  // document.getElementById('display-none').onchange = function(event){
+  $("#display-none").on('change',function() {
+
     initializeFiles();
 
     var files = event.target.files;
@@ -19,7 +21,7 @@ $(document).on('turbolinks:load', function() {
         }
       })(f);
     }
-  };
+  });
 
   function initializeFiles() {
     document.getElementById('insert-image-box').appendChild = '';

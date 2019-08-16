@@ -3,20 +3,20 @@
     = render 'products/header'
   .main
     .main__user
-      .input-bar
-        .input-bar__title
-          支払い方法
-        .input-bar__card-main
-          .input-bar__card-main__title
-            クレジットカード
-          .input-bar__card-main__box
-            .input-bar__card-main__box__btm
-              = link_to '#',class: 'credit-card-btm' do
-                = fa_icon 'credit-card'
-                クレジットカードを追加する
-          .input-bar__card-main__textbtm 
-            = link_to '支払い方法について','#',class: 'input-bar__card-main__textbtm__link'
-            = fa_icon 'angle-right document__btm'
+      .user-sale-products
+        .user-sale-products__header
+          出品した商品
+        .info-tab
+          %li.info-tab__btm
+            出品中
+          %li.info-tab__btm
+            取引中
+          %li.info-tab__btm.active
+            売却済み
+        .info-content
+          .info-content__details
+            .info-content__details__none
+              売却済みの商品がありません
     .main__user-bar
       .side-nav
         %ul.user-list
@@ -45,7 +45,7 @@
               出品した商品-取引中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/trade',class: 'user-list__box__btm' do
+            = link_to '/users/trade',class: 'user-list__box__btm choice' do
               出品した商品-売却済み
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -95,7 +95,7 @@
               発送元・お届け先住所変更
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/card',class: 'user-list__box__btm choice' do
+            = link_to '/users/card',class: 'user-list__box__btm' do
               支払い方法
               = fa_icon 'angle-right side-bar'
           %li.user-list__box

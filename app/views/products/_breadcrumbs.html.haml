@@ -1,0 +1,36 @@
+- case params.values_at :controller, :action
+
+- when ['users', 'index']
+  - breadcrumb :users
+
+- when ['users', 'card']
+  - breadcrumb :card
+
+- when ['users', 'edit']
+  - breadcrumb :edit
+
+- when ['users', 'exhibit']
+  - breadcrumb :exhibit
+
+- when ['users', 'trade']
+  - breadcrumb :trade
+
+- when ['users', 'news']
+  - breadcrumb :news
+
+- when ['users', 'task']
+  - breadcrumb :task
+
+- when ['users', 'past']
+  - breadcrumb :past
+
+- when ['users', 'transaction']
+  - breadcrumb :transaction
+
+- when ['users', 'sale']
+  - breadcrumb :sale
+
+- when ['identifications', 'new']
+  - breadcrumb :identification
+
+= breadcrumbs separator: " &rsaquo; "
