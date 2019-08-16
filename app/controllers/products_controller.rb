@@ -26,37 +26,37 @@ class ProductsController < ApplicationController
     id = params[:category_id]
     id = id.to_i
     if id >= 1 && id <= 199
-      method(1,199)
+      category_id_devided(1,199)
     elsif id >= 200 && id <= 345
-      method(200,345)
+      category_id_devided(200,345)
     elsif id >= 346 && id <= 480
-      method(346,480)
+      category_id_devided(346,480)
     elsif id >= 481 && id <= 624
-      method(481,624)
+      category_id_devided(481,624)
     elsif id >= 625 && id <= 684
-      method(625,684)
+      category_id_devided(625,684)
     elsif id >= 685 && id <= 797
-      method(685,797)
+      category_id_devided(685,797)
     elsif id >= 798 && id <= 897
-      method(798,897)
+      category_id_devided(798,897)
     elsif id >= 898 && id <= 983
-      method(898,983)
+      category_id_devided(898,983)
     elsif id >= 984 && id <= 1092
-      method(984,1092)
+      category_id_devided(984,1092)
     elsif id >= 1093 && id <= 1146
-      method(1093,1146)
+      category_id_devided(1093,1146)
     elsif id >= 1147 && id <= 1206
-      method(1147,1206)
+      category_id_devided(1147,1206)
     elsif id >= 1207 && id <= 1269
-      method(1207,1269)
+      category_id_devided(1207,1269)
     elsif id >= 1270 && id <= 1338
-      method(1270,1338)
+      category_id_devided(1270,1338)
     else
       redirect_to :root
     end
   end
 
-  def method (a,b)
+  def category_id_devided (a,b)
     @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).order('created_at DESC')
 
   end
