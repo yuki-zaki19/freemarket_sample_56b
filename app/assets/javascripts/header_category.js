@@ -10,6 +10,7 @@ $(function() {
   // 子のプルダウンボックスの作成
   $("#parent-list").on('change',function() {
     var parents = $(this).val();
+    console.log(this)
     if (parents != "---"){
       $.ajax({
         type: 'GET',

@@ -36,8 +36,8 @@ body {
     max-width: 300px;
     min-height: 375px;
     float: left;
-    font-size: 300px;
     text-align: center;
+    vertical-align: center;
   }
   &__details-table{
     float: right;
@@ -78,6 +78,9 @@ body {
     font-size: 32px;
     font-weight: 600;
     display: inline-block;
+  }
+  &__details-price::before{
+    content: "¥"
   }
   &__details-price-tax{
     font-size: 10px;
@@ -240,36 +243,69 @@ body {
     width: 720px;
     margin: 0 auto;
     overflow: hidden;
-
-
   }
   &__other-items-box{
     width: 220px;
     margin: 0 20px 20px 0;
     float:left;
-
-  
     &--photo{
       width: 220px;
       height: 220px;
-      background-color: antiquewhite;
-      
+      background-color: white;   
     }
     &--body{
       height: 110px;
       padding: 16px;
       box-sizing: border-box;
-      background-color: green;
-
+      background-color: white;
+      &__name{
+        overflow: hidden;
+        position: relative;
+        font-size: 16px;
+        font-weight: 400;
+        color:#333;
+        height: 3em;
+        line-height: 1.5;
+        word-break: break-word;
+        white-space: normal;
+      }
+      &__name::after{
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 1.5em;
+        background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(72%, #fff));
+        background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+      } 
+      &__num{
+        margin: 8px 0 0;
+        display: flex;
+        justify-content: space-between;
+        &__price{
+          font-weight: 600;
+          color: #333;
+        }
+        &__price::before{
+          content: "¥"
+        }
+        &__like{
+          font-size: 16px;
+          font-weight: 400;
+          color: #333;
+        }
+      }
     }
-  
   }
+}
   .clearfix:after{
     content: "";
     clear: both;
     display: block;
   }
-}
+
 
 .product{
   &__bottom{

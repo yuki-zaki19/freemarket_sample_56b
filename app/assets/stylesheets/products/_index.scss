@@ -86,32 +86,76 @@
             text-align: center;
               a:visited{
               color: #0099e8;
-            }
+              }
               a:hover{
                 text-decoration: underline;
               }
+            }
           }
-        }
         &__item{
           width: auto;
           display: table;
             &__box{
               width: auto;
               display: table-cell;
-            &__phot{
-              margin: 0 0 0 20px;
-              background-color: aqua;
               height: 213px;
               width: 213px;
-              &__aaa{
+              vertical-align: top;
+              &__phot{
+                margin: 0 0 0 20px;
+                background-color: white;
+                height: 213px;
+                width: 213px;
+              }
+              &__details{
+                padding:16px;
                 height: 110px;
                 width: 213px;
-                background-color: #333;
                 margin: 0 0 0 20px;
+                background-color: white;
+                &__name{
+                  overflow: hidden;
+                  position: relative;
+                  font-size: 16px;
+                  font-weight: 400;
+                  color:#333;
+                  height: 3em;
+                  line-height: 1.5;
+                  word-break: break-word;
+                  white-space: normal;
+                }
+                &__name::after{
+                  display: block;
+                  content: '';
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  width: 50%;
+                  height: 1.5em;
+                  background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(72%, #fff));
+                  background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+                }
+                &__num{
+                  margin: 8px 0 0;
+                  display: flex;
+                  justify-content: space-between;
+                  &__price{
+                    font-weight: 600;
+                    color: #333;
+                  }
+                  &__price::before{
+                    content: "¥"
+                  }
+                  &__like{
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #333;
+                  }
+                }
+              }
             }
           }
-        }
-      }
+      
 
       &__all{
         padding: 20px 0 30px;
