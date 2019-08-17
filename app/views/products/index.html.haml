@@ -37,21 +37,22 @@
       .top-main__pickup__select
         %h3.top-main__pickup__select__center
           .top-main__pickup__select__center__text
-            =link_to "レディース", category_products_path(category_id: 1), method: :get
+            =link_to "レディース 新着アイテム", category_products_path(category_id: 1), method: :get
         .top-main__pickup__select__item
           - @ladys_products.each do |ladys_product|
             .top-main__pickup__select__item__box
               = link_to product_path(ladys_product.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = ladys_product.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = ladys_product.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if ladys_product.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(ladys_product.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = ladys_product.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = ladys_product.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る", category_products_path(category_id: 1), method: :get
@@ -64,16 +65,17 @@
           - @mens_products.each do |mens_product|
             .top-main__pickup__select__item__box
               = link_to product_path(mens_product.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = mens_product.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = mens_product.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if mens_product.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(mens_product.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = mens_product.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = mens_product.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る",category_products_path(category_id: 200), method: :get
@@ -86,16 +88,17 @@
           - @babys_products.each do |babys_product|
             .top-main__pickup__select__item__box
               = link_to product_path(babys_product) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = babys_product.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = babys_product.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if babys_product.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(babys_product.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = babys_product.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = babys_product.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る",category_products_path(category_id: 346), method: :get
@@ -108,16 +111,17 @@
           - @beauties_products.each do |beauties_product|
             .top-main__pickup__select__item__box
               = link_to product_path(beauties_product.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = beauties_product.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = beauties_product.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if beauties_product.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(beauties_product.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = beauties_product.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = beauties_product.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る",category_products_path(category_id: 798), method: :get
@@ -135,16 +139,17 @@
           - @chanel.each do |chanel|
             .top-main__pickup__select__item__box
               = link_to product_path(chanel.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = chanel.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = chanel.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if chanel.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(chanel.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = chanel.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = chanel.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る"
@@ -157,16 +162,17 @@
           - @vuitton.each do |vuitton|
             .top-main__pickup__select__item__box
               = link_to product_path(vuitton.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = vuitton.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = vuitton.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if vuitton.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(vuitton.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = vuitton.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = vuitton.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る"
@@ -179,16 +185,17 @@
           - @supreme.each do |supreme|
             .top-main__pickup__select__item__box
               = link_to product_path(supreme.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = supreme.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = supreme.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if supreme.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(supreme.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = supreme.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = supreme.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る"
@@ -201,16 +208,17 @@
           - @nike.each do |nike|
             .top-main__pickup__select__item__box
               = link_to product_path(nike.id) do
-                .top-main__pickup__select__item__box__phot
-                  メルカリ
-                .top-main__pickup__select__item__box__details
-                  .top-main__pickup__select__item__box__details__name
-                    = nike.name
-                  .top-main__pickup__select__item__box__details__num
-                    .top-main__pickup__select__item__box__details__num__price
-                      = nike.price
-                    .top-main__pickup__select__item__box__details__num__like
-                      ♡
+                - if nike.images[0]
+                  .top-main__pickup__select__item__box__phot
+                    = image_tag(nike.images[0].variant(resize: "213x213"))
+                  .top-main__pickup__select__item__box__details
+                    .top-main__pickup__select__item__box__details__name
+                      = nike.name
+                    .top-main__pickup__select__item__box__details__num
+                      .top-main__pickup__select__item__box__details__num__price
+                        = nike.price
+                      .top-main__pickup__select__item__box__details__num__like
+                        ♡
         .top-main__pickup__select__all
           .top-main__pickup__select__all__text
             =link_to "すべての商品を見る"

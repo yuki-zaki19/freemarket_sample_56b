@@ -26,40 +26,41 @@ class ProductsController < ApplicationController
     id = params[:category_id]
     id = id.to_i
     if id >= 1 && id <= 199
-      category_id_devided(1,199)
+      category_id_devided(1,199,"レディース")
     elsif id >= 200 && id <= 345
-      category_id_devided(200,345)
+      category_id_devided(200,345,"メンズ")
     elsif id >= 346 && id <= 480
-      category_id_devided(346,480)
+      category_id_devided(346,480,"ベビー・キッズ")
     elsif id >= 481 && id <= 624
-      category_id_devided(481,624)
+      category_id_devided(481,624,"インテリア・住まい・小物")
     elsif id >= 625 && id <= 684
-      category_id_devided(625,684)
+      category_id_devided(625,684,"本・音楽・ゲーム")
     elsif id >= 685 && id <= 797
-      category_id_devided(685,797)
+      category_id_devided(685,797,"おもちゃ・ホビー・グッズ")
     elsif id >= 798 && id <= 897
-      category_id_devided(798,897)
+      category_id_devided(798,897,"コスメ・香水・美容")
     elsif id >= 898 && id <= 983
-      category_id_devided(898,983)
+      category_id_devided(898,983,"家電・スマホ・カメラ")
     elsif id >= 984 && id <= 1092
-      category_id_devided(984,1092)
+      category_id_devided(984,1092,"スポーツ・レジャー")
     elsif id >= 1093 && id <= 1146
-      category_id_devided(1093,1146)
+      category_id_devided(1093,1146,"ハンドメイド")
     elsif id >= 1147 && id <= 1206
-      category_id_devided(1147,1206)
+      category_id_devided(1147,1206,"チケット")
     elsif id >= 1207 && id <= 1269
-      category_id_devided(1207,1269)
+      category_id_devided(1207,1269,"自動車・オートバイ")
     elsif id >= 1270 && id <= 1338
-      category_id_devided(1270,1338)
+      category_id_devided(1270,1338,"その他")
     else
       redirect_to :root
     end
   end
 
-  def category_id_devided (a,b)
+  def category_id_devided (a,b,c)
     @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).order('created_at DESC')
-
+    @category_name = c
   end
+
 
   def new
     @product = Product.new
@@ -85,7 +86,7 @@ class ProductsController < ApplicationController
 
   private
   def create_params
-    params.require(:product).permit(:name, :price, :category_id, :brand, :size, :state, :burden, :shipping, :region, :leadtime, :explain, images: [] ).merge(user_id: "1", status: "1")
+    params.require(:product).permit(:name, :price, :category_id, :brand, :size, :state, :burden, :shipping, :region, :leadtime, :explain, images: [] ).merge(user_id: current_user.id, status: "1")
   end
 
   def set_product
