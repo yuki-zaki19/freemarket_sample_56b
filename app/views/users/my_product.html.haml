@@ -65,14 +65,16 @@
     .product__details-description
       .product__details-description-inner
         = @product.explain
-    .product__details-btn.clearfix
-      .product__details-btn-left
-        .product__details-btn-left-like
-          いいね
-        .product__details-btn-left-report
-          報告
-      .product__details-btn-right
-        安全への取り組み
+
+  .product__change-box
+    .product__change-box--edit
+      商品の編集
+    .product__change-box--or
+      or
+    .product__change-box--stop
+      出品を一旦停止する
+    .product__change-box--delete#delete-btn
+      この商品を削除する
 
   .product__messages
     .product__messages-notice
@@ -80,23 +82,25 @@
     .product__messages-textarea
       %textarea.message-textarea
       %button.message-btn コメントする
-  .product__link-prev-next.clearfix
-    .product__link-prev
-      = link_to "product_path", method: :get  do
-        前のページ
-        
-    .product__link-next
-      = link_to "product_path", method: :get  do
-        次のページ
-  .product__sns
-    .product__sns-box
-      %li.product__sns-link
-        .FB facebook
-      %li.product__sns-link
-        .TW twetter
-      %li.product__sns-link
-        .PT pinterest
 
-  .product__bottom
-    メルカリ＞＞たまご
 = render 'users/footer'
+
+
+-# 削除モーダル
+.delete-modal
+  .delete-modal__box
+    .delete-modal__box--content
+      確認
+      %br
+      削除すると二度と復活出来ません。
+      %br
+      削除する代わりに停止することもできます。
+      %br
+      %br
+      本当に削除しますか？
+  .delete-modal__select.clearfix
+    .delete-modal__select--cancel
+      キャンセル
+    .delete-modal__select--delete
+      = link_to product_path(id: @product.id), method: :delete do
+        削除

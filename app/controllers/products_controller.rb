@@ -69,6 +69,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id]) 
+    @product.destroy
+    redirect_to :root
+    end
+
+
   def get_category_children
     @category_children = Category.find_by(id: params[:id]).children
   end
