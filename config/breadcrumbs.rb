@@ -56,6 +56,11 @@ crumb :task do
   parent :users
 end
 
+crumb :deliver do
+  link '発送元・お届け先住所変更', deliver_users_path
+  parent :users
+end
+
 crumb :identification do
   link '本人情報の登録', new_identification_path
   parent :users

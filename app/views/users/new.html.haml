@@ -1,6 +1,9 @@
 -# １ページ目
-.sign-up__header
-
+.product-contents
+  %header.product-header
+    %h1
+      = link_to('#', {}) do
+        = image_tag "mercari_logo_horizontal.png", :class => "header-image"
 .sign-up__content
   .sign-up__content__header
     %h2 新規会員登録
@@ -15,5 +18,20 @@
       %button.sign-up__content__registation__box__google
         %i.fa.fa-google
           =link_to "Googleで登録する"
-
-.sign-up__footer
+.product-contents
+  %footer.product-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to('#', {}) do
+            プライバシーポリシー
+        %li
+          = link_to('#', {}) do
+            メルカリ利用規約
+        %li
+          = link_to('#', {}) do
+            特定商取引に関する表記
+    = link_to('#', class:'bottom-image') do
+      = image_tag(src= "logo-gray.svg")
+    %p
+      %small© 2019 Mercari

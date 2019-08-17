@@ -23,7 +23,7 @@
               やることリスト
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/products/new',class: 'user-list__box__btm' do
               出品する
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -77,11 +77,11 @@
           設定
         %ul.user-list
           %li.user-list__box
-            = link_to '/users/#{current_user.id}/edit',class: 'user-list__box__btm' do
+            = link_to edit_user_path(current_user),class: 'user-list__box__btm' do
               プロフィール
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/deliver',class: 'user-list__box__btm' do
               発送元・お届け先住所変更
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -105,3 +105,4 @@
               ログアウト
               = fa_icon 'angle-right side-bar'
 = render 'users/footer'
+= render 'products/bigicon'

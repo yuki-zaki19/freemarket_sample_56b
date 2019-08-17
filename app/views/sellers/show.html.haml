@@ -1,5 +1,8 @@
-.buy-header　ヘッダー
-
+.product-contents
+  %header.product-header
+    %h1
+      = link_to('#', {}) do
+        = image_tag "mercari_logo_horizontal.png", :class => "header-image"
 .buy-comfirm
   .buy-comfirm__header
     %h2 購入内容の確認
@@ -38,9 +41,23 @@
         %br visa
       .buy-comfirm__pay-method__inner__edit-btn
         = link_to "変更する　>", "seller_path", method: :get  
-
-.buy-footer  フッター
-
+.product-contents
+  %footer.product-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to('#', {}) do
+            プライバシーポリシー
+        %li
+          = link_to('#', {}) do
+            メルカリ利用規約
+        %li
+          = link_to('#', {}) do
+            特定商取引に関する表記
+    = link_to('#', class:'bottom-image') do
+      = image_tag(src= "logo-gray.svg")
+    %p
+      %small© 2019 Mercari
 
       
 
