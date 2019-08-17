@@ -93,7 +93,7 @@ $(function() {
                     
       var addFORM = `<div class = "select-form-size-box">
                         <i class = "fa fa-angle-down" ></i>
-                        <select class = "select-list" name = 'product[size]'>
+                        <select class = "select-list" name = 'product[size]' id = "product_size_id">
                           <option value = 0>---</option>
                           <option value = 1>XXS以下</option>
                           <option value = 2>XS(SS)</option>
