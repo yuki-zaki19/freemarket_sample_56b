@@ -8,7 +8,7 @@
         = @product.name
       .product__details-main-content.clearfix
         .product__details-photo
-          🥚
+          = image_tag(@product.images[0].variant(resize: "300x300"))
         %table.product__details-table
           %tr
             %th 出品者
@@ -107,16 +107,17 @@
         - @my_products.each do |my_product|
           .product__other-items-box
             = link_to product_path(my_product.id) do
-              .product__other-items-box--photo
-                ww
-              .product__other-items-box--body
-                .product__other-items-box--body__name
-                  = my_product.name
-                .product__other-items-box--body__num
-                  .product__other-items-box--body__num__price
-                    =my_product.price
-                  .product__other-items-box--body__num__like
-                    ♡
+              - if my_product.images[0]
+                .product__other-items-box--photo
+                  = image_tag(my_product.images[0].variant(resize: "220x220"))
+                .product__other-items-box--body
+                  .product__other-items-box--body__name
+                    = my_product.name
+                  .product__other-items-box--body__num
+                    .product__other-items-box--body__num__price
+                      =my_product.price
+                    .product__other-items-box--body__num__like
+                      ♡
 
       .product__other-items--header
         = link_to "product_path", method: :get, class: "other-items-header" do
@@ -125,16 +126,17 @@
         - @brand.each do |brand|
           .product__other-items-box
             = link_to product_path(brand.id) do
-              .product__other-items-box--photo
-                ww
-              .product__other-items-box--body
-                .product__other-items-box--body__name
-                  = brand.name
-                .product__other-items-box--body__num
-                  .product__other-items-box--body__num__price
-                    =brand.price
-                  .product__other-items-box--body__num__like
-                    ♡
+              - if brand.images[0]
+                .product__other-items-box--photo
+                  = image_tag(brand.images[0].variant(resize: "220x220"))
+                .product__other-items-box--body
+                  .product__other-items-box--body__name
+                    = brand.name
+                  .product__other-items-box--body__num
+                    .product__other-items-box--body__num__price
+                      =brand.price
+                    .product__other-items-box--body__num__like
+                      ♡
 
     .product__bottom
       メルカリ＞＞たまご

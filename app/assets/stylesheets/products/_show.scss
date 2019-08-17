@@ -36,8 +36,8 @@ body {
     max-width: 300px;
     min-height: 375px;
     float: left;
-    font-size: 300px;
     text-align: center;
+    vertical-align: center;
   }
   &__details-table{
     float: right;
@@ -251,7 +251,7 @@ body {
     &--photo{
       width: 220px;
       height: 220px;
-      background-color: antiquewhite;   
+      background-color: white;   
     }
     &--body{
       height: 110px;
