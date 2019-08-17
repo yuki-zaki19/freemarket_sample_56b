@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function() {
                   
     var addFORM = `<div class = "select-form-shipping-box">
                       <i class = "fa fa-angle-down" ></i>
-                      <select class = "select-list" name = 'product[shipping]'>
+                      <select class = "select-list" name = 'product[shipping_id]' id = "product_shipping_id" >
                         <option value = 0>---</option>
                         <option value = 1>未定</option>
                         <option value = 2>らくらくメルカリ便</option>

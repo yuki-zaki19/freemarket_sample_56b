@@ -28,28 +28,28 @@
           %tr
             %th 商品のサイズ
             %td 
-              = @product.size
+              = @product.size.name
           %tr
             %th 商品の状態
             %td 
-              = @product.state
+              = @product.state.name
           %tr
             %th 送料の負担
             %td 
-              = @product.burden
+              = @product.burden.name
           %tr
             %th 配送の方法
             %td
-              = @product.shipping
+              = @product.shipping.name
           %tr
             %th 配送元地域
             %td
               = link_to  "product_path", method: :get  do
-                = @product.region
+                = @product.region.name
           %tr
             %th 発送日の目安
             %td
-              = @product.leadtime
+              = @product.leadtime.name
 
 
 
@@ -59,7 +59,7 @@
         .product__details-price-tax
           (税込)
         .product__details-price-shipping-fee
-          = @product.burden
+          = @product.burden.name
       .product__details-buy-btn
         - unless current_user.id == @product.user_id
           %button.buy-btn 購入する

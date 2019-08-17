@@ -94,4 +94,5 @@ end
   gem "aws-sdk-s3", require: false
   gem 'gretel'
   gem 'mini_magick'
+  gem 'active_hash'
   
