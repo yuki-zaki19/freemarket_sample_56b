@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
     @category_name = c
   end
 
-
   def new
     @product = Product.new
     @category_parent_array =  ["---"]
@@ -80,13 +79,12 @@ class ProductsController < ApplicationController
 
   def create
     Product.create(create_params)
-    # @photo = Photo.create params.require(:photo).permit(images: [],products_attributes: [:name, :price, :category, :brand, :size, :state, :burden, :shipping, :region, :leadtime, :status, :explain]).merge(product_id: product.id)
     redirect_to controller: :products, action: :index
   end
 
   private
   def create_params
-    params.require(:product).permit(:name, :price, :category_id, :brand, :size, :state, :burden, :shipping, :region_id, :leadtime, :explain, images: [] ).merge(user_id: current_user.id, status: "1" )
+    params.require(:product).permit(:name, :price, :category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain, images: [] ).merge(user_id: current_user.id, status: "1" )
   end
 
   def set_product

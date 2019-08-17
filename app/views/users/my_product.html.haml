@@ -1,0 +1,102 @@
+.header
+  = render 'products/header'
+
+.product
+  .product__details
+    .product__details-name
+      = @product.name
+    .product__details-main-content.clearfix
+      .product__details-photo
+        = image_tag(@product.images[0].variant(resize: "300x300"))
+      %table.product__details-table
+        %tr
+          %th 出品者
+          %td
+            = link_to  "product_path", method: :get  do 
+              = @user.nickname
+        %tr
+          %th カテゴリー
+          %td
+            = link_to category_products_path(category_id: @product.category_id ), method: :get do
+              = @product.category_id
+        %tr
+          %th ブランド
+          %td
+            = link_to  "product_path", method: :get  do
+              = @product.brand
+        %tr
+          %th 商品のサイズ
+          %td 
+            = @product.size.name
+        %tr
+          %th 商品の状態
+          %td 
+            = @product.state.name
+        %tr
+          %th 送料の負担
+          %td 
+            = @product.burden.name
+        %tr
+          %th 配送の方法
+          %td
+            = @product.shipping.name
+        %tr
+          %th 配送元地域
+          %td
+            = link_to  "product_path", method: :get  do
+              = @product.region.name
+        %tr
+          %th 発送日の目安
+          %td
+            = @product.leadtime.name
+
+
+
+    .product__details-price-box
+      .product__details-price
+        = @product.price
+      .product__details-price-tax
+        (税込)
+      .product__details-price-shipping-fee
+        = @product.burden.name
+    .product__details-buy-btn
+      - unless current_user.id == @product.user_id
+        %button.buy-btn 購入する
+    .product__details-description
+      .product__details-description-inner
+        = @product.explain
+    .product__details-btn.clearfix
+      .product__details-btn-left
+        .product__details-btn-left-like
+          いいね
+        .product__details-btn-left-report
+          報告
+      .product__details-btn-right
+        安全への取り組み
+
+  .product__messages
+    .product__messages-notice
+      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    .product__messages-textarea
+      %textarea.message-textarea
+      %button.message-btn コメントする
+  .product__link-prev-next.clearfix
+    .product__link-prev
+      = link_to "product_path", method: :get  do
+        前のページ
+        
+    .product__link-next
+      = link_to "product_path", method: :get  do
+        次のページ
+  .product__sns
+    .product__sns-box
+      %li.product__sns-link
+        .FB facebook
+      %li.product__sns-link
+        .TW twetter
+      %li.product__sns-link
+        .PT pinterest
+
+  .product__bottom
+    メルカリ＞＞たまご
+= render 'users/footer'

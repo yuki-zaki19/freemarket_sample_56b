@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'task'
       get 'transaction'
       get 'deliver'
+      get '/:product_id' => 'users#my_product', as: 'my_product'
     end
   end
   resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do

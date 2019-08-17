@@ -22,6 +22,13 @@ class UsersController < ApplicationController
   end
 
   def exhibit
+    @my_products = Product.where(user_id: current_user.id)
+  end
+
+  def my_product
+    @product = Product.find(params[:product_id])
+    @user = User.find(@product.user_id )
+
   end
 
   def trade
