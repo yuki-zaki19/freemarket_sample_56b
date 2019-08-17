@@ -5,15 +5,55 @@
     .main__user
       .input-bar
         .input-bar__title
-          プロフィール
-        .input-bar__form-edit
+          支払い方法
+        .sign-up__shipping-address__body
           = form_with model: current_user, url:"/users/#{current_user.id}" , local: true do |f|
-            .image-edit
-              = image_tag "member_photo_noimage.png", class: 'image-edit-icom'
-              = f.text_field :nickname, class: 'form-edit-box', placeholder: '例)AYA☆セール中'
-            .form-edit-input
-              = f.text_area :comment, class: 'come-text-area', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
-              = f.submit '変更する', class: 'user-prof-edit-btn'
+            .sign-up__shipping-address__body__content
+              .sign-up__shipping-address__form-group-first
+                .sign-up__shipping-address__title
+                  お名前
+                .required-field 必須
+                = f.text_field :last_name, class: "sign-up__shipping-address__form",id: "last_name", autofocus: true, placeholder: "例）山田", type: "text"
+                = f.text_field :first_name, class: "sign-up__shipping-address__form",id: "first_name", autofocus: true, placeholder: "例）彩", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  お名前カナ
+                .required-field 必須
+                = f.text_field :last_name_kana, class: "sign-up__shipping-address__form",id: "last_name_kana", autofocus: true, placeholder: "例）ヤマダ", type: "text"
+                = f.text_field :first_name_kana, class: "sign-up__shipping-address__form",id: "first_name_kana", autofocus: true, placeholder: "例）アヤ", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  郵便番号
+                .required-field 必須
+                = f.text_field :postal_code, class: "sign-up__shipping-address__form",id: "postal_code", autofocus: true, placeholder: "例）123-4567", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  都道府県
+                .required-field 必須
+                .sign-up__shipping-address__body__content__form-group__prep-select
+                  = f.select :prefecture, [["--",0],["北海道",1],["青森県",2],["岩手県",3],["宮城県",4],["秋田県",5],["山形県",6],["福島県",7],["茨城県",8],["栃木県",9],["群馬県",10],["埼玉県",11],["千葉県",12],["東京都",13],["神奈川県",14],["新潟県",15],["富山県",16],["石川県",17],["福井県",18],["山梨県",19],["長野県",20],["岐阜県",21],["静岡県",22],["愛知県",23],["三重県",24],["滋賀県",25],["京都府",26],["大阪府",27],["兵庫県",28],["奈良県",29],["和歌山県",30],["鳥取県",31],["島根県",32],["岡山県",33],["広島県",34],["山口県",35],["徳島県",36],["香川県",37],["愛媛県",38],["高知県",39],["福岡県",40],["佐賀県",41],["長崎県",42],["熊本県",43],["大分県",44],["宮崎県",45],["鹿児島県",46],["沖縄県",47]],{},class: 'sign-up__shipping-address__body__content__form-group__prep-select__prep-form', id:"prefecture"
+                  %i.fa.fa-chevron-down.sign-up__shipping-address__body__content__form-group__prep-select__chevron
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  市町村区
+                .required-field 必須
+                = f.text_field :city, class: "sign-up__shipping-address__form",id: "city", autofocus: true, placeholder: "例）横浜市緑区", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  番地
+                .required-field 必須
+                = f.text_field :address, class: "sign-up__shipping-address__form",id: "address", autofocus: true, placeholder: "例）青山1-1-1", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  番地
+                .optional-field 任意
+                = f.text_field :building, class: "sign-up__shipping-address__form",id: "building", autofocus: true, placeholder: "例）柳ビル103", type: "text"
+              .sign-up__shipping-address__form-group
+                .sign-up__shipping-address__title
+                  電話
+                .optional-field 任意
+                %input.sign-up__shipping-address__form{placeholder:"例）09012345678", type:"text"}
+              = f.submit "変更する", class:"sign-up__complete__body__content__next-btn"
     .main__user-bar
       .side-nav
         %ul.user-list
@@ -88,7 +128,7 @@
               プロフィール
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/deliver',class: 'user-list__box__btm choice' do
               発送元・お届け先住所変更
               = fa_icon 'angle-right side-bar'
           %li.user-list__box

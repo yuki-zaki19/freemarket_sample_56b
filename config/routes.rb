@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'past'
       get 'task'
       get 'transaction'
+      get 'deliver'
     end
   end
   resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do
