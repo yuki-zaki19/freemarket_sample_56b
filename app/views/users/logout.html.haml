@@ -93,7 +93,7 @@
               メール/パスワード
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/identifications/new',class: 'user-list__box__btm' do
+            = link_to edit_identification_path(current_user),class: 'user-list__box__btm' do
               本人情報
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
