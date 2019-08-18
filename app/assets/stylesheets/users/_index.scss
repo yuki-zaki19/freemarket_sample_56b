@@ -106,6 +106,12 @@
   background-color: $mercari_white;
   &__details{
     border-bottom: 1px solid $mercari_deep_grey;
+    // 出品中リスト
+    a :hover{
+      background: #fafafa;
+      text-decoration: none;
+      opacity: 1;
+     }
     &__my-item-list{
       display: block;
       min-height: 80px;

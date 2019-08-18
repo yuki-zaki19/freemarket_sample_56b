@@ -73,7 +73,18 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id]) 
     @product.destroy
     redirect_to :root
+  end
+
+  def edit
+    @product = Product.find(params[:id]) 
+    @products = Product.where(id: params[:id])
+    # @category_id = Category.find(@product.category_id)
+    # @category_parent_array = @category_id.parent.parent
+    @category_parent_array =  ["---"]
+    Category.where(ancestry:  nil).each do |parent|
+    @category_parent_array << [parent.name,parent.id]
     end
+  end
 
 
   def get_category_children

@@ -68,7 +68,8 @@
 
   .product__change-box
     .product__change-box--edit
-      商品の編集
+      = link_to edit_product_path(id: @product.id) ,method: :get do
+        商品の編集
     .product__change-box--or
       or
     .product__change-box--stop
@@ -84,6 +85,7 @@
       %button.message-btn コメントする
 
 = render 'users/footer'
+
 
 
 -# 削除モーダル

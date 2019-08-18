@@ -14,7 +14,7 @@ body {
     background: #fff;
     padding: 8px 16px 8px 16px;
     width: 700px;
-    &--edit{
+    &--edit a{
       background: #ea352d;
       border: 1px solid #ea352d;
       color: #fff;
@@ -28,7 +28,7 @@ body {
       transition: all ease-out .3s;
       cursor: pointer;
       text-align: center;
-    } 
+    }
     &--or{
       text-align: center;
     }

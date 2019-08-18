@@ -15,8 +15,8 @@
             - if @my_products[0]
               - @my_products.each do |my_product|
                 - if my_product.images[0]
-                  .info-content__details__my-item-list
-                    = link_to my_product_users_path(my_product.id) do
+                  = link_to my_product_users_path(my_product.id) do
+                    .info-content__details__my-item-list
                       .info-content__details__my-item-list__image
                         = image_tag(my_product.images[0].variant(resize: "48x48"))
                       .info-content__details__my-item-list__content
