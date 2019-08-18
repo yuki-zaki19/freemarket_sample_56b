@@ -7,7 +7,7 @@
         .input-bar__title
           本人情報の登録
         .input-bar__form-field
-          = form_with  do |f|
+          = form_with model: @identification, url: identification_path(@identification), local: true,metod: :patch do |f|
             .input-bar__form-field__document
               %p 
                 お客さまの本人情報をご登録ください。
@@ -20,17 +20,19 @@
               %label
                 お名前
               %p
-                山田 太郎
+                = @identification.last_name
+                = @identification.first_name
             .input-bar__form-field__box
               %label
                 お名前カナ
               %p
-                ヤマダ タロウ
+                = @identification.last_name_kana
+                = @identification.first_name_kana
             .input-bar__form-field__box
               %label
                 生年月日
               %p
-                2019/8/6
+                = @identification.birthday
             .input-bar__form-field__box
               %label
                 郵便番号
