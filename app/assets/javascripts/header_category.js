@@ -10,7 +10,6 @@ $(function() {
   // 子のプルダウンボックスの作成
   $("#parent-list").on('change',function() {
     var parents = $(this).val();
-    console.log(this)
     if (parents != "---"){
       $.ajax({
         type: 'GET',
@@ -112,6 +111,10 @@ $(function() {
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
     var grandchildId = $('#grandchild-list option:selected').data('value');
     if (grandchildId != "0"){
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+
       var addLABEL = `<label id = size-label>
                         サイズ
                       </label>
@@ -149,6 +152,9 @@ $(function() {
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
     var grandchildId = $('#grandchild-list option:selected').data('value');
     if (grandchildId != "0"){
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
       var addLABEL = `<label id = brand-label>
                         ブランド
                       </label>
