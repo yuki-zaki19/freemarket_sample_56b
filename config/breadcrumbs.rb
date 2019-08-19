@@ -62,6 +62,6 @@ crumb :deliver do
 end
 
 crumb :identification do
-  link '本人情報の登録', new_identification_path
+  link '本人情報の登録', edit_identification_path
   parent :users
 end

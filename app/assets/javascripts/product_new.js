@@ -1,38 +1,173 @@
 $(document).on('turbolinks:load', function() { 
 
-  // document.getElementById('display-none').onchange = function(event){
+  var formData = new FormData();
+  var dropZone = document.getElementById("upload-dropbox");
+
+  dropZone.addEventListener("dragover", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.style.background = "#ea352d";
+  }, false);
+
+  dropZone.addEventListener("dragleave", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.style.background = "#f5f5f5";
+  }, false);
+
+  dropZone.addEventListener("drop", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.style.background = "#f5f5f5";
+
+    var files = e.dataTransfer.files;
+    var fileNumber = files.length + $("#insert-image-box").find(".upload-product").length
+    if (fileNumber < 11){
+      var num = $("#insert-image-box").find(".upload-product").length + files.length
+      for (var i = 0; i < files.length; i++) {
+        (function() {
+
+          var fr = new FileReader();
+          fr.onload = function() {
+            var div = document.createElement('div');
+            div.className = 'upload-product';
+            div.innerHTML += '<img class="upload-product__image" src="' + fr.result + '" />';
+            div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
+            document.getElementById('insert-image-box').insertBefore(div, null);
+          };
+          fr.readAsDataURL(files[i]);
+        })();
+        
+        formData.append("file", files[i]);
+      }
+      if(num == 1){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 2){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 3){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 4){
+        $(".upload-dropbox").css('width','110px');
+      }else if(num == 5){
+        $(".upload-dropbox").css('width','620px');
+        $("#insert-image-box").css('height','340px');
+      }else if(num == 6){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 7){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 8){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 9){
+        $(".upload-dropbox").css('width','110px');
+      }else{
+        $(".upload-dropbox").css('display','none');
+      }
+    }else if(fileNumber > 10){
+      alert("現在のファイル選択数："+fileNumber+"です。再度しなおしてください。");
+    }
+  }, false);
+
+  function initializeFiles() {
+    // insert-image-boxの一番後ろに空の箱を挿入
+    document.getElementById('insert-image-box').appendChild = '';
+  }
   $("#display-none").on('change',function() {
-
-    initializeFiles();
-
-    var files = event.target.files;
-
-    for (var i = 0, f; f = files[i]; i++) {
-      var reader = new FileReader;
-      reader.readAsDataURL(f);
-
-      reader.onload = (function(theFile) {
-        return function (e) {
-          var div = document.createElement('div');
-          div.className = 'upload-product';
-          div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
-          div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a href>削除</a>' + '</div>';
-          document.getElementById('insert-image-box').insertBefore(div, null);
+    var fileList = document.getElementById("display-none").files;
+    var fileNumber = fileList.length + $("#insert-image-box").find(".upload-product").length
+    if (fileNumber < 11){
+      initializeFiles();
+      var files = event.target.files;
+      var num = $("#insert-image-box").find(".upload-product").length + files.length
+        for (var i = 0, f; f = files[i] ; i++) {
+          // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
+          // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
+          var reader = new FileReader;
+          // 指定された Blob オブジェクト（ここではforの時に定義してるf）を読み込みます。終了後の result プロパティには、ファイルのデータを示す data: URL が格納されます。
+          reader.readAsDataURL(f);
+          // onloadで変数readerに画像が読み込まれたらfunction以下が実行される
+          reader.onload = (function() {
+            return function (e) {
+              var div = document.createElement('div');
+              div.className = 'upload-product';
+              div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
+              div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
+              //insertbeforeで第２引数のnullの前に第１引数の変数divを挿入
+              document.getElementById('insert-image-box').insertBefore(div, null);
+            }
+          })();
         }
-      })(f);
+      if(num == 1){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 2){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 3){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 4){
+        $(".upload-dropbox").css('width','110px');
+      }else if(num == 5){
+        $(".upload-dropbox").css('width','620px');
+        $("#insert-image-box").css('height','340px');
+      }else if(num == 6){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 7){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 8){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 9){
+        $(".upload-dropbox").css('width','110px');
+      }else{
+        $(".upload-dropbox").css('display','none');
+      }
+    }else if(fileNumber > 10){
+      alert("現在のファイル選択数："+fileNumber+"です。再度しなおしてください。");
     }
   });
 
-  function initializeFiles() {
-    document.getElementById('insert-image-box').appendChild = '';
-  }
+  //削除ボタンを押すと、写真が削除されるコマンド
+  $(document).on("click", '.upload-product__button__delete', function(){
+    var numNum = $("#insert-image-box").find(".upload-product").length
+    $(this).parent().parent().remove();
+    numNum = numNum - 1
+    if(numNum == 1){
+      $(".upload-dropbox").css('width','485px');
+    }else if(numNum == 2){
+      $(".upload-dropbox").css('width','350px');
+    }else if(numNum == 3){
+      $(".upload-dropbox").css('width','234px');
+    }else if(numNum == 4){
+      $(".upload-dropbox").css('width','110px');
+      $("#insert-image-box").css('height','160px');
+    }else if(numNum == 5){
+      $(".upload-dropbox").css('width','620px');
+      $("#insert-image-box").css('height','340px');
+    }else if(numNum == 6){
+      $(".upload-dropbox").css('width','485px');
+    }else if(numNum == 7){
+      $(".upload-dropbox").css('width','350px');
+    }else if(numNum == 8){
+      $(".upload-dropbox").css('width','234px');
+    }else if(numNum == 9){
+      $(".upload-dropbox").css('width','110px');
+      $(".upload-dropbox").css('display','inline-block');
+    }else if(numNum == 0){
+      $(".upload-dropbox").css('width','620px');
+    }else{
+      $(".upload-dropbox").css('display','none');
+    }
+
+  })
+  
+
   var form_shipping = $("#form-shipping")
   var select_form_shipping = $("#select-form-shipping")
   $(document).on("change", "#select-list-burden",function(){
-    var addLABEL = `<label>
+    $('.select-form-shipping-box').remove();
+    $('#shipping-label').remove();
+    $('#form_required-shipping').remove();
+    var addLABEL = `<label id = "shipping-label">
                       配送の方法
                     </label>
-                      <span class = "form_required">
+                      <span id = "form_required-shipping">
                         必須
                       </span>`
                   
@@ -80,9 +215,11 @@ $(document).on('turbolinks:load', function() {
     }
     $(this).val(num);
 		if(num != 0) {
-			var fee = num * percent;
-      tagOutputFee.append(fee);
-      var profit = num - fee;
+      var fee = num * percent;
+      clearNum = Math.round(fee / 10) * 10 
+      addClearNum = "¥" + clearNum.toLocaleString();
+      tagOutputFee.append(addClearNum);
+      var profit = "¥" + (num - clearNum).toLocaleString();
       tagOutputProfit.append(profit)
     }
   });

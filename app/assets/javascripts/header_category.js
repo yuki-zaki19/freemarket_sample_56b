@@ -10,7 +10,6 @@ $(function() {
   // 子のプルダウンボックスの作成
   $("#parent-list").on('change', function() {
     var parents = $(this).val();
-    console.log(this)
     if (parents != "---"){
       $.ajax({
         type: 'GET',
@@ -23,6 +22,13 @@ $(function() {
         console.log(this)
         $('#children-category').remove();
         $('#grandchildren-category').remove();
+        $('#size-label').remove();
+        $('#form_required-size').remove();
+        $('.select-form-size-box').remove();
+        $('#brand-label').remove();
+        $('#form_required-brand').remove();
+        $('.select-form-brand-box').remove();
+  
         var insertChildHtml = '';
         children.forEach(function(child){
           insertChildHtml += appendForm(child);
@@ -42,6 +48,13 @@ $(function() {
     }else{
       $('#children-category').remove();
       $('#grandchildren-category').remove();
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
+
     }
   });
   // 孫のプルダウンボックスの作成
@@ -62,6 +75,13 @@ $(function() {
         console.log(grandchildren);
         if (grandchildren.length != 0) {
           $('#grandchildren-category').remove();
+          $('#size-label').remove();
+          $('#form_required-size').remove();
+          $('.select-form-size-box').remove();
+          $('#brand-label').remove();
+          $('#form_required-brand').remove();
+          $('.select-form-brand-box').remove();
+    
           var insertGrandChildHTML = '';
           grandchildren.forEach(function(grandchild){
             insertGrandChildHTML += appendForm(grandchild);
@@ -81,6 +101,12 @@ $(function() {
       })
     }else{
       $('#grandchildren-category').remove();
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
     }
   });
 
@@ -88,9 +114,17 @@ $(function() {
   var form_size = $("#form-size")
   var select_form_size = $("#select-form-size")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
+
     var grandchildId = $('#grandchild-list option:selected').val();
     console.log(grandchildId)
     if (grandchildId != "0" && grandchildId != "---"){
+
+
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+
+
       var addLABEL = `<label id = size-label>
                         サイズ
                       </label>
@@ -127,10 +161,16 @@ $(function() {
   var form_brand = $("#form-brand")
   var select_form_brand = $("#select-form-brand")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
+
     var grandchildId = $('#grandchild-list option:selected').val();
     console.log(grandchildId)
 
     if (grandchildId != "0" && grandchildId != "---"){
+
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
+
       var addLABEL = `<label id = brand-label>
                         ブランド
                       </label>
@@ -144,7 +184,7 @@ $(function() {
       form_brand.append(addLABEL);
       select_form_brand.append(addFORM);
     }else{
-      $('#size-brand').remove();
+      $('#brand-label').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
       $('#form-brand').remove();

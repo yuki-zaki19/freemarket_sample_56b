@@ -5,9 +5,9 @@
     .main__user
       .input-bar
         .input-bar__title
-          支払い方法
+          発送元・お届け先住所変更
         .sign-up__shipping-address__body
-          = form_with model: current_user, url:"/users/#{current_user.id}" , local: true do |f|
+          = form_with model: current_user, url:"/users/#{current_user.id}" , local: true, metod: :patch do |f|
             .sign-up__shipping-address__body__content
               .sign-up__shipping-address__form-group-first
                 .sign-up__shipping-address__title
@@ -140,7 +140,7 @@
               メール/パスワード
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/identifications/new',class: 'user-list__box__btm' do
+            = link_to edit_identification_path(current_user),class: 'user-list__box__btm' do
               本人情報
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
