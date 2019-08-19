@@ -9,7 +9,7 @@ class PhotosController < Devise::RegistrationsController
     if @user.save!
       @identification = Identification.new(indif_params)
       if @identification.save
-        sign_in @user 
+        sign_in @user
         redirect_to products_path
       else
         @user.destroy
