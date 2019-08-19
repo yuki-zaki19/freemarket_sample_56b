@@ -10,7 +10,6 @@ $(function() {
   // 子のプルダウンボックスの作成
   $("#parent-list").on('change', function() {
     var parents = $(this).val();
-    console.log(this)
     if (parents != "---"){
       $.ajax({
         type: 'GET',
@@ -20,7 +19,6 @@ $(function() {
       })
 
       .done(function(children) {
-        console.log(this)
         $('#children-category').remove();
         $('#grandchildren-category').remove();
         var insertChildHtml = '';
@@ -46,10 +44,7 @@ $(function() {
   });
   // 孫のプルダウンボックスの作成
   $("#select-form-children").on('change', '#children-category', function(){
-    console.log(this)
-
     var childId = $('#child-list').val();
-    console.log(childId)
     if (childId != "---" && childId != "0"){
       $.ajax({
         type: 'GET',
@@ -59,7 +54,6 @@ $(function() {
       })
 
       .done(function(grandchildren){
-        console.log(grandchildren);
         if (grandchildren.length != 0) {
           $('#grandchildren-category').remove();
           var insertGrandChildHTML = '';
@@ -89,7 +83,6 @@ $(function() {
   var select_form_size = $("#select-form-size")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
     var grandchildId = $('#grandchild-list option:selected').val();
-    console.log(grandchildId)
     if (grandchildId != "0" && grandchildId != "---"){
       var addLABEL = `<label id = size-label>
                         サイズ
@@ -128,7 +121,6 @@ $(function() {
   var select_form_brand = $("#select-form-brand")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
     var grandchildId = $('#grandchild-list option:selected').val();
-    console.log(grandchildId)
 
     if (grandchildId != "0" && grandchildId != "---"){
       var addLABEL = `<label id = brand-label>

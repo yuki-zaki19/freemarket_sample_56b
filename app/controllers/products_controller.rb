@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only:[:show]
+  before_action :set_product, only:[:show, :destroy, :update, :edit]
   before_action :set_user, only:[:show]
   
   def index
@@ -70,13 +70,14 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id]) 
-    @product.destroy
+    if @product.destroy
     redirect_to :root
+    else
+      render :destroy
+    end
   end
 
   def edit
-    @product = Product.find(params[:id]) 
     @products = Product.where(id: params[:id])
     parent_category_id = Category.find(@product.category_id)
     child_category_id = Category.find(@product.child_category_id)
@@ -97,10 +98,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(create_params)
-
+    if @product.update(create_params)
     redirect_to :root
+    else
+      render :edit
+    end
   end
 
   def get_category_children
