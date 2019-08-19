@@ -14,7 +14,7 @@ $(function() {
     if (parents != "---"){
       $.ajax({
         type: 'GET',
-        url: 'get_category_children',
+        url: "/products/get_category_children",
         data: { id: parents },
         dataType: 'json'
       })
@@ -22,6 +22,7 @@ $(function() {
       .done(function(children) {
         console.log(this)
         $('#children-category').remove();
+        $('#grandchildren-category').remove();
         var insertChildHtml = '';
         children.forEach(function(child){
           insertChildHtml += appendForm(child);
@@ -47,17 +48,18 @@ $(function() {
   $("#select-form-children").on('change', '#children-category', function(){
     console.log(this)
 
-    var childId = $('#child-list option:selected').data('value');
-    console.log(this)
-    if (childId != "0"){
+    var childId = $('#child-list').val();
+    console.log(childId)
+    if (childId != "---" && childId != "0"){
       $.ajax({
         type: 'GET',
-        url: 'get_category_grandchildren',
+        url: '/products/get_category_grandchildren',
         data: { child_id: childId },
         dataType: 'json'
       })
 
       .done(function(grandchildren){
+        console.log(grandchildren);
         if (grandchildren.length != 0) {
           $('#grandchildren-category').remove();
           var insertGrandChildHTML = '';
@@ -86,8 +88,9 @@ $(function() {
   var form_size = $("#form-size")
   var select_form_size = $("#select-form-size")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
-    var grandchildId = $('#grandchild-list option:selected').data('value');
-    if (grandchildId != "0"){
+    var grandchildId = $('#grandchild-list option:selected').val();
+    console.log(grandchildId)
+    if (grandchildId != "0" && grandchildId != "---"){
       var addLABEL = `<label id = size-label>
                         サイズ
                       </label>
@@ -116,6 +119,7 @@ $(function() {
     }else{
       $('#size-label').remove();
       $('#form_required-size').remove();
+      $('#product_size_id').remove();
       $('.select-form-size-box').remove();
     }
   });
@@ -123,8 +127,10 @@ $(function() {
   var form_brand = $("#form-brand")
   var select_form_brand = $("#select-form-brand")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
-    var grandchildId = $('#grandchild-list option:selected').data('value');
-    if (grandchildId != "0"){
+    var grandchildId = $('#grandchild-list option:selected').val();
+    console.log(grandchildId)
+
+    if (grandchildId != "0" && grandchildId != "---"){
       var addLABEL = `<label id = brand-label>
                         ブランド
                       </label>
@@ -141,6 +147,8 @@ $(function() {
       $('#size-brand').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
+      $('#form-brand').remove();
+      $('#select-form-brand').remove();
     }
   });
 

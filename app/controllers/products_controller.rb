@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
     parent_category_id = Category.find(@product.category_id)
     child_category_id = Category.find(@product.child_category_id)
     grandchild_category_id = Category.find(@product.grandchild_category_id)
-
+    
     @parent_category_array =  ["---"]
     Category.where(ancestry: nil).each do |parent|
     @parent_category_array << [parent.name,parent.id]
@@ -94,6 +94,13 @@ class ProductsController < ApplicationController
     Category.where(ancestry: "#{parent_category_id.id}" + "/" + "#{child_category_id.id}").each do |parent|
     @grandchild_category_array << [parent.name,parent.id]
     end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(create_params)
+
+    redirect_to :root
   end
 
   def get_category_children
