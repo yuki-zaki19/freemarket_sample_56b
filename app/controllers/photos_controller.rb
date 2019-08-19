@@ -38,6 +38,6 @@ class PhotosController < Devise::RegistrationsController
     @date = params.require(:user)
     @birthday = Date.new(@date["birthday(1i)"].to_i,@date["birthday(2i)"].to_i,@date["birthday(3i)"].to_i)
     @indif = {}
-    @indif.merge(last_name: @date["last_name2"], first_name: @date["first_name2"], last_name_kana: @date["last_name_kana2"], first_name_kana: @date["first_name_kana2"], birthday: @birthday.to_s,user_id:@user.id)
+    @indif.merge(last_name: @date["last_name2"], first_name: @date["first_name2"], last_name_kana: @date["last_name_kana2"], first_name_kana: @date["first_name_kana2"],phone_number: @date["phone_number2"], birthday: @birthday.to_s,user_id:@user.id)
   end
 end
