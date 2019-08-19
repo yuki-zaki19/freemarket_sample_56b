@@ -21,6 +21,14 @@ $(function() {
       
       .done(function(children) {
         $('#children-category').remove();
+        $('#grandchildren-category').remove();
+        $('#size-label').remove();
+        $('#form_required-size').remove();
+        $('.select-form-size-box').remove();
+        $('#brand-label').remove();
+        $('#form_required-brand').remove();
+        $('.select-form-brand-box').remove();
+  
         var insertChildHtml = '';
         children.forEach(function(child){
           insertChildHtml += appendForm(child);
@@ -40,6 +48,13 @@ $(function() {
     }else{
       $('#children-category').remove();
       $('#grandchildren-category').remove();
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
+
     }
   });
   // 孫のプルダウンボックスの作成
@@ -56,6 +71,13 @@ $(function() {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren-category').remove();
+          $('#size-label').remove();
+          $('#form_required-size').remove();
+          $('.select-form-size-box').remove();
+          $('#brand-label').remove();
+          $('#form_required-brand').remove();
+          $('.select-form-brand-box').remove();
+    
           var insertGrandChildHTML = '';
           grandchildren.forEach(function(grandchild){
             insertGrandChildHTML += appendForm(grandchild);
@@ -75,6 +97,12 @@ $(function() {
       })
     }else{
       $('#grandchildren-category').remove();
+      $('#size-label').remove();
+      $('#form_required-size').remove();
+      $('.select-form-size-box').remove();
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
     }
   });
 
@@ -134,7 +162,7 @@ $(function() {
       form_brand.append(addLABEL);
       select_form_brand.append(addFORM);
     }else{
-      $('#size-brand').remove();
+      $('#brand-label').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
     }

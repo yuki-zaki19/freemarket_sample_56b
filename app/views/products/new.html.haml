@@ -2,7 +2,7 @@
 
   %header.product-header
     %h1
-      = link_to('#', {}) do
+      = link_to(root_path, {}) do
         = image_tag "mercari_logo_horizontal.png", :class => "header-image"
 
   %main.product-main
@@ -20,13 +20,13 @@
               最大10枚までアップロードできます
             %div
               #insert-image-box
-              .upload-dropbox
-                %label
-                  = f.file_field :images, type: 'file', id: "display-none", multiple: true 
-                  .image_preview
-                    ドラッグアンドドロップ
-                    %br
-                      またはクリックしてファイルをアップロード
+                .upload-dropbox#upload-dropbox
+                  %label
+                    = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                    .image_preview
+                      ドラッグアンドドロップ
+                      %br
+                        またはクリックしてファイルをアップロード
           .exhibition-content__form__explain
             .product-name-form
               %label
@@ -150,7 +150,7 @@
                   加盟店規約
                 に同意したことになります。
             = f.submit "出品する",class: "btn-exhibition" 
-            = link_to('#', class:'back-exhibition') do
+            = link_to(root_path, class:'back-exhibition') do
               もどる
 
   %footer.product-footer
@@ -165,7 +165,7 @@
         %li
           = link_to('#', {}) do
             特定商取引に関する表記
-    = link_to('#', class:'bottom-image') do
+    = link_to(root_path, class:'bottom-image') do
       = image_tag(src= "logo-gray.svg")
     %p
       %small© 2019 Mercari
