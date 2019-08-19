@@ -122,7 +122,7 @@
         float: left;
         width: 48px;
         height: 48px;
-        background-color: aquamarine;
+        background-color: white;
       }
       &__content{
         margin-right: 100px;
@@ -171,9 +171,10 @@
             font-size: 12px;
             color: #fff;
             background: #0099e8;
+            z-index:1111;
           }
         }
-      }
+      }  
     }
     &__news{
       width: 100%;
@@ -204,6 +205,7 @@
       font-size: 16px;
       color: #ccc;
     }
+
   }
   &__list{
     padding: 16px;

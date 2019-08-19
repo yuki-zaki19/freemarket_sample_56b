@@ -51,8 +51,13 @@ $(document).on('turbolinks:load', function() {
                         <option value = 9>ゆうパケット</option>
                       </select>
                   </div>`
+
+
     form_shipping.append(addLABEL);
     select_form_shipping.append(addFORM);
+    var input = $("#product_shipping_id").val();
+    console.log(input)
+
   });
 
   var percent = 0.1;
@@ -79,6 +84,8 @@ $(document).on('turbolinks:load', function() {
       tagOutputFee.append(fee);
       var profit = num - fee;
       tagOutputProfit.append(profit)
-		}
+    }
   });
 });
+
+

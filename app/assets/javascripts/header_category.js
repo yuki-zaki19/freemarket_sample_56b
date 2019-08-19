@@ -8,7 +8,7 @@ $(function() {
     return addChildForm;
   }
   // 子のプルダウンボックスの作成
-  $(document).on('change',"#parent-list", function() {
+  $("#parent-list").on('change', function() {
     var parents = $(this).val();
     console.log(this)
     if (parents != "---"){
@@ -18,8 +18,9 @@ $(function() {
         data: { id: parents },
         dataType: 'json'
       })
-      
+
       .done(function(children) {
+        console.log(this)
         $('#children-category').remove();
         var insertChildHtml = '';
         children.forEach(function(child){
@@ -27,7 +28,7 @@ $(function() {
         });
         var childSelectForm = `<div class = "select-form", id = "children-category">
                                   <i class = "fa fa-angle-down"></i>
-                                  <select class = 'select-list', id = 'child-list'>
+                                  <select class = 'select-list', id = 'child-list' name = 'product[child_category_id]'>
                                     <option value = 0 data-value = 0>---</option>
                                     ${insertChildHtml}
                                   </select>
@@ -44,7 +45,10 @@ $(function() {
   });
   // 孫のプルダウンボックスの作成
   $("#select-form-children").on('change', '#children-category', function(){
+    console.log(this)
+
     var childId = $('#child-list option:selected').data('value');
+    console.log(this)
     if (childId != "0"){
       $.ajax({
         type: 'GET',
@@ -62,7 +66,7 @@ $(function() {
           });
           var grandChildSelectForm = `<div class = "select-form", id = "grandchildren-category">
                                           <i class = "fa fa-angle-down"></i>
-                                          <select class = 'select-list', id = 'grandchild-list' name = 'product[category_id]'>
+                                          <select class = 'select-list', id = 'grandchild-list' name = 'product[grandchild_category_id]'>
                                             <option value = 0 data-value = 0>---</option>
                                             ${insertGrandChildHTML}
                                           </select>

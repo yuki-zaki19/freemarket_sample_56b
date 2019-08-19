@@ -42,7 +42,7 @@
                 = f.text_area :explain, class: 'input-explain', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
           .deal-product
             .deal-sub-head
-              .deal-sub-head__name 
+              .deal-sub-head__name
                 商品の詳細
             .deal-form-box
               .form-category
@@ -52,14 +52,39 @@
                     必須
               .select-form
                 = fa_icon 'angle-down'
-                = f.select :category, @category_parent_array,{},class: 'select-list',id: 'parent-list'
+                = f.select :category_id, @parent_category_array,{},class: 'select-list',id: 'parent-list'
                 -# %select.select-list
+
               #select-form-children
               #select-form-grandchild
+              -# 子カテゴリ
+              - if @product.child_category_id
+                .select-form#select-form-children#children-category
+                  = fa_icon 'angle-down'
+                  = f.select :child_category_id, @child_category_array,{},class: 'select-list',id: 'child-list'     
+              -# 孫カテゴリ
+              - if @product.grandchild_category_id
+                .select-form#select-form-grandchild#grandchildren-category
+                  = fa_icon 'angle-down'
+                  = f.select :grandchild_category_id, @grandchild_category_array,{},class: 'select-list',id: 'grandchild-list'     
+              -# サイズ
+              - if @product.size_id
+                .form-size#form-size
+                  %label#size-label
+                    サイズ
+                    %span#form_required-size
+                      必須
+                  .select-form#select-form-size
+                    = fa_icon 'angle-down'
+                    = f.collection_select :size_id,Size.all, :id, :name,{},class: 'select-list'
+
               #form-size
+
               #select-form-size
+              -# ブランド
               #form-brand
               #select-form-brand
+
               .form-state 
                 %label
                   商品の状態
@@ -85,10 +110,20 @@
               .select-form
                 = fa_icon "angle-down"
                 = f.collection_select :burden_id,Burden.all, :id, :name,{},class: 'select-list',id: 'select-list-burden'
+
+              - if @product.shipping_id
+                .form-shipping#form-shipping
+                  %label
+                    配送の方法
+                    %span.form_required
+                      必須
+                  .select-form
+                    = fa_icon "angle-down"
+                    = f.collection_select :shipping_id,Shipping.all, :id, :name,{},class: 'select-list'
+                    
               #form-shipping
-                -# javascript側からの追加
               #select-form-shipping
-                -# javascript側からの追加
+
               .form-region
                 %label
                   発送元の地域
