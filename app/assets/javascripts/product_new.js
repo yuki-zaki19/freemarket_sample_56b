@@ -73,7 +73,6 @@ $(document).on('turbolinks:load', function() {
   }
   $("#display-none").on('change',function() {
     var fileList = document.getElementById("display-none").files;
-    console.log(fileList)
     var fileNumber = fileList.length + $("#insert-image-box").find(".upload-product").length
     if (fileNumber < 11){
       initializeFiles();
