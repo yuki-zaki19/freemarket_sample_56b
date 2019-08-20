@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_105730) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category_id"
+    t.string "child_category_id"
+    t.string "grandchild_category_id"
     t.index ["name"], name: "index_products_on_name"
     t.index ["user_id"], name: "index_products_on_user_id"
   end

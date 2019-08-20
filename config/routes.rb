@@ -17,13 +17,15 @@ Rails.application.routes.draw do
       get 'task'
       get 'transaction'
       get 'deliver'
+      get '/:product_id' => 'users#my_product', as: 'my_product'
     end
   end
-  resources :products, only: [:index, :show, :new, :edit, :destroy, :create] do
+  resources :products, only: [:index, :show, :new, :edit, :destroy, :create,:update] do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'category/:category_id' => 'products#all_categories', as: "category" 
+
     end
   end
   resources :sellers

@@ -8,6 +8,62 @@ body {
 }
 
 .product{
+  // my_productの記述
+  &__change-box{
+    margin: 24px auto 0 auto;
+    background: #fff;
+    padding: 8px 16px 8px 16px;
+    width: 700px;
+    &--edit a{
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+      margin: 16px 0 16px 0;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+    }
+    &--or{
+      text-align: center;
+    }
+    &--stop{
+      background-color: #aaa;
+      border: 1px solid #ea352d;
+      color: #fff;
+      margin: 16px 0 16px 0;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+    }
+    &--delete{
+      background-color: #aaa;
+      border: 1px solid #ea352d;
+      color: #fff;
+      margin: 16px 0 16px 0;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+
   &__details{
     display: block;
     box-sizing: border-box;
@@ -148,7 +204,7 @@ body {
 
   &__messages{
     width: 700px;
-    margin: 8px auto;
+    margin: 24px auto 30px auto;
     padding: 24px;
     background-color: $mercari_white;
     display: block;
@@ -326,8 +382,59 @@ body {
   background-color: antiquewhite;
 }
 
+// 削除モーダル
+.delete-modal{
+  z-index: 2222;
+  display:none;
+  max-width: none;
+  width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  position: fixed;
+  background: #fff;
+  &__box{
+    padding: 64px;
+    line-height: 1.5;
+    &--content{
+    }
+  }
+  &__select{
+    &--cancel{
+      float: left;
+      line-height: 63px;
+      cursor: pointer;
+      border-top: 1px solid #ccc;
+      width: 50%;
+      text-align: center;
+    }
+    &--delete{
+      float: right;
+      border-left: 1px solid #ccc;
+      color: #0099e8;
+      line-height: 63px;
+      cursor: pointer;
+      border-top: 1px solid #ccc;
+      width: 50%;
+      text-align: center;
+    }
+  }
+  .clearfix{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
 
-
+.delete_modal_bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1111;
+  display: none;
+  width: 100%;
+  height: 120%;
+  background-color:rgba(0,0,0,0.7);
+}
   
 
   

@@ -8,16 +8,16 @@ $(function() {
     return addChildForm;
   }
   // 子のプルダウンボックスの作成
-  $("#parent-list").on('change',function() {
+  $("#parent-list").on('change', function() {
     var parents = $(this).val();
     if (parents != "---"){
       $.ajax({
         type: 'GET',
-        url: 'get_category_children',
+        url: "/products/get_category_children",
         data: { id: parents },
         dataType: 'json'
       })
-      
+
       .done(function(children) {
         $('#children-category').remove();
         $('#grandchildren-category').remove();
@@ -34,7 +34,7 @@ $(function() {
         });
         var childSelectForm = `<div class = "select-form", id = "children-category">
                                   <i class = "fa fa-angle-down"></i>
-                                  <select class = 'select-list', id = 'child-list'>
+                                  <select class = 'select-list', id = 'child-list' name = 'product[child_category_id]'>
                                     <option value = 0 data-value = 0>---</option>
                                     ${insertChildHtml}
                                   </select>
@@ -58,11 +58,11 @@ $(function() {
   });
   // 孫のプルダウンボックスの作成
   $("#select-form-children").on('change', '#children-category', function(){
-    var childId = $('#child-list option:selected').data('value');
-    if (childId != "0"){
+    var childId = $('#child-list').val();
+    if (childId != "---" && childId != "0"){
       $.ajax({
         type: 'GET',
-        url: 'get_category_grandchildren',
+        url: '/products/get_category_grandchildren',
         data: { child_id: childId },
         dataType: 'json'
       })
@@ -83,7 +83,7 @@ $(function() {
           });
           var grandChildSelectForm = `<div class = "select-form", id = "grandchildren-category">
                                           <i class = "fa fa-angle-down"></i>
-                                          <select class = 'select-list', id = 'grandchild-list' name = 'product[category_id]'>
+                                          <select class = 'select-list', id = 'grandchild-list' name = 'product[grandchild_category_id]'>
                                             <option value = 0 data-value = 0>---</option>
                                             ${insertGrandChildHTML}
                                           </select>
@@ -109,11 +109,15 @@ $(function() {
   var form_size = $("#form-size")
   var select_form_size = $("#select-form-size")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
-    var grandchildId = $('#grandchild-list option:selected').data('value');
-    if (grandchildId != "0"){
+
+    var grandchildId = $('#grandchild-list option:selected').val();
+    if (grandchildId != "0" && grandchildId != "---"){
+
+
       $('#size-label').remove();
       $('#form_required-size').remove();
       $('.select-form-size-box').remove();
+
 
       var addLABEL = `<label id = size-label>
                         サイズ
@@ -124,7 +128,7 @@ $(function() {
                     
       var addFORM = `<div class = "select-form-size-box">
                         <i class = "fa fa-angle-down" ></i>
-                        <select class = "select-list" name = 'product[size]' id = "product_size_id">
+                        <select class = "select-list" name = 'product[size_id]' id = "product_size_id">
                           <option value = 0>---</option>
                           <option value = 1>XXS以下</option>
                           <option value = 2>XS(SS)</option>
@@ -143,6 +147,7 @@ $(function() {
     }else{
       $('#size-label').remove();
       $('#form_required-size').remove();
+      $('#product_size_id').remove();
       $('.select-form-size-box').remove();
     }
   });
@@ -150,11 +155,15 @@ $(function() {
   var form_brand = $("#form-brand")
   var select_form_brand = $("#select-form-brand")
   $("#select-form-grandchild").on("change", "#grandchildren-category",function(){
-    var grandchildId = $('#grandchild-list option:selected').data('value');
-    if (grandchildId != "0"){
+
+    var grandchildId = $('#grandchild-list option:selected').val();
+
+    if (grandchildId != "0" && grandchildId != "---"){
+
       $('#brand-label').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
+
       var addLABEL = `<label id = brand-label>
                         ブランド
                       </label>
@@ -171,6 +180,8 @@ $(function() {
       $('#brand-label').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
+      $('#form-brand').remove();
+      $('#select-form-brand').remove();
     }
   });
 

@@ -1,0 +1,108 @@
+.header
+  = render 'products/header'
+
+.product
+  .product__details
+    .product__details-name
+      = @product.name
+    .product__details-main-content.clearfix
+      .product__details-photo
+        = image_tag(@product.images[0].variant(resize: "300x300"))
+      %table.product__details-table
+        %tr
+          %th 出品者
+          %td
+            = link_to  "product_path", method: :get  do 
+              = @user.nickname
+        %tr
+          %th カテゴリー
+          %td
+            = link_to category_products_path(category_id: @product.category_id ), method: :get do
+              = @product.category_id
+        %tr
+          %th ブランド
+          %td
+            = link_to  "product_path", method: :get  do
+              = @product.brand
+        %tr
+          %th 商品のサイズ
+          %td 
+            = @product.size.name
+        %tr
+          %th 商品の状態
+          %td 
+            = @product.state.name
+        %tr
+          %th 送料の負担
+          %td 
+            = @product.burden.name
+        %tr
+          %th 配送の方法
+          %td
+            = @product.shipping.name
+        %tr
+          %th 配送元地域
+          %td
+            = link_to  "product_path", method: :get  do
+              = @product.region.name
+        %tr
+          %th 発送日の目安
+          %td
+            = @product.leadtime.name
+
+
+
+    .product__details-price-box
+      .product__details-price
+        = @product.price
+      .product__details-price-tax
+        (税込)
+      .product__details-price-shipping-fee
+        = @product.burden.name
+    .product__details-buy-btn
+      - unless current_user.id == @product.user_id
+        %button.buy-btn 購入する
+    .product__details-description
+      .product__details-description-inner
+        = @product.explain
+
+  .product__change-box
+    .product__change-box--edit
+      = link_to edit_product_path(id: @product.id) ,method: :get do
+        商品の編集
+    .product__change-box--or
+      or
+    .product__change-box--stop
+      出品を一旦停止する
+    .product__change-box--delete#delete-btn
+      この商品を削除する
+
+  .product__messages
+    .product__messages-notice
+      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    .product__messages-textarea
+      %textarea.message-textarea
+      %button.message-btn コメントする
+
+= render 'users/footer'
+
+
+
+-# 削除モーダル
+.delete-modal
+  .delete-modal__box
+    .delete-modal__box--content
+      確認
+      %br
+      削除すると二度と復活出来ません。
+      %br
+      削除する代わりに停止することもできます。
+      %br
+      %br
+      本当に削除しますか？
+  .delete-modal__select.clearfix
+    .delete-modal__select--cancel
+      キャンセル
+    .delete-modal__select--delete
+      = link_to product_path(id: @product.id), method: :delete do
+        削除
