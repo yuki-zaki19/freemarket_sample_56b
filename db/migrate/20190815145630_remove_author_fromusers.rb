@@ -1,4 +1,3 @@
-class RemoveAuthorFromusers < ActiveRecord::Migration[5.2]
   def up
     remove_column :users,:current_sign_in_at, :datetime
     remove_column :users,:last_sign_in_at, :datetime
@@ -14,9 +13,8 @@ class RemoveAuthorFromusers < ActiveRecord::Migration[5.2]
     add_column :users,:last_sign_in_ip, :string
     add_column :users,:sign_in_count, :integer, default: 0, null: false
   end
-end
 
-class AddDetailsTousers < ActiveRecord::Migration[5.2]
+
   def change
     add_column :users,:current_sign_in_at, :datetime
     add_column :users,:last_sign_in_at, :datetime
@@ -24,4 +22,4 @@ class AddDetailsTousers < ActiveRecord::Migration[5.2]
     add_column :users,:last_sign_in_ip, :string
     add_column :users,:sign_in_count, :integer, default: 0, null: false
   end
-end
+
