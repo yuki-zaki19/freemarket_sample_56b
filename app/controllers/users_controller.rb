@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def exhibit
-    @my_products = Product.where(user_id: current_user.id)
-    binding.pry
+    @my_products = Product.includes(:user).where(user_id: current_user.id)
   end
 
   def my_product
