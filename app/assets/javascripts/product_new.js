@@ -191,7 +191,6 @@ $(document).on('turbolinks:load', function() {
     form_shipping.append(addLABEL);
     select_form_shipping.append(addFORM);
     var input = $("#product_shipping_id").val();
-    console.log(input)
 
   });
 
