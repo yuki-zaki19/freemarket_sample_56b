@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_145630) do
+
+ActiveRecord::Schema.define(version: 2019_08_19_105730) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_145630) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
+    t.string "phone_number"
     t.index ["user_id"], name: "index_identifications_on_user_id"
   end
 
@@ -71,16 +73,17 @@ ActiveRecord::Schema.define(version: 2019_08_15_145630) do
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.string "brand"
-    t.string "size"
-    t.string "state", null: false
-    t.string "burden", null: false
-    t.string "shipping", null: false
-    t.string "region", null: false
-    t.string "leadtime", null: false
+    t.string "size_id"
+    t.string "state_id", null: false
+    t.string "burden_id", null: false
+    t.string "shipping_id", null: false
+    t.string "region_id", null: false
+    t.string "leadtime_id", null: false
     t.string "status", null: false
     t.text "explain", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category_id"
     t.index ["name"], name: "index_products_on_name"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -117,13 +120,16 @@ ActiveRecord::Schema.define(version: 2019_08_15_145630) do
     t.string "address", default: "", null: false
     t.string "building", default: "", null: false
     t.string "icon"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "postal_code", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.text "comment"
     t.string "uid"
     t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true

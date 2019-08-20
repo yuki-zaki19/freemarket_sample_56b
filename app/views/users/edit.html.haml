@@ -7,7 +7,7 @@
         .input-bar__title
           プロフィール
         .input-bar__form-edit
-          = form_with  do |f|
+          = form_with model: current_user, url:"/users/#{current_user.id}" , local: true do |f|
             .image-edit
               = image_tag "member_photo_noimage.png", class: 'image-edit-icom'
               = f.text_field :nickname, class: 'form-edit-box', placeholder: '例)AYA☆セール中'
@@ -18,39 +18,39 @@
       .side-nav
         %ul.user-list
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users',class: 'user-list__box__btm' do
               マイページ
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/news',class: 'user-list__box__btm' do
               お知らせ
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/task',class: 'user-list__box__btm' do
               やることリスト
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/products/new',class: 'user-list__box__btm' do
               出品する
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/exhibit',class: 'user-list__box__btm' do
               出品した商品-出品中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/sale',class: 'user-list__box__btm' do
               出品した商品-取引中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/trade',class: 'user-list__box__btm' do
               出品した商品-売却済み
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/transaction',class: 'user-list__box__btm' do
               購入した商品-取引中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/past',class: 'user-list__box__btm' do
               購入した商品-過去の取引
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -84,15 +84,15 @@
           設定
         %ul.user-list
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm choice' do
+            = link_to edit_user_path(current_user),class: 'user-list__box__btm choice' do
               プロフィール
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/deliver',class: 'user-list__box__btm' do
               発送元・お届け先住所変更
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/card',class: 'user-list__box__btm' do
               支払い方法
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -100,7 +100,7 @@
               メール/パスワード
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to edit_identification_path(current_user),class: 'user-list__box__btm' do
               本人情報
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -108,7 +108,8 @@
               電話番号の確認
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '#',class: 'user-list__box__btm' do
+            = link_to '/users/logout',class: 'user-list__box__btm' do
               ログアウト
               = fa_icon 'angle-right side-bar'
 = render 'users/footer'
+= render 'products/bigicon'

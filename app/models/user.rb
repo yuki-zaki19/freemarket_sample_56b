@@ -5,12 +5,12 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
-  # has_many :products
+  has_many :products
   # has_many :goods
   # has_many :contacts
   # belongs_to :credit
   # has_many :evaluation
-  # belongs_to :idntification
+  has_one :idntification
   # belongs_to :buyer
   has_many :sns_credentials, dependent: :destroy
 

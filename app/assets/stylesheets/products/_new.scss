@@ -76,12 +76,17 @@
               line-height: 1.5;
               font-size: 13px;
             }
+
             div{
               max-width: 620px;
+              display: flex;
+              flex-wrap: wrap;
               
               #insert-image-box{
                 margin-top: 16px;
-                width: auto;
+                width: 620px;
+                position: relative;
+                min-height: 160px;
 
                 .upload-product{
                   height: 160px;
@@ -118,13 +123,13 @@
                       background: #f5f5f5;
                       line-height: 37px;
                       text-align: center;
-
+                      cursor: pointer;
                     }
-
                   }
                 }
               }
 
+              
               .upload-dropbox{
                 min-width: 110px;
                 box-sizing: border-box;
@@ -134,6 +139,10 @@
                 border-width: thin;
                 background-color: $mercari_grey;
                 cursor: pointer;
+                position: absolute;
+                bottom: 3.4%;
+                right: 2%;
+
           
                 #display-none{
                   display: none;
@@ -150,7 +159,7 @@
                 }
               }
             }
-          }
+        }
           &__explain{
             height: 355px;
             border-top: 1px solid #eee;
@@ -226,10 +235,11 @@
           }
 
           .deal-product{
-            height: 261px;
+            min-height: 261px;
             border-top: 1px solid #eee;
             padding: 40px;
             box-sizing: border-box;
+            overflow: hidden;
 
             .deal-sub-head{
               float: left;
@@ -274,6 +284,99 @@
                 cursor: pointer;
               }
 
+              #form-size{
+                margin: 40px 0 0;
+                label#size-label{
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+                span#form_required-size{
+                  background-color: $mercari_red;
+                  color: $mercari_white;
+                  font-size: 12px;
+                  margin: 0 0 0 8px;
+                  padding: 2px 4px;
+                  border-radius: 2px;
+                  font-weight: 600;
+                }
+              }
+
+              #select-form-size{
+                .select-form-size-box{
+                  height: 48px;
+                  margin: 8px 0 0;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  cursor: pointer;
+
+                  i.fa.fa-angle-down{
+                    z-index: 2;
+                    color: #888;
+                    font-size: 28px;
+                    display: inline-block;
+                    font-style: normal;
+                    font-weight: 200;
+                    line-height: 1;
+                    position: relative;
+                    left: 365px;
+                    top: 10px;
+                  }
+                  .select-list{
+                    width: 400px;
+                    z-index: 1;
+                    -webkit-appearance: none;
+                    height: 50px;
+                    position: relative;
+                    bottom: 30px;
+                    padding: 0 16px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: 0;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    cursor: pointer;
+                  }
+                }
+              }
+              #form-brand{
+                margin: 40px 0 0;
+                label#brand-label{
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+                span#form_required-brand{
+                  background-color: #ccc;
+                  color: $mercari_white;
+                  font-size: 12px;
+                  margin: 0 0 0 8px;
+                  padding: 2px 4px;
+                  border-radius: 2px;
+                  font-weight: 600;
+                }
+              }
+              #select-form-brand{
+                .select-form-brand-box{
+                  height: 48px;
+                  margin: 8px 0 0;
+                  background: 0;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  input.input-brand{
+                    margin: 8px 0 0;
+                    width: 100%;
+                    height: 48px;
+                    padding: 10px 16px 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    box-sizing: border-box;
+  
+                    }
+                }
+              }
               .form-state{
                 margin: 40px 0 0;
                 label{
@@ -420,11 +523,11 @@
 
               #form-shipping{
                 margin: 40px 0 0;
-                label{
+                label#shipping-label{
                   font-size: 14px;
                   font-weight: 600;
                 }
-                span.form_required{
+                span#form_required-shipping{
                   background-color: $mercari_red;
                   color: $mercari_white;
                   font-size: 12px;
@@ -819,30 +922,6 @@
       small{
       font-size: 13px;
        }
-    }
-  }
-// 出品ボタンのcss仮置き
-  .fotter-exhibition-btn{
-    bottom: 32px;
-    right: 32px;
-    width: 160px;
-    height: 160px;
-    font-size: 22px;
-    position: fixed;
-    border-radius: 50%;
-    background: #ea352d;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    
-    &__name{
-      margin: 26px 0 0;
-
-    }
-    i.fa.fa-camera{
-      margin: 4px 0 0;
-      font-size: 54px;
-
     }
   }
 }
