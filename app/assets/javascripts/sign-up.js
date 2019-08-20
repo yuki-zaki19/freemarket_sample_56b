@@ -1,6 +1,9 @@
+$(document).on('turbolinks:load', function() { 
+
+
 // ３ページ目のモーダル
 $(function(){  // 「.modal_open」をクリックしたらモーダルと黒い背景を表示する 
-  $(document).on('click', '#next-btn', function(){ 
+  $(document).on('click', '#next-btn', function(){
     $('body').append('<div class="modal_bg3"></div>');
     $('.modal_bg3').fadeIn(); 
     $(".user-info__header__progress__flat-bar__left").css({'z-index': '3', 'width': '100px' })
@@ -117,4 +120,5 @@ $(function(){  // 「.modal_open」をクリックしたらモーダルと黒い
   });
 });
 });
+})
 
