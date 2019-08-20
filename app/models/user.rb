@@ -70,10 +70,6 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20] if user.password.blank?
       end
     end
-      SnsCredential.create(
-                        uid: uid,
-                        provider: provider,
-                        user_id: user.id
-                        )
+      SnsCredential.create(uid: uid,provider: provider,user_id: user.id)
   end
 end
