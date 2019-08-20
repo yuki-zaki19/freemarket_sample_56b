@@ -3,16 +3,78 @@
     = render 'products/header'
   .main
     .main__user
-      .user-sale-products
-        .user-buy-products__header
-          購入した商品
-        .info-tab
-          = link_to '取引中','/users/transaction',class: 'info-tab__btm'
-          = link_to '過去の取引','/users/past',class: 'info-tab__btm active'
-        .info-content
-          .info-content__details
-            .info-content__details__none
-              過去に取引した商品がありません
+      .input-bar
+        .input-bar__title
+          本人情報の登録
+        .input-bar__form-field
+          = form_with model: @identification, url: identification_path(@identification), local: true,metod: :patch do |f|
+            .input-bar__form-field__document
+              %p 
+                お客さまの本人情報をご登録ください。
+                %br
+                登録されたお名前生年月日を変更する場合、本人確認書類の提出が必要になります。
+              %p.input-bar__form-field__document__btm
+                = link_to '本人確認書類のアップロードについて','#'
+                = fa_icon 'angle-right document__btm'
+            .input-bar__form-field__box
+              %label
+                お名前
+              %p
+                = @identification.last_name
+                = @identification.first_name
+            .input-bar__form-field__box
+              %label
+                お名前カナ
+              %p
+                = @identification.last_name_kana
+                = @identification.first_name_kana
+            .input-bar__form-field__box
+              %label
+                生年月日
+              %p
+                = @identification.birthday
+            .input-bar__form-field__box
+              %label
+                郵便番号
+              %span
+                任意
+                %br
+              = f.text_field :postal_code, class: 'form-input-box', placeholder: '例）1234567'
+            .input-bar__form-field__box
+              %label
+                都道府県
+              %span
+                任意
+                %br
+              .form-select-box
+                = fa_icon 'angle-down select-btm-box'
+                = f.select :prefecture, ["--","北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"],{}, class: "form-select-box__selecter"
+            .input-bar__form-field__box
+              %label
+                市区町村
+              %span
+                任意
+                %br
+              = f.text_field :city, class: 'form-input-box', placeholder: '例）横浜市緑区'
+            .input-bar__form-field__box
+              %label
+                番地
+              %span
+                任意
+                %br
+              = f.text_field :address, class: 'form-input-box', placeholder: '例）青山1-1-1'
+            .input-bar__form-field__box
+              %label
+                建物名
+              %span
+                任意
+                %br
+              = f.text_field :building, class: 'form-input-box', placeholder: '例）柳ビル103'
+            = f.submit '登録する', class: 'identification-registration-btn'
+            .input-bar__form-field__box
+              %p.input-bar__form-field__box__btm
+                = link_to '本人情報の登録について','#'
+                = fa_icon 'angle-right document__btm'
     .main__user-bar
       .side-nav
         %ul.user-list
@@ -29,7 +91,7 @@
               やることリスト
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/products/new',class: 'user-list__box__btm' do
+            = link_to '#',class: 'user-list__box__btm' do
               出品する
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -49,7 +111,7 @@
               購入した商品-取引中
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to '/users/past',class: 'user-list__box__btm choice' do
+            = link_to '/users/past',class: 'user-list__box__btm' do
               購入した商品-過去の取引
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
@@ -99,7 +161,7 @@
               メール/パスワード
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
-            = link_to edit_identification_path(current_user),class: 'user-list__box__btm' do
+            = link_to '/identifications/new',class: 'user-list__box__btm choice' do
               本人情報
               = fa_icon 'angle-right side-bar'
           %li.user-list__box
