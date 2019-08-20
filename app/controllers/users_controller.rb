@@ -24,12 +24,12 @@ class UsersController < ApplicationController
 
   def exhibit
     @my_products = Product.where(user_id: current_user.id)
+    binding.pry
   end
 
   def my_product
     @product = Product.find(params[:product_id])
     @user = User.find(@product.user_id )
-
   end
 
   def trade

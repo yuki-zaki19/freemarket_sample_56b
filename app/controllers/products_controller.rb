@@ -78,7 +78,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @products = Product.where(id: params[:id])
     parent_category_id = Category.find(@product.category_id)
     child_category_id = Category.find(@product.child_category_id)
     grandchild_category_id = Category.find(@product.grandchild_category_id)
