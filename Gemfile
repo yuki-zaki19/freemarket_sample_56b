@@ -92,6 +92,7 @@ end
   gem "active_hash"
   gem "payjp"
   gem "aws-sdk-s3", require: false
+  gem 'dotenv-rails'
   gem 'gretel'
   gem 'mini_magick'
   gem 'active_hash'
