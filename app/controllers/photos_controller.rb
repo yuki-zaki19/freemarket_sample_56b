@@ -31,7 +31,7 @@ class PhotosController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :prefecture, :city, :address, :building, :phone_number, :postal_code,:nickname, :password, :password_confirmation, :email)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :prefecture, :city, :address, :building, :phone_number, :postal_code,:nickname, :password, :password_confirmation, :email, :uid, :provider)
   end
 
   def indif_params

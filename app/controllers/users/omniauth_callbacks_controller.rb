@@ -25,13 +25,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #なければ以下の処理が行われる。
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
       @user= User.new()
-        if data = session["devise.facebook_data"] || data = session["devise.google_data"]["extra"]["raw_info"]
+        if data = session["devise.#{provider}_data"]["extra"]["raw_info"]
           @user.nickname = data["name"] if @user.nickname.blank?
           @user.email = data["email"] if @user.email.blank?
-          @user.provider = data["provider"] if @user.provider.blank?
-          @user.uid = data["uid"] if @user.uid.blank?
+          @user.provider = "#{provider}" if @user.provider.blank?
+          @user.uid = data["sub"] if @user.uid.blank?
           @user.password = Devise.friendly_token[0,20] if @user.password.blank?
-
         render 'devise/registrations/new'
   end
 
