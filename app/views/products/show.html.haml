@@ -84,11 +84,13 @@
         %button.message-btn コメントする
     .product__link-prev-next.clearfix
       .product__link-prev
-        = link_to "product_path", method: :get  do
+        - prev = @product.id - 1
+        = link_to product_path(prev) do
           前のページ
           
       .product__link-next
-        = link_to "product_path", method: :get  do
+        - nex = @product.id + 1
+        = link_to product_path(nex) do
           次のページ
     .product__sns
       .product__sns-box

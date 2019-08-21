@@ -1,0 +1,215 @@
+.product-contents
+
+  %header.product-header
+    %h1
+      = link_to('#', {}) do
+        = image_tag "mercari_logo_horizontal.png", :class => "header-image"
+
+  %main.product-main
+    %section.center-box
+      .exhibition-content
+        .exhibition-content__header
+          商品の情報を入力
+        = form_with model:@product, class: "exhibition-content__form", local: true do |f|
+          .exhibition-content__form__upload-box
+            %h3.upload-box-header
+              出品画像
+              %span.header_required
+                必須
+            %p
+              最大10枚までアップロードできます
+            %div
+              #insert-image-box
+              .upload-dropbox
+                %label
+                  = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                  .image_preview
+                    ドラッグアンドドロップ
+                    %br
+                      またはクリックしてファイルをアップロード
+          .exhibition-content__form__explain
+            .product-name-form
+              %label
+                商品名
+                %span.form_required
+                  必須
+                  = f.text_field :name, class: 'input-name', placeholder: '商品名（必須40文字まで）'
+            .product-explain-form
+              %label
+                商品の説明
+                %span.form_required
+                  必須
+                = f.text_area :explain, class: 'input-explain', placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .deal-product
+            .deal-sub-head
+              .deal-sub-head__name
+                商品の詳細
+            .deal-form-box
+              .form-category
+                %label
+                  カテゴリー
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon 'angle-down'
+                = f.select :category_id, @parent_category_array,{},class: 'select-list',id: 'parent-list' ,"data-product-id": "#{@product.id}"
+
+              -# 子カテゴリ
+              #select-form-children
+                - if @product.child_category_id
+                  .select-form#children-category
+                    = fa_icon 'angle-down'
+                    = f.select :child_category_id, @child_category_array,{},class: 'select-list',id: 'child-list',"data-product-id": "#{@product.id}"  
+              -# 孫カテゴリ
+              #select-form-grandchild
+                - if @product.grandchild_category_id
+                  .select-form#grandchildren-category
+                    = fa_icon 'angle-down'
+                    = f.select :grandchild_category_id, @grandchild_category_array,{},class: 'select-list',id: 'grandchild-list',"data-product-id": "#{@product.id}" 
+
+              -# サイズ
+              #form-size
+                - if @product.size_id
+                  %label#size-label
+                    サイズ
+                    %span#form_required-size
+                      必須
+              
+              #select-form-size
+                - if @product.size_id
+                  .select-form#product_size_id
+                    = fa_icon 'angle-down'
+                    = f.collection_select :size_id,Size.all, :id, :name,{},class: 'select-list'
+
+              -# ブランド
+              #form-brand
+              #select-form-brand
+
+              .form-state 
+                %label
+                  商品の状態
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.collection_select :state_id,State.all, :id, :name,{},class: 'select-list'
+
+          .deal-delivery.clearfix
+            .deal-sub-head
+              .deal-sub-head__name 
+                配送について
+            = link_to('#', class:'form-question') do
+              ?
+
+            .deal-form-box
+              .form-price
+                %label
+                  配送料の負担
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.collection_select :burden_id,Burden.all, :id, :name,{},class: 'select-list',id: 'select-list-burden'
+
+              - if @product.shipping_id
+                .form-shipping#form-shipping
+                  %label
+                    配送の方法
+                    %span.form_required
+                      必須
+                  .select-form
+                    = fa_icon "angle-down"
+                    = f.collection_select :shipping_id,Shipping.all, :id, :name,{},class: 'select-list'
+                    
+              #form-shipping
+              #select-form-shipping
+
+              .form-region
+                %label
+                  発送元の地域
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.collection_select :region_id, Region.all, :id, :name,{}, class: 'select-list'
+              .form-date
+                %label
+                  発送までの日数
+                  %span.form_required
+                    必須
+              .select-form
+                = fa_icon "angle-down"
+                = f.collection_select :leadtime_id,Leadtime.all, :id, :name,{},class: 'select-list'
+          .deal-price
+            .deal-sub-head
+              .deal-sub-head__name 
+                販売価格(300~9,999,999)
+            = link_to('#', class:'form-question') do
+              ?
+            .deal-form-box
+              .price-box
+                .input-price
+                  .clearfix
+                    %label
+                      価格
+                      %span.form_required 必須
+                    .right-sell-box
+                      ¥
+                      .price-box
+                        = f.text_field :price, class: "input-sell-box", id: "input-price",placeholder: "例) 300"
+                .fee 
+                  .clearfix
+                    .fee-name 販売手数料 (10%)
+                    #fee-num -
+                .profit
+                  .clearfix
+                    .profit-name 販売利益
+                    #profit-num -
+
+          - if @product.id
+            .deal-btn-box
+              .deal-btn-explain
+                = f.submit "編集する",class: "btn-exhibition" 
+                = link_to('#', class:'back-exhibition') do
+                  もどる
+          - else       
+            .deal-btn-box
+              .deal-btn-explain
+                %p
+                  = link_to('#') do
+                    禁止されてる出品
+                  、
+                  = link_to('#') do
+                    行為
+                  を必ずご確認ください。
+                %p
+                  またブランド品でシリアルナンバー等がある場合はご記載ください。
+                  = link_to('#') do
+                    偽ブランドの販売
+                  は犯罪であり処罰される可能性があります。
+                %p
+                  また、出品をもちまして
+                  = link_to('#') do
+                    加盟店規約
+                  に同意したことになります。
+              = f.submit "出品する",class: "btn-exhibition" 
+              = link_to('#', class:'back-exhibition') do
+                もどる
+
+
+  %footer.product-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to('#', {}) do
+            プライバシーポリシー
+        %li
+          = link_to('#', {}) do
+            メルカリ利用規約
+        %li
+          = link_to('#', {}) do
+            特定商取引に関する表記
+    = link_to('#', class:'bottom-image') do
+      = image_tag(src= "logo-gray.svg")
+    %p
+      %small© 2019 Mercari

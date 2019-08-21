@@ -14,10 +14,11 @@
           =link_to "メールアドレスで登録する", "/users/sign_up" 
       %button.sign-up__content__registation__box__facebook
         %i.fa.fa-facebook-official
-          =link_to "Facebookで登録する"
+          =link_to "Facebookで登録する",user_facebook_omniauth_authorize_path,method: :post
       %button.sign-up__content__registation__box__google
         %i.fa.fa-google
-          =link_to "Googleで登録する"
+
+          =link_to "Googleで登録する",user_google_oauth2_omniauth_authorize_path,method: :post
   .sign-up__content__graybox
 .product-contents
   %footer.product-footer
@@ -36,3 +37,4 @@
       = image_tag(src= "logo-gray.svg")
     %p
       %small© 2019 Mercari
+

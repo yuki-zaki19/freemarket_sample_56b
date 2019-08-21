@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only:[:show]
+  before_action :set_product, only:[:show, :destroy, :update, :edit]
   before_action :set_user, only:[:show]
   
   def index
@@ -61,12 +61,46 @@ class ProductsController < ApplicationController
     @category_name = c
   end
 
-
   def new
     @product = Product.new
-    @category_parent_array =  ["---"]
+    @parent_category_array =  ["---"]
     Category.where(ancestry:  nil).each do |parent|
-    @category_parent_array << [parent.name,parent.id]
+    @parent_category_array << [parent.name,parent.id]
+    end
+  end
+
+  def destroy
+    if @product.destroy
+    redirect_to :root
+    else
+      render :destroy
+    end
+  end
+
+  def edit
+    parent_category_id = Category.find(@product.category_id)
+    child_category_id = Category.find(@product.child_category_id)
+    grandchild_category_id = Category.find(@product.grandchild_category_id)
+    
+    @parent_category_array =  ["---"]
+    Category.where(ancestry: nil).each do |parent|
+    @parent_category_array << [parent.name,parent.id]
+    end
+    @child_category_array =  ["---"]
+    Category.where(ancestry: "#{parent_category_id.id}").each do |parent|
+    @child_category_array << [parent.name,parent.id]
+    end
+    @grandchild_category_array =  ["---"]
+    Category.where(ancestry: "#{parent_category_id.id}" + "/" + "#{child_category_id.id}").each do |parent|
+    @grandchild_category_array << [parent.name,parent.id]
+    end
+  end
+
+  def update
+    if @product.update(create_params)
+    redirect_to :root
+    else
+      render :edit
     end
   end
 
@@ -80,13 +114,12 @@ class ProductsController < ApplicationController
 
   def create
     Product.create(create_params)
-    # @photo = Photo.create params.require(:photo).permit(images: [],products_attributes: [:name, :price, :category, :brand, :size, :state, :burden, :shipping, :region, :leadtime, :status, :explain]).merge(product_id: product.id)
     redirect_to controller: :products, action: :index
   end
 
   private
   def create_params
-    params.require(:product).permit(:name, :price, :category_id, :brand, :size, :state, :burden, :shipping, :region_id, :leadtime, :explain, images: [] ).merge(user_id: current_user.id, status: "1" )
+    params.require(:product).permit(:name, :price, :category_id,:child_category_id, :grandchild_category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain, images: [] ).merge(user_id: current_user.id, status: "1" )
   end
 
   def set_product

@@ -1,17 +1,22 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.sign-in
+  .sign-in__main
+    .sign-in__main__header
+      %pアカウントをお持ちでない方はこちら
+      %button.sign-in__main__header__box
+        =link_to "新規会員登録", "/users/new"
+    .sign-in__main__inner
+      %button.sign-in__main__inner__facebook
+        %i.fa.fa-facebook-official
+          =link_to "Facebookでログイン",user_facebook_omniauth_authorize_path,method: :post
+      %button.sign-in__main__inner__google
+        %i.fa.fa-google
+          =link_to "Googleでログイン",user_google_oauth2_omniauth_authorize_path,method: :post
+    .sign-in__main__footer
+      .sign-in__main__footer__form
+        %input{name:"email", placeholder: "メールアドレス", typ:"email", value: ""}/
+      .sign-in__main__footer__form
+        %input{name: "password", placeholder:"パスワード", type:"password", value:""}/
+      .sign-in__main__footer__form
+        %button{type: "submit"} ログイン
+      .sign-in__main__footer__form
+        =link_to "パスワードをお忘れの方"
