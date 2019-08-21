@@ -1,7 +1,11 @@
 class PhotosController < Devise::RegistrationsController
+
+  require "payjp"
+
   def new
     super
     @user = User.new
+    @card = Card.new
   end
 
   def create
@@ -17,6 +21,15 @@ class PhotosController < Devise::RegistrationsController
       end
     else
       redirect_to new_user_path
+    end
+
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    if params['payjp-token'].blank?
+      root_path
+    else
+      customer = Payjp::Customer.create(card: params['payjp-token'])
+      @card = Card.new(user_id: @user.id, customer_id: customer.id, card_id: customer.default_card)
+      @card.save
     end
   end
 

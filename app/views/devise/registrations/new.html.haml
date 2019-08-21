@@ -1,5 +1,5 @@
 .sign-up-page
-= form_with model: @user, url: user_registration_path, class: 'new_user', local: true do |f|
+= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
   -# 2ページ目
   .sign-up-page-2
     = render partial: "users/signup_header"
@@ -234,7 +234,7 @@
             %span.card-box-com
               必須
               %br
-            %input.cardbox-input{placeholder:"半角数字のみ", type:"text"}
+            = f.text_field :cardbox_input, class: "cardbox-input", id: "cardbox-input", placeholder:"半角数字のみ", type:"text"
             %ul.card-box-number__icom
               %li
                 = image_tag "visa.svg", class: 'card-box-number__icom__list'
@@ -258,12 +258,12 @@
             %br
             .card-box-limit__moon
               = fa_icon 'angle-down limit-select'
-              = select  ["01","02","03","04","05","06","07","08","09","10","11","12"],{}, class: "moon-box__selecter"
+              = f.select :moonbox, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, class: "moon-box__selecter" , id: "moon-box__selecter"
               %span
                 月
             .card-box-limit__year
               = fa_icon 'angle-down limit-select'
-              = select  ["19","20","21","22","23","24","25","26","27","28","29",],{}, class: "year-box__selecter"
+              = f.select :yearbox, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{}, class: "year-box__selecter", id: "year-box__selecter"
               %span
                 年
           .card-box-secrity
@@ -272,7 +272,7 @@
             %span.card-box-com
               必須
               %br
-            %input.cardbox-input{placeholder: "カード背面4桁もしくは3桁の番号", type: "text"}
+            = f.text_field :cardbox_input_security, class: "cardbox-input-security", id: "cardbox-input-security", placeholder: "カード背面4桁もしくは3桁の番号", type: "text"
             .card-box-secrity__link
               .card-box-secrity__link__question
                 ?
@@ -280,7 +280,7 @@
                 カード裏面の番号とは？
           .identification-registration-btn
             次へ進む
-            
+          #card
     = render partial: "users/signup_footer"
 
   -# 6ページ目
@@ -316,6 +316,6 @@
           .sign-up__complete__body__content__form-group
             ありがとうございます。
             %br 会員登録が完了しました。
-          = f.submit "メルカリをはじめる", class:"sign-up__complete__body__content__next-btn"
-
+            #card_token
+          = f.submit "メルカリをはじめる", class:"sign-up__complete__body__content__next-btn", id:"sign-up__complete__body__content__next-btn"
     = render partial: "users/signup_footer"

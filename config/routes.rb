@@ -26,6 +26,17 @@ Rails.application.routes.draw do
       get 'category/:category_id' => 'products#all_categories', as: "category" 
     end
   end
-  resources :sellers
+  resources :sellers, only: [:create, :show] do
+    member do
+      post 'pay' ,to: 'sellers#pay' 
+    end
+  end
+
   resources :identifications
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'delete', to: 'card#delete'
+    end
+  end
 end

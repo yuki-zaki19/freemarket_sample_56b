@@ -11,5 +11,6 @@ class User < ApplicationRecord
   # has_many :evaluation
   has_one :idntification
   # belongs_to :buyer
+  has_many :cards
          
 end

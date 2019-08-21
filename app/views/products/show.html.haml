@@ -62,7 +62,8 @@
           = @product.burden.name
       .product__details-buy-btn
         - unless current_user.id == @product.user_id
-          %button.buy-btn 購入する
+          = link_to seller_path(@product.id), method: :get do
+            %button.buy-btn 購入する
       .product__details-description
         .product__details-description-inner
           = @product.explain
