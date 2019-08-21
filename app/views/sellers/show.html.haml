@@ -14,16 +14,17 @@
         .buy-comfirm__buy__inner__item__name
           %p たまご
       .buy-comfirm__buy__inner__subtotal-price
-        ¥2,000
+        = @product.price
         .buy-comfirm__buy__inner__subtotal-price__shipping-fee
           %p 送料込み
       .buy-comfirm__buy__inner__total-price
         .buy-comfirm__buy__inner__total-price__cell
           支払い金額
         .buy-comfirm__buy__inner__total-price__cell
-          %p ¥2,000
-      %button.buy-comfirm__buy__inner__buy-btn
-        購入する
+          = @product.price
+      = link_to pay_seller_path(@product.id), method: :post do
+        %button.buy-comfirm__buy__inner__buy-btn
+          購入する
   .buy-comfirm__delivery
     .buy-comfirm__delivery__inner
       %h3 配送先
@@ -36,9 +37,14 @@
     .buy-comfirm__pay-method__inner
       %h3 支払い方法
       .buy-comfirm__pay-method__inner__info
-        **** **** 1111
-        %br 01/23
-        %br visa
+        - if @default_card_information.blank?
+          %br /
+        - else
+          -#以下カード情報を表示
+          = "**** **** **** " + @default_card_information.last4
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
       .buy-comfirm__pay-method__inner__edit-btn
         = link_to "変更する　>", "seller_path", method: :get  
 .product-contents

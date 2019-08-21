@@ -12,6 +12,8 @@ class User < ApplicationRecord
   # has_many :evaluation
   has_one :idntification
   # belongs_to :buyer
+  has_many :cards
+         
   has_many :sns_credentials, dependent: :destroy
 
     def self.find_for_oauth(auth)
