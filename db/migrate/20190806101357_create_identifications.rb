@@ -7,6 +7,12 @@ class CreateIdentifications < ActiveRecord::Migration[5.2]
       t.string     :city
       t.string     :address
       t.string     :building
+      t.string     :first_name
+      t.string     :last_name
+      t.string     :first_name_kana
+      t.string     :last_name_kana
+      t.string     :phone_number
+      t.date       :birthday
       t.timestamps
     end
   end
