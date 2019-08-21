@@ -12,14 +12,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :first_name, null: false
       t.string  :last_name_kana, null: false
       t.string  :first_name_kana,null: false
+      t.integer :postal_code, null: false
       t.string  :prefecture, null: false
       t.string  :city, null: false
       t.string  :address, null: false
       t.string  :building, null: false
-      t.string  :icon
-      t.date    :birthday, null: false
-      t.integer :phone_number
-      t.integer :postal_code, null: false
+      t.string  :phone_number
+      t.text    :comment
+      t.string  :uid
+      t.string  :provider
 
       ## Recoverable
       t.string   :reset_password_token
@@ -29,11 +30,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       # Trackable
-      t.integer  :sign_in_count, default: 0, null: false
-      t.datetime :current_sign_in_at
-      t.datetime :last_sign_in_at
-      t.string   :current_sign_in_ip
-      t.string   :last_sign_in_ip
+      # t.integer  :sign_in_count, default: 0, null: false
+      # t.datetime :current_sign_in_at
+      # t.datetime :last_sign_in_at
+      # t.string   :current_sign_in_ip
+      # t.string   :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token
