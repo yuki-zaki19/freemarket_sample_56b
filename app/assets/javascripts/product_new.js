@@ -154,7 +154,6 @@ $(document).on('turbolinks:load', function() {
     }else{
       $(".upload-dropbox").css('display','none');
     }
-
   })
   
 
