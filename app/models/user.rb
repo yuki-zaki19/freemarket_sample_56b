@@ -15,8 +15,34 @@ class User < ApplicationRecord
   has_many :cards
   has_many :sns_credentials, dependent: :destroy
 
-  def self.find_for_oauth(auth)
-    #find_for_oauth(auth)を定義している。
-    binding.pry
-  end
+  # def self.find_for_oauth(auth)
+  #   #find_for_oauth(auth)を定義している。
+  #   # uid = auth.uid
+  #   # provider = auth.provider
+  #   # nickname = auth.info.name 
+  #   # email = auth.info.email
+  #   # snscredential = SnsCredential.where(uid: uid, provider: provider).first
+  #   # binding.pry
+  #   # #Userテーブルのuid: auth.uid, provider: auth.providerカラムの初めの値を取得しuserにいれている。
+  #   # if snscredential.present?
+  #   #   user = User.where(uid: uid, provider: provider, email: auth.info.email).first
+  #   #   binding.pry
+  #   # else 
+  #   #   user = User.create(
+  #   #     nickname: auth.info.name,
+  #   #     email:    auth.info.email,
+  #   #     uid: uid,
+  #   #     provider: provider,
+  #   #     password: Devise.friendly_token[0, 20],
+  #   #     telephone: ""
+  #   #     )
+  #   #   SnsCredential.create(
+  #   #     uid: uid,
+  #   #     provider: provider,
+  #   #     user_id: user.id
+  #   #     )
+
+  # #   end
+  # end
+
 end

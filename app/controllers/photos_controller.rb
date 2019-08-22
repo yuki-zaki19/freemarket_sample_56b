@@ -12,8 +12,9 @@ class PhotosController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save!
       @identification = Identification.new(indif_params)
-      @snscredential = SnsCredential.new(uid: auth.uid, provider: auth.provider, user_id: user.id)
-      if @identification.save
+
+      @sns_credential = SnsCredential.new(uid: @user.uid, provider: @user.provider, user_id: @user.id)
+      if @identification.save == @sns_credential.save
         sign_in @user
         redirect_to products_path
       else
@@ -54,4 +55,5 @@ class PhotosController < Devise::RegistrationsController
     @indif = {}
     @indif.merge(last_name: @date["last_name2"], first_name: @date["first_name2"], last_name_kana: @date["last_name_kana2"], first_name_kana: @date["first_name_kana2"],phone_number: @date["phone_number2"], birthday: @birthday.to_s,user_id:@user.id)
   end
+
 end
