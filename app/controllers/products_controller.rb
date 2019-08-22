@@ -7,21 +7,24 @@ class ProductsController < ApplicationController
     @parents = Category.where(ancestry:  nil)
     @products = Product.all
 
-    @ladys_products = Product.where("category_id <= ?", 199).order('created_at DESC').limit(4)
-    @mens_products = Product.where("category_id >= ?", 200).where("category_id <= ?", 345).order('created_at DESC').limit(4)
-    @babys_products = Product.where("category_id >= ?", 346).where("category_id <= ?", 480).order('created_at DESC').limit(4)
-    @beauties_products = Product.where("category_id >= ?", 798).where("category_id <= ?", 897).order('created_at DESC').limit(4)
+    @ladys_products = Product.where("category_id <= ?", 199).where(status:'1').order('created_at DESC').limit(4)
+    @mens_products = Product.where("category_id >= ?", 200).where("category_id <= ?", 345).where(status:'1').order('created_at DESC').limit(4)
+    @babys_products = Product.where("category_id >= ?", 346).where("category_id <= ?", 480).where(status:'1').order('created_at DESC').limit(4)
+    @beauties_products = Product.where("category_id >= ?", 798).where("category_id <= ?", 897).where(status:'1').order('created_at DESC').limit(4)
 
-    @chanel = Product.where(brand: "シャネル").order('created_at DESC').limit(4)
-    @vuitton = Product.where(brand: "ルイ ヴィトン").order('created_at DESC').limit(4)
-    @nike = Product.where(brand: "ナイキ").order('created_at DESC').limit(4)
-    @supreme = Product.where(brand: "シュプリーム").order('created_at DESC').limit(4)
+    @chanel = Product.where(brand: "シャネル").where(status:'1').order('created_at DESC').limit(4)
+    @vuitton = Product.where(brand: "ルイ ヴィトン").where(status:'1').order('created_at DESC').limit(4)
+    @nike = Product.where(brand: "ナイキ").where(status:'1').order('created_at DESC').limit(4)
+    @supreme = Product.where(brand: "シュプリーム").where(status:'1').order('created_at DESC').limit(4)
   end
 
   def show
     @my_products = Product.where(user_id: @product.user_id).where.not(id: params[:id]).order('created_at DESC').limit(6)
     @brand = Product.where(brand: @product.brand).where.not(id: params[:id]).order('created_at DESC').limit(6)
     @images = @product.images
+    @category = Category.find(@product.category_id)
+    @category2 = Category.find(@product.child_category_id)
+    @category3 = Category.find(@product.grandchild_category_id)
   end
 
   def all_categories
@@ -72,29 +75,37 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.destroy
-    redirect_to :root
+    if current_user.id == @product.user_id
+      if @product.destroy
+      redirect_to :root
+      else
+        render :destroy
+      end
     else
-      render :destroy
+      redirect_to :root
     end
   end
 
   def edit
-    parent_category_id = Category.find(@product.category_id)
-    child_category_id = Category.find(@product.child_category_id)
-    grandchild_category_id = Category.find(@product.grandchild_category_id)
-    
-    @parent_category_array =  ["---"]
-    Category.where(ancestry: nil).each do |parent|
-    @parent_category_array << [parent.name,parent.id]
-    end
-    @child_category_array =  ["---"]
-    Category.where(ancestry: "#{parent_category_id.id}").each do |parent|
-    @child_category_array << [parent.name,parent.id]
-    end
-    @grandchild_category_array =  ["---"]
-    Category.where(ancestry: "#{parent_category_id.id}" + "/" + "#{child_category_id.id}").each do |parent|
-    @grandchild_category_array << [parent.name,parent.id]
+    if current_user.id == @product.user_id
+      parent_category_id = Category.find(@product.category_id)
+      child_category_id = Category.find(@product.child_category_id)
+      grandchild_category_id = Category.find(@product.grandchild_category_id)
+      
+      @parent_category_array =  ["---"]
+      Category.where(ancestry: nil).each do |parent|
+      @parent_category_array << [parent.name,parent.id]
+      end
+      @child_category_array =  ["---"]
+      Category.where(ancestry: "#{parent_category_id.id}").each do |parent|
+      @child_category_array << [parent.name,parent.id]
+      end
+      @grandchild_category_array =  ["---"]
+      Category.where(ancestry: "#{parent_category_id.id}" + "/" + "#{child_category_id.id}").each do |parent|
+      @grandchild_category_array << [parent.name,parent.id]
+      end
+    else
+      redirect_to :root
     end
   end
 
