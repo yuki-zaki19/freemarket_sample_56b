@@ -1,3 +1,8 @@
+.product-contents
+  %header.product-header
+    %h1
+      = link_to('#', {}) do
+        = image_tag "mercari_logo_horizontal.png", :class => "header-image"
 .sign-in
   .sign-in__main
     .sign-in__main__header
@@ -12,11 +17,29 @@
         %i.fa.fa-google
           =link_to "Googleでログイン",user_google_oauth2_omniauth_authorize_path,method: :post
     .sign-in__main__footer
-      .sign-in__main__footer__form
-        %input{name:"email", placeholder: "メールアドレス", typ:"email", value: ""}/
-      .sign-in__main__footer__form
-        %input{name: "password", placeholder:"パスワード", type:"password", value:""}/
-      .sign-in__main__footer__form
-        %button{type: "submit"} ログイン
-      .sign-in__main__footer__form
-        =link_to "パスワードをお忘れの方"
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .sign-in__main__footer__form
+          = f.email_field :email, autofocus: true, placeholder: "メールアドレス"
+        .sign-in__main__footer__form
+          = f.password_field :password, autocomplete: "off", placeholder:"パスワード"
+        .sign-in__main__footer__form
+          = f.submit "ログイン", class: 'sign-in-btn'
+        .sign-in__main__footer__form
+          =link_to "パスワードをお忘れの方"
+.product-contents
+  %footer.product-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to('#', {}) do
+            プライバシーポリシー
+        %li
+          = link_to('#', {}) do
+            メルカリ利用規約
+        %li
+          = link_to('#', {}) do
+            特定商取引に関する表記
+    = link_to('#', class:'bottom-image') do
+      = image_tag(src= "logo-gray.svg")
+    %p
+      %small© 2019 Mercari

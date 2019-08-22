@@ -13,23 +13,36 @@ class User < ApplicationRecord
   has_one :idntification
   # belongs_to :buyer
   has_many :cards
-         
   has_many :sns_credentials, dependent: :destroy
 
-    def self.find_for_oauth(auth)
-      user = User.where(uid: auth.uid, provider: auth.provider).first
-    end
+  def self.find_for_oauth(auth)
+    #find_for_oauth(auth)を定義している。
+    # uid = auth.uid
+    # provider = auth.provider
+    # nickname = auth.info.name 
+    # email = auth.info.email
+    # snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    # binding.pry
+    # #Userテーブルのuid: auth.uid, provider: auth.providerカラムの初めの値を取得しuserにいれている。
+    # if snscredential.present?
+    #   user = User.where(uid: uid, provider: provider, email: auth.info.email).first
+    #   binding.pry
+    # else 
+    #   user = User.create(
+    #     nickname: auth.info.name,
+    #     email:    auth.info.email,
+    #     uid: uid,
+    #     provider: provider,
+    #     password: Devise.friendly_token[0, 20],
+    #     telephone: ""
+    #     )
+    #   SnsCredential.create(
+    #     uid: uid,
+    #     provider: provider,
+    #     user_id: user.id
+    #     )
+        binding.pry
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"] || data = session["devise.google_data"] 
-        user.nickname = data["name"] if user.nickname.blank?
-        user.email = data["email"] if user.email.blank?
-        user.provider = data["provider"] if user.provider.blank?
-        user.uid = data["uid"] if user.uid.blank?
-        user.password = Devise.friendly_token[0,20] if user.password.blank?
-      end
-    end
-      # SnsCredential.create(uid: uid,provider: provider,user_id: user.id)
+  #   end
   end
 end

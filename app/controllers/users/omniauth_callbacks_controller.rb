@@ -19,30 +19,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #envでomniauth.authという環境変数を管理している。
     if @user.present?
       #@userに値があれば以下の処理が行われる。
+      user = User.where(uid: uid, provider: provider, email: auth.info.email).first
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
       redirect_to :root
     else
       #なければ以下の処理が行われる。
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
-      @user= User.new()
-        if data = session["devise.#{provider}_data"]["extra"]["raw_info"]
-          @user.nickname = data["name"] if @user.nickname.blank?
-          @user.email = data["email"] if @user.email.blank?
-          @user.provider = "#{provider}" if @user.provider.blank?
-          @user.uid = data["sub"] if @user.uid.blank?
-          @user.password = Devise.friendly_token[0,20] if @user.password.blank?
+      user = User.new()
+      if data = session["devise.#{provider}_data"]["extra"]["raw_info"]
+        @user.nickname = data["name"] if @user.nickname.blank?
+        @user.email = data["email"] if @user.email.blank?
+        @user.provider = "#{provider}" if @user.provider.blank?
+        @user.uid = data["sub"] if @user.uid.blank?
+        @user.password = Devise.friendly_token[0,20] if @user.password.blank?
         render 'devise/registrations/new'
-  end
-
-  # def self.new_with_session(params, session)
-  #   super.tap do |user|
-  #     if data = session["devise.facebook_data"] || data = session["devise.google_data"] 
-  #       user.nickname = data["name"] if user.nickname.blank?
-  #       user.email = data["email"] if user.email.blank?
-  #       user.provider = data["provider"] if user.provider.blank?
-  #       user.uid = data["uid"] if user.uid.blank?
-  #       user.password = Devise.friendly_token[0,20] if user.password.blank?
-  #     end
+        binding.pry
+      end
     end
   end
 end
