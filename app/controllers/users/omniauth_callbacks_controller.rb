@@ -17,14 +17,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #@userにUser.find_for_oauthを代入。
     #requestでfacebook,googleのアカウント情報を取得している。
     #envでomniauth.authという環境変数を管理している。
+    binding.pry
     if @user.present?
       #@userに値があれば以下の処理が行われる。
+
       # user = User.where(uid: uid, provider: provider, email: auth.info.email).first
       # flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+
       redirect_to :root
     else
       #なければ以下の処理が行われる。
       session["devise.#{provider}_data"] = request.env['omniauth.auth']
+
       @user = User.new()
       @sns_credential = SnsCredential.new()
       if data = session["devise.#{provider}_data"]["extra"]["raw_info"]
@@ -35,6 +39,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user.password = Devise.friendly_token[0,20] if @user.password.blank?
         render 'devise/registrations/new'
       end
+
     end
   end
 end

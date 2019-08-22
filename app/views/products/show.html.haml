@@ -26,9 +26,17 @@
                 = @user.nickname
           %tr
             %th カテゴリー
-            %td
-              = link_to category_products_path(category_id: @product.category_id ), method: :get do
-                = @product.category_id
+            %td.category_outshow
+              = link_to category_products_path(category_id: @category.id ), method: :get do
+                = @category.name
+              %br
+              = link_to '#', method: :get do
+                >
+                = @category2.name
+                %br
+              = link_to '#', method: :get do
+                >
+                = @category3.name
           %tr
             %th ブランド
             %td

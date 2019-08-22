@@ -12,6 +12,7 @@ class PhotosController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save!
       @identification = Identification.new(indif_params)
+
       @sns_credential = SnsCredential.new(uid: @user.uid, provider: @user.provider, user_id: @user.id)
       if @identification.save == @sns_credential.save
         sign_in @user

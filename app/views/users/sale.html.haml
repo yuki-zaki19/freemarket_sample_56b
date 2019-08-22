@@ -12,8 +12,27 @@
           = link_to '売却済み','/users/trade',class: 'info-tab__btm'
         .info-content
           .info-content__details
-            .info-content__details__none
-              取引中の商品がありません
+            - if @my_products[0]
+              - @my_products.each do |my_product|
+                - if my_product.images[0]
+                  = link_to my_product_user_path(my_product.id) do
+                    .info-content__details__my-item-list
+                      .info-content__details__my-item-list__image
+                        = image_tag(my_product.images[0].variant(resize: "48x48"))
+                      .info-content__details__my-item-list__content
+                        .info-content__details__my-item-list__content__name
+                          = my_product.name
+                        .info-tcontent__details__my-item-list_content__detail
+                          .info-content__details__my-item-list__content__detail--like
+                            ♡
+                          .info-content__details__my-item-list__content__detail--comment
+                            💬
+                          .info-content__details__my-item-list__content__detail--status 
+                            出品中                   
+                      .info-content__details__my-item-list__right-arrow
+            - else
+              .info-content__details__none
+                取引中の商品がありません
     .main__user-bar
       .side-nav
         %ul.user-list

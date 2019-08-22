@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product, only:[:show, :pay]
+  before_action :set_product, only:[:show, :pay, :update]
 
   require 'payjp'
 
@@ -8,7 +8,7 @@ class SellersController < ApplicationController
     @user = User.find(@product.user_id)
     card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
-  if card.blank?
+  if card.blank? || current_user.id == @product.user_id
     #登録された情報がない場合にトップ画面に移動
     redirect_to root_path
   else
@@ -19,6 +19,12 @@ class SellersController < ApplicationController
     @default_card_information = customer.cards.retrieve(card.card_id)
   end
 
+  end
+
+  def update
+    @product.update(status: '2')
+
+    redirect_to root_path #トップ画面に移動（完了画面を作ればそちらの方がベター）
   end
 
   def new
@@ -35,8 +41,8 @@ class SellersController < ApplicationController
     amount: @product.price, #支払金額を入力
     customer: card.customer_id, #顧客ID
     currency: 'jpy', #日本円
-  )
-  redirect_to root_path #トップ画面に移動（完了画面を作ればそちらの方がベター）
+    )
+  update
   end
 
   private
