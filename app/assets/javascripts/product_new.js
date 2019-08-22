@@ -222,6 +222,15 @@ $(document).on('turbolinks:load', function() {
       tagOutputProfit.append(profit)
     }
   });
+  // 画像がなければアラート
+  $(".btn-exhibition").on("click", function(e){
+    var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+    if( submitFileNumber == 0){
+      e.preventDefault();
+      alert("ファイルがアップロードされてません。アップロードしてください。");
+    }
+  });
+
 });
 
 
