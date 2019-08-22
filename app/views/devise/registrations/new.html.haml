@@ -13,6 +13,8 @@
             ニックネーム
           .required-field 必須
           = f.text_field :nickname, class: "user-info__content__form", id: "nickname", autofocus: true, placeholder: "例）メルカリ太郎", type: "text"
+          = f.hidden_field :uid
+          = f.hidden_field :provider
         .user-info__content__form-group
           .user-info__content__title
             メールアドレス
