@@ -180,8 +180,6 @@ $(function() {
       $('#brand-label').remove();
       $('#form_required-brand').remove();
       $('.select-form-brand-box').remove();
-      $('#form-brand').remove();
-      $('#select-form-brand').remove();
     }
   });
 

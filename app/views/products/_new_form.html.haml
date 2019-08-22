@@ -20,13 +20,13 @@
               最大10枚までアップロードできます
             %div
               #insert-image-box
-              .upload-dropbox
-                %label
-                  = f.file_field :images, type: 'file', id: "display-none", multiple: true 
-                  .image_preview
-                    ドラッグアンドドロップ
-                    %br
-                      またはクリックしてファイルをアップロード
+                .upload-dropbox#upload-dropbox
+                  %label
+                    = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                    .image_preview
+                      ドラッグアンドドロップ
+                      %br
+                        またはクリックしてファイルをアップロード
           .exhibition-content__form__explain
             .product-name-form
               %label
@@ -77,13 +77,22 @@
               
               #select-form-size
                 - if @product.size_id
-                  .select-form#product_size_id
+                  .select-form-size-box#product_size_id
                     = fa_icon 'angle-down'
                     = f.collection_select :size_id,Size.all, :id, :name,{},class: 'select-list'
 
               -# ブランド
               #form-brand
+                - if @product.size_id
+                  %label#brand-label
+                    サイズ
+                    %span#form_required-brand
+                      任意
+
               #select-form-brand
+                - if @product.size_id
+                  .select-form-brand-box
+                    = f.text_field :brand, class: 'input-brand', placeholder: "例)NIKE", name: 'product[brand]'
 
               .form-state 
                 %label
@@ -195,7 +204,6 @@
               = f.submit "出品する",class: "btn-exhibition" 
               = link_to('#', class:'back-exhibition') do
                 もどる
-
 
   %footer.product-footer
     %nav

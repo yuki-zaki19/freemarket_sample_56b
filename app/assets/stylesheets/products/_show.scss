@@ -94,6 +94,29 @@ body {
     float: left;
     text-align: center;
     vertical-align: center;
+    &__all{
+      height:300px;
+      width: 3000px;
+      left:0px;
+      overflow: hidden;
+      position: relative;
+      &__selected{
+        display: inline-block;
+        float: left;
+      }
+    }
+    &__all-img-box{
+      line-height: 0;
+      &__dot{
+        width: 60px;
+        height: 60px;
+        max-height: none;
+        display: inline-block;
+        overflow: hidden;
+        float: left;
+        opacity: .4;
+      }
+    }
   }
   &__details-table{
     float: right;

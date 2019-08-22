@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
   def show
     @my_products = Product.where(user_id: @product.user_id).where.not(id: params[:id]).order('created_at DESC').limit(6)
     @brand = Product.where(brand: @product.brand).where.not(id: params[:id]).order('created_at DESC').limit(6)
+    @images = @product.images
   end
 
   def all_categories
