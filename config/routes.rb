@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       get 'category/:category_id' => 'products#all_categories', as: "category" 
     end
   end
-  resources :sellers, only: [:create, :show] do
+  resources :sellers, only: [:create, :show, :update] do
     member do
       post 'pay' ,to: 'sellers#pay' 
     end

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def exhibit
-    @my_products = Product.includes(:user).where(user_id: current_user.id)
+    @my_products = Product.includes(:user).where(user_id: current_user.id).where(status:'1')
   end
 
   def my_product
@@ -32,9 +32,11 @@ class UsersController < ApplicationController
   end
 
   def trade
+    @my_products = Product.includes(:user).where(user_id: current_user.id).where(status:'3')
   end
 
   def sale
+    @my_products = Product.includes(:user).where(user_id: current_user.id).where(status:'2')
   end
 
   def news
