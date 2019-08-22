@@ -54,7 +54,7 @@
 
     .product__details-price-box
       .product__details-price
-        = @product.price
+        = @product.price.to_s(:delimited)
       .product__details-price-tax
         (税込)
       .product__details-price-shipping-fee

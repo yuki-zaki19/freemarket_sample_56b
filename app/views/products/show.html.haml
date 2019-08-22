@@ -8,7 +8,16 @@
         = @product.name
       .product__details-main-content.clearfix
         .product__details-photo
-          = image_tag(@product.images[0].variant(resize: "300x300"))
+          .product__details-photo__all
+            - @images.each do |image|
+              .product__details-photo__all__selected
+                = image_tag(image.variant(resize: "300x300"))
+          .product__details-photo__all-img-box
+            - @images.each do |image|
+              .product__details-photo__all-img-box__dot
+                = image_tag(image.variant(resize: "60x60"))
+
+
         %table.product__details-table
           %tr
             %th 出品者
@@ -51,19 +60,18 @@
             %td
               = @product.leadtime.name
 
-
-
       .product__details-price-box
         .product__details-price
-          = @product.price
+          = @product.price.to_s(:delimited)
         .product__details-price-tax
           (税込)
         .product__details-price-shipping-fee
           = @product.burden.name
       .product__details-buy-btn
         - unless current_user.id == @product.user_id
-          = link_to seller_path(@product.id), method: :get do
-            %button.buy-btn 購入する
+          .buy-btn
+            = link_to "購入する", seller_path(@product.id), method: :get
+
       .product__details-description
         .product__details-description-inner
           = @product.explain
@@ -118,7 +126,7 @@
                     = my_product.name
                   .product__other-items-box--body__num
                     .product__other-items-box--body__num__price
-                      =my_product.price
+                      =my_product.price.to_s(:delimited)
                     .product__other-items-box--body__num__like
                       ♡
 
@@ -137,7 +145,7 @@
                     = brand.name
                   .product__other-items-box--body__num
                     .product__other-items-box--body__num__price
-                      =brand.price
+                      =brand.price.to_s(:delimited)
                     .product__other-items-box--body__num__like
                       ♡
 

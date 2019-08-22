@@ -10,18 +10,21 @@
     .buy-comfirm__buy__inner
       .buy-comfirm__buy__inner__item
         .buy-comfirm__buy__inner__item__photo
-          写真写真写真写真写真写真写真写真写真
+          = image_tag(@product.images[0].variant(resize: "64x120"))
         .buy-comfirm__buy__inner__item__name
-          %p たまご
+          %p 
+            = @product.name
       .buy-comfirm__buy__inner__subtotal-price
-        = @product.price
+        = @product.price.to_s(:delimited)
         .buy-comfirm__buy__inner__subtotal-price__shipping-fee
-          %p 送料込み
+          %p 
+            = @product.burden.name
       .buy-comfirm__buy__inner__total-price
         .buy-comfirm__buy__inner__total-price__cell
           支払い金額
         .buy-comfirm__buy__inner__total-price__cell
-          = @product.price
+          ¥
+          = @product.price.to_s(:delimited)
       = link_to pay_seller_path(@product.id), method: :post do
         %button.buy-comfirm__buy__inner__buy-btn
           購入する
@@ -29,8 +32,12 @@
     .buy-comfirm__delivery__inner
       %h3 配送先
       .buy-comfirm__delivery__inner__address
-        〒100-0001
-        %br 東京都千代田区千代田1番1号
+        〒
+        =@user.postal_code
+        %br 
+          = @user.prefecture
+          = @user.city
+          = @user.address
       .buy-comfirm__delivery__inner__edit-btn
         = link_to "変更する　>", "seller_path", method: :get  
   .buy-comfirm__pay-method

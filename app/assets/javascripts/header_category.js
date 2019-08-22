@@ -166,25 +166,23 @@ $(document).on('turbolinks:load', function() {
         $('#form_required-brand').remove();
         $('.select-form-brand-box').remove();
 
-        var addLABEL = `<label id = brand-label>
-                          ブランド
-                        </label>
-                          <span id = "form_required-brand">
-                            任意
-                          </span>`
-                      
-        var addFORM = `<div class = "select-form-brand-box">
-                          <input class = "input-brand", placeholder = "例)NIKE" name = 'product[brand]'>
-                      </div>`
-        form_brand.append(addLABEL);
-        select_form_brand.append(addFORM);
-      }else{
-        $('#brand-label').remove();
-        $('#form_required-brand').remove();
-        $('.select-form-brand-box').remove();
-        $('#form-brand').remove();
-        $('#select-form-brand').remove();
-      }
-    });
+      var addLABEL = `<label id = brand-label>
+                        ブランド
+                      </label>
+                        <span id = "form_required-brand">
+                          任意
+                        </span>`
+                    
+      var addFORM = `<div class = "select-form-brand-box">
+                        <input class = "input-brand", placeholder = "例)NIKE" name = 'product[brand]'>
+                    </div>`
+      form_brand.append(addLABEL);
+      select_form_brand.append(addFORM);
+    }else{
+      $('#brand-label').remove();
+      $('#form_required-brand').remove();
+      $('.select-form-brand-box').remove();
+    }
+
   });
 });

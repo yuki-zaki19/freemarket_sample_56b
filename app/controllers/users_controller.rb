@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def my_product
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:id])
     @user = User.find(@product.user_id )
   end
 

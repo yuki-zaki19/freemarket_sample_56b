@@ -7,7 +7,6 @@
   width: 700px;
   margin: 0 auto;
   background-color: white;
-
   &__header{
     padding: 16px;
     font-size: 22px;
@@ -26,7 +25,7 @@
       &__photo{
         width: 64px;
         max-height: 148px;
-        background-color: bisque;
+        background-color:white;
         display: inline-block;
 
       }
@@ -49,6 +48,9 @@
           display: inline-block;
           color: #333;
         }
+      }
+      &__subtotal-price::before{
+        content: "¥"
       }
       &__total-price{
         display: table;
