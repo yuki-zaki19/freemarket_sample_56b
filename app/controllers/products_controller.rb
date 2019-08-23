@@ -88,6 +88,7 @@ class ProductsController < ApplicationController
 
   def edit
     if current_user.id == @product.user_id
+      @images = @product.images
       parent_category_id = Category.find(@product.category_id)
       child_category_id = Category.find(@product.child_category_id)
       grandchild_category_id = Category.find(@product.grandchild_category_id)
