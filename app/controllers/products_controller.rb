@@ -136,7 +136,11 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    if params[:id] == "0"
+      redirect_to :root
+    else
+      @product = Product.find(params[:id])
+    end
   end
 
   def set_user

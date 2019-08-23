@@ -101,14 +101,17 @@
         %button.message-btn コメントする
     .product__link-prev-next.clearfix
       .product__link-prev
-        - prev = @product.id - 1
-        = link_to product_path(prev) do
-          前のページ
-          
+        - if @product.previous.present?
+          = link_to product_path(@product.previous) do
+            <
+            = @product.previous.name
+
       .product__link-next
-        - nex = @product.id + 1
-        = link_to product_path(nex) do
-          次のページ
+        - if @product.next.present?
+          = link_to product_path(@product.next) do
+            = @product.next.name
+            >
+
     .product__sns
       .product__sns-box
         %li.product__sns-link
