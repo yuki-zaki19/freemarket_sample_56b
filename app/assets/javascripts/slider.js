@@ -1,11 +1,13 @@
 $(document).on('turbolinks:load', function() { 
   // 初期設定
-  window.onload = function () {
+  $(document).ready( function(){
     $("[data-small-photo-id='0']").css("opacity","1")
     $("[data-big-photo-id='0']").css("opacity","1")
-  }
+  })
  // マウスが乗った際に発火
   $(".product__details-photo__all-img-box__dot").on("mouseenter", function() {
+    // 初期設定解除
+    $("[data-small-photo-id='0']").css("opacity",".4")
     // カスタムデータ属性の取得
     var small_id = $(this).data("small-photo-id")
     // 取得したidの値に応じて左へスライド
