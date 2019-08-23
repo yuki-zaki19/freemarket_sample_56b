@@ -94,6 +94,7 @@ body {
     float: left;
     text-align: center;
     vertical-align: center;
+    overflow: hidden;
     &__all{
       height:300px;
       width: 3000px;
@@ -103,6 +104,7 @@ body {
       &__selected{
         display: inline-block;
         float: left;
+        opacity: 0;
       }
     }
     &__all-img-box{
