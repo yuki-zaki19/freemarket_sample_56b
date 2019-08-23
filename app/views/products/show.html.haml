@@ -79,7 +79,7 @@
       .product__details-buy-btn
         - unless user_signed_in? && current_user.id == @product.user_id 
           .buy-btn
-            = link_to "購入画面に進む", seller_path(@product.id), method: :get
+            = link_to "購入画面に進む", seller_path(@product.id), method: :get, class: "buy-btn-comfirm"
 
       .product__details-description
         .product__details-description-inner
