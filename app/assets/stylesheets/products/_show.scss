@@ -94,6 +94,7 @@ body {
     float: left;
     text-align: center;
     vertical-align: center;
+    overflow: hidden;
     &__all{
       height:300px;
       width: 3000px;
@@ -103,6 +104,7 @@ body {
       &__selected{
         display: inline-block;
         float: left;
+        opacity: 0;
       }
     }
     &__all-img-box{
@@ -179,11 +181,17 @@ body {
     line-height: 60px;
     font-weight: 600;
     font-size: 24px;
+    position: relative;
+  
+  .buy-btn-comfirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
   }
-  &__details-buy-btn a{
-    text-decoration-line: none;
-    color: #fff
-  }
+}
 
   &__details-description{
     padding: 32px 0 0 0;

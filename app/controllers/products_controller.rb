@@ -88,6 +88,7 @@ class ProductsController < ApplicationController
 
   def edit
     if current_user.id == @product.user_id
+      @images = @product.images
       parent_category_id = Category.find(@product.category_id)
       child_category_id = Category.find(@product.child_category_id)
       grandchild_category_id = Category.find(@product.grandchild_category_id)
@@ -136,7 +137,11 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    if params[:id] == "0"
+      redirect_to :root
+    else
+      @product = Product.find(params[:id])
+    end
   end
 
   def set_user

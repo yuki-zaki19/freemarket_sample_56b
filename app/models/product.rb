@@ -14,4 +14,16 @@ class Product < ApplicationRecord
   belongs_to_active_hash :leadtime
   belongs_to_active_hash :shipping
   belongs_to_active_hash :size
+
+
+  # 前へ、次へボタンの実装
+  def previous
+    user.products.order('created_at desc, id desc').where('created_at <= ? and id < ?', created_at, id).first
+  end
+
+  def next
+    user.products.order('created_at desc, id desc').where('created_at >= ? and id > ?', created_at, id).reverse.first
+  end
+
+
 end
