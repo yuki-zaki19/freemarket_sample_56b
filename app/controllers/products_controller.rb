@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def category_id_devided (a,b,c)
-    @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).order('created_at DESC')
+    @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).where(status:'1').order('created_at DESC')
     @category_name = c
   end
 

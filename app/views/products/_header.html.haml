@@ -14,6 +14,19 @@
           %li.header__inner__list__left__box__parent
             = link_to "カテゴリーから探す"
             %i.header__inner__list__left__box__parent__icon
+            %ul.header-category
+            - Category.where(ancestry: nil).each do |parent|
+              .header-category-list
+                = link_to parent.name, category_products_path(parent.id),class:"header-category-list-link"
+                %ul.header-category-child
+                  - parent.children.each do |child|
+                    .header-category-childlist
+                      = child.name
+                      %ul.header-category-grand
+                        - child.children.each do |grandchild|
+                          .header-category-grandlist
+                            =grandchild.name
+                    
           %li.header__inner__list__left__box__cousin
             = link_to "ブランドから探す"
             %i.header__inner__list__left__box__cousin__icon
