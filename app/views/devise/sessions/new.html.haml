@@ -12,7 +12,7 @@
     .sign-in__main__inner
       %button.sign-in__main__inner__facebook
         %i.fa.fa-facebook-official
-          =link_to "Facebookでログイン",user_facebook_omniauth_authorize_path,method: :post
+          =link_to "Facebookでログイン",user_facebook_omniauth_authorize_path,method: :post 
       %button.sign-in__main__inner__google
         %i.fa.fa-google
           =link_to "Googleでログイン",user_google_oauth2_omniauth_authorize_path,method: :post
