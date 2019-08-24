@@ -14,17 +14,4 @@ class User < ApplicationRecord
   # belongs_to :buyer
   has_many :cards
   has_many :sns_credentials, dependent: :destroy
-
-  # def self.find_for_oauth(auth)
-  #   #find_for_oauth(auth)を定義している。
-  #   uid = auth.uid
-  #   provider = auth.provider
-  #   nickname = auth.info.name 
-  #   email = auth.info.email
-  #   snscredential = SnsCredential.where(uid: uid, provider: provider).first
-  #   binding.pry
-  #   #Userテーブルのuid: auth.uid, provider: auth.providerカラムの初めの値を取得しuserにいれている。
-  #     user = User.where(uid: uid, provider: provider, email: auth.info.email).first
-  #     binding.pry
-  # end
 end

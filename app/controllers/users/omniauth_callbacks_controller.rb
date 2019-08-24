@@ -3,7 +3,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.where(uid: request.env["omniauth.auth"].uid)
-    binding.pry
     if @user.present?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "facebook"
       sign_in_and_redirect @user[0] 
@@ -18,7 +17,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user.uid = data["id"] if @user.uid.blank?
         @user.password = Devise.friendly_token[0,20] if @user.password.blank?
         render 'devise/registrations/new'
-        binding.pry
       end
     end
   end
