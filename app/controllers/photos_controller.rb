@@ -12,7 +12,6 @@ class PhotosController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save!
       @identification = Identification.new(indif_params)
-
       @sns_credential = SnsCredential.new(uid: @user.uid, provider: @user.provider, user_id: @user.id)
       if @identification.save == @sns_credential.save
         sign_in @user
@@ -46,7 +45,7 @@ class PhotosController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :prefecture, :city, :address, :building, :phone_number, :postal_code,:nickname, :password, :password_confirmation, :email, :uid, :provider)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :prefecture_id, :city, :address, :building, :phone_number, :postal_code,:nickname, :password, :password_confirmation, :email, :uid, :provider)
   end
 
   def indif_params

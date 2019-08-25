@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function() {
   //     for (var i = 0; i < files.length; i++) {
   //       (function() {
 
+
   //         var fr = new FileReader();
   //         fr.onload = function() {
   //           var div = document.createElement('div');
@@ -65,6 +66,7 @@ $(document).on('turbolinks:load', function() {
   //     alert("現在のファイル選択数："+fileNumber+"です。再度しなおしてください。");
   //   }
   // }, false);
+
 
   function initializeFiles() {
     // insert-image-boxの一番後ろに空の箱を挿入

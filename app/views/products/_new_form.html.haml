@@ -18,15 +18,46 @@
                 必須
             %p
               最大10枚までアップロードできます
-            %div
-              #insert-image-box
-                .upload-dropbox#upload-dropbox
+            
+            - if @images
+              .prev-image-content
+                .prev-image-content__image-box
+                  - @images.each.with_index(1) do |image,i|
+                    .prev-image-content__image-box__prev{"data-image-id": "#{i}"}
+                      .prev-image-content__image-box__prev__image
+                        = image_tag(image.variant(resize: "110x110"))
+                      .prev-image-content__image-box__prev__update
+                        .prev-image-content__image-box__prev__update--edit
+                          編集
+                        .prev-image-content__image-box__prev__update--delete
+                          = f.check_box :images
+                          = link_to "削除", image_delete_products_path(@product.id, image.id), method: :delete
+                .prev-image-content__upload-box
                   %label
                     = f.file_field :images, type: 'file', id: "display-none", multiple: true 
-                    .image_preview
+                    .prev-image-content__upload-box__image_preview
                       ドラッグアンドドロップ
                       %br
                         またはクリックしてファイルをアップロード
+                .prev-image-content__upload-box2
+                  %label
+                    = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                    .prev-image-content__upload-box2__image_preview2
+                      ドラッグアンドドロップ
+                      %br
+                        またはクリックしてファイルをアップロード
+
+            - else            
+              %div
+                #insert-image-box
+                  .upload-dropbox#upload-dropbox
+                    %label
+                      = f.file_field :images, type: 'file', id: "display-none", multiple: true 
+                      .image_preview
+                        ドラッグアンドドロップ
+                        %br
+                          またはクリックしてファイルをアップロード
+
           .exhibition-content__form__explain
             .product-name-form
               %label
@@ -221,3 +252,25 @@
       = image_tag(src= "logo-gray.svg")
     %p
       %small© 2019 Mercari
+
+-# 編集モーダル
+.edit_modal
+  .edit_modal__inner
+    .edit_modal__inner__header.clearfix
+      .edit_modal__inner__header--left
+        写真を切り取る
+      .edit_modal__inner__header--right
+        写真を変更する
+    .edit_modal__inner__content
+      .edit_modal__inner__content--image
+      .edit_modal__inner__content__range
+        .edit_modal__inner__content__range__left
+          📷
+        .edit_modal__inner__content__range__center
+        .edit_modal__inner__content__range__right
+          📷
+    .edit_modal__inner__btn
+      .edit_modal__inner__btn--cancel
+        キャンセル
+      .edit_modal__inner__btn--done
+        完了

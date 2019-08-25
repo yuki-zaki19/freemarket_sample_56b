@@ -9,13 +9,14 @@
       .product__details-main-content.clearfix
         .product__details-photo
           .product__details-photo__all
-            - @images.each do |image|
-              .product__details-photo__all__selected
+            - @images.each_with_index do |image,i|
+              .product__details-photo__all__selected{"data-big-photo-id": "#{i}"}
                 = image_tag(image.variant(resize: "300x300"))
+
           .product__details-photo__all-img-box
-            - @images.each do |image|
-              .product__details-photo__all-img-box__dot
-                = image_tag(image.variant(resize: "60x60"))
+            - @images.each_with_index do |image,i|
+              .product__details-photo__all-img-box__dot{"data-small-photo-id": "#{i}"}
+                = image_tag(image.variant(resize: "60x60"), id: "small_photo")
 
 
         %table.product__details-table
@@ -76,13 +77,14 @@
         .product__details-price-shipping-fee
           = @product.burden.name
       .product__details-buy-btn
-        - unless current_user.id == @product.user_id
+        - unless user_signed_in? && current_user.id == @product.user_id 
           .buy-btn
-            = link_to "購入する", seller_path(@product.id), method: :get
+            = link_to "購入画面に進む", seller_path(@product.id), method: :get, class: "buy-btn-comfirm"
 
       .product__details-description
         .product__details-description-inner
           = @product.explain
+          
       .product__details-btn.clearfix
         .product__details-btn-left
           .product__details-btn-left-like
@@ -100,14 +102,17 @@
         %button.message-btn コメントする
     .product__link-prev-next.clearfix
       .product__link-prev
-        - prev = @product.id - 1
-        = link_to product_path(prev) do
-          前のページ
-          
+        - if @product.previous.present?
+          = link_to product_path(@product.previous) do
+            <
+            = @product.previous.name
+
       .product__link-next
-        - nex = @product.id + 1
-        = link_to product_path(nex) do
-          次のページ
+        - if @product.next.present?
+          = link_to product_path(@product.next) do
+            = @product.next.name
+            >
+
     .product__sns
       .product__sns-box
         %li.product__sns-link
@@ -155,8 +160,4 @@
                     .product__other-items-box--body__num__price
                       =brand.price.to_s(:delimited)
                     .product__other-items-box--body__num__like
-                      ♡
-
-    .product__bottom
-      メルカリ＞＞たまご
 = render 'users/footer'

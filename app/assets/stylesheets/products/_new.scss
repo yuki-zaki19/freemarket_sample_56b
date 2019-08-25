@@ -78,16 +78,43 @@
             }
 
             div{
-              max-width: 620px;
-              display: flex;
-              flex-wrap: wrap;
+              // max-width: 620px;
+              // display: flex;
+              // flex-wrap: wrap;
               
               #insert-image-box{
                 margin-top: 16px;
                 width: 620px;
                 position: relative;
                 min-height: 160px;
-
+                &__prev{
+                  width: 114px;
+                  margin: 0 0 10px 10px;
+                  &__image{
+                    width: 114px;
+                    height: 114px;
+                  }
+                  &__update{
+                    font-size: 14px;
+                    width: 114px;
+                    color:$mercari-blue;
+                    &--edit{
+                      display: inline-block;
+                      width: 50%;
+                      background: #f5f5f5;
+                      line-height: 44px;
+                      text-align: center;
+                    }
+                    &--delete{
+                      display: inline-block;
+                      width: 50%;
+                      background: #f5f5f5;
+                      line-height: 44px;
+                      text-align: center;
+                    }
+                  }
+                }
+                
                 .upload-product{
                   height: 160px;
                   position: relative;
@@ -96,16 +123,13 @@
                   vertical-align: top;
                   margin: 0 2px 10px 2px;
                   background-color: $mercari_grey;
-
                   &__image{
                     height: 114px;
                     width: 116px;
                     text-align: center;
                   }
-                  
                   &__button{
                     width: 116px;
-
                     a.upload-product__button__edit{
                       color: $mercari-blue;
                       display: inline-block;
@@ -114,7 +138,6 @@
                       line-height: 37px;
                       text-align: center;
                     }
-
                     a{
                       border-left: 1px solid #eee;
                       color: $mercari-blue;
@@ -128,6 +151,7 @@
                   }
                 }
               }
+            
 
               
               .upload-dropbox{

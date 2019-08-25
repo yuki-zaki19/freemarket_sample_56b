@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def category_id_devided (a,b,c)
-    @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).order('created_at DESC')
+    @category_products = Product.where("category_id >= ?", a).where("category_id <= ?", b).where(status:'1').order('created_at DESC')
     @category_name = c
   end
 
@@ -86,8 +86,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  def images_delete
+    @image_delete = Product.find(params[:id]).images.find(params[:images_id])
+    if @image_delete.purge
+      redirect_to :edit_product
+    end
+  end
+
   def edit
+    @product = Product.find(params[:id])
+    @product.reload
     if current_user.id == @product.user_id
+      @images = @product.images
       parent_category_id = Category.find(@product.category_id)
       child_category_id = Category.find(@product.child_category_id)
       grandchild_category_id = Category.find(@product.grandchild_category_id)
@@ -136,7 +146,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :category_id,:child_category_id, :grandchild_category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain).merge(user_id: current_user.id, status: "1" )
   end
   def set_product
-    @product = Product.find(params[:id])
+    if params[:id] == "0"
+      redirect_to :root
+    else
+      @product = Product.find(params[:id])
+    end
   end
 
   def set_user
