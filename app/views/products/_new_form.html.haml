@@ -252,3 +252,25 @@
       = image_tag(src= "logo-gray.svg")
     %p
       %small© 2019 Mercari
+
+-# 編集モーダル
+.edit_modal
+  .edit_modal__inner
+    .edit_modal__inner__header.clearfix
+      .edit_modal__inner__header--left
+        写真を切り取る
+      .edit_modal__inner__header--right
+        写真を変更する
+    .edit_modal__inner__content
+      .edit_modal__inner__content--image
+      .edit_modal__inner__content__range
+        .edit_modal__inner__content__range__left
+          📷
+        .edit_modal__inner__content__range__center
+        .edit_modal__inner__content__range__right
+          📷
+    .edit_modal__inner__btn
+      .edit_modal__inner__btn--cancel
+        キャンセル
+      .edit_modal__inner__btn--done
+        完了
