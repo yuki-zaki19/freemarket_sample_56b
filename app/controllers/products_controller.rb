@@ -136,15 +136,15 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Product.create(create_params)
+    @production = Product.create(create_params)
+    @production.images.attach(params[:product][:images])
     redirect_to controller: :products, action: :index
   end
 
   private
   def create_params
-    params.require(:product).permit(:name, :price, :category_id,:child_category_id, :grandchild_category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain, images: [] ).merge(user_id: current_user.id, status: "1" )
+    params.require(:product).permit(:name, :price, :category_id,:child_category_id, :grandchild_category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain).merge(user_id: current_user.id, status: "1" )
   end
-
   def set_product
     if params[:id] == "0"
       redirect_to :root
@@ -154,7 +154,7 @@ class ProductsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(@product.user_id )
+    @user = User.find(@product.user_id)
   end
 
 end
