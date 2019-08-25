@@ -15,4 +15,8 @@ class User < ApplicationRecord
   has_many :cards
   has_many :sns_credentials, dependent: :destroy
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
+
 end
