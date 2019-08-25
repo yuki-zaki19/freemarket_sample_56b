@@ -14,4 +14,5 @@ class User < ApplicationRecord
   # belongs_to :buyer
   has_many :cards
   has_many :sns_credentials, dependent: :destroy
+
 end

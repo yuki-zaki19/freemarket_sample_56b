@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function() {
           };
           fr.readAsDataURL(files[i]);
         })();
-        
+
         formData.append("file", files[i]);
       }
       if(num == 1){

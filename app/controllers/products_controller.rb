@@ -86,7 +86,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def images_delete
+    @image_delete = Product.find(params[:id]).images.find(params[:images_id])
+    if @image_delete.purge
+      redirect_to :edit_product
+    end
+  end
+
   def edit
+    @product = Product.find(params[:id])
+    @product.reload
     if current_user.id == @product.user_id
       @images = @product.images
       parent_category_id = Category.find(@product.category_id)

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'category/:category_id' => 'products#all_categories', as: "category" 
+      delete '/:id/edit/:images_id' => "products#images_delete", as:"image_delete"
     end
   end
   resources :sellers, only: [:create, :show, :update] do
