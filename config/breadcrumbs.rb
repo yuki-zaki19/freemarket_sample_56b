@@ -6,6 +6,11 @@ crumb :users do
   link 'マイページ', users_path
 end
 
+crumb :show do
+  @product = Product.find(params[:id])
+  link @product.name, product_path(@product.id)
+end
+
 crumb :edit do
   link 'プロフィール', edit_user_path
   parent :users
