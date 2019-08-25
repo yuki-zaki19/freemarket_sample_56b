@@ -2,6 +2,8 @@ $(function(){  // 「.modal_open」をクリックしたらモーダルと黒い
   $(document).on('click', '.prev-image-content__image-box__prev__update--edit', function(){ 
     $('body').append('<div class="delete_modal_bg"></div>');
     $('.delete_modal_bg').fadeIn(); 
+    id = $(".prev-image-content__image-box__prev__update--edit").data("image-edit-id")
+console.log(id)
 
     $("body").css({overflow:'hidden'}); //背景固定
       function modalResize(){
