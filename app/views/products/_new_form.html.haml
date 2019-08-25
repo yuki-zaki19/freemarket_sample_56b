@@ -27,8 +27,31 @@
                       .prev-image-content__image-box__prev__image
                         = image_tag(image.variant(resize: "110x110"))
                       .prev-image-content__image-box__prev__update
-                        .prev-image-content__image-box__prev__update--edit
+                        .prev-image-content__image-box__prev__update--edit{"data-image-edit-id": "#{image.id}"}
                           編集
+                        -# 編集モーダル
+                        .edit_modal
+                          .edit_modal__inner
+                            .edit_modal__inner__header.clearfix
+                              .edit_modal__inner__header--left
+                                写真を切り取る
+                              .edit_modal__inner__header--right
+                                写真を変更する
+                            .edit_modal__inner__content
+                              .edit_modal__inner__content--image
+                                = image_tag(image.variant(resize: "380x380"))
+                              .edit_modal__inner__content__range
+                                .edit_modal__inner__content__range__left
+                                  📷
+                                .edit_modal__inner__content__range__center
+                                .edit_modal__inner__content__range__right
+                                  📷
+                            .edit_modal__inner__btn
+                              .edit_modal__inner__btn--cancel
+                                キャンセル
+                              .edit_modal__inner__btn--done
+                                完了
+
                         .prev-image-content__image-box__prev__update--delete
                           = f.check_box :images
                           = link_to "削除", image_delete_products_path(@product.id, image.id), method: :delete
@@ -253,24 +276,24 @@
     %p
       %small© 2019 Mercari
 
--# 編集モーダル
-.edit_modal
-  .edit_modal__inner
-    .edit_modal__inner__header.clearfix
-      .edit_modal__inner__header--left
-        写真を切り取る
-      .edit_modal__inner__header--right
-        写真を変更する
-    .edit_modal__inner__content
-      .edit_modal__inner__content--image
-      .edit_modal__inner__content__range
-        .edit_modal__inner__content__range__left
-          📷
-        .edit_modal__inner__content__range__center
-        .edit_modal__inner__content__range__right
-          📷
-    .edit_modal__inner__btn
-      .edit_modal__inner__btn--cancel
-        キャンセル
-      .edit_modal__inner__btn--done
-        完了
+-# -# 編集モーダル
+-# .edit_modal
+-#   .edit_modal__inner
+-#     .edit_modal__inner__header.clearfix
+-#       .edit_modal__inner__header--left
+-#         写真を切り取る
+-#       .edit_modal__inner__header--right
+-#         写真を変更する
+-#     .edit_modal__inner__content
+-#       .edit_modal__inner__content--image
+-#       .edit_modal__inner__content__range
+-#         .edit_modal__inner__content__range__left
+-#           📷
+-#         .edit_modal__inner__content__range__center
+-#         .edit_modal__inner__content__range__right
+-#           📷
+-#     .edit_modal__inner__btn
+-#       .edit_modal__inner__btn--cancel
+-#         キャンセル
+-#       .edit_modal__inner__btn--done
+-#         完了
