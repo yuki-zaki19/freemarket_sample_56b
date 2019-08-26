@@ -72,8 +72,8 @@ $(document).on('turbolinks:load', function() {
     // insert-image-boxの一番後ろに空の箱を挿入
     document.getElementById('insert-image-box').appendChild = '';
   }
-  $("#display-none").on('change',function(e) {
-    var fileList = document.getElementById("display-none").files;
+  $("#display-none1").on('change',function(e) {
+    var fileList = document.getElementById("display-none1").files;
     var fileNumber = fileList.length + $("#insert-image-box").find(".upload-product").length
     if (fileNumber < 11){
 
@@ -82,6 +82,7 @@ $(document).on('turbolinks:load', function() {
       var files = e.target.files;
       var num = $("#insert-image-box").find(".upload-product").length + files.length
       for (var i = 0, f; f = files[i] ; i++) {
+        console.log(f)
         files_array.push(f);
           // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
           // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
@@ -230,7 +231,7 @@ $(document).on('turbolinks:load', function() {
   });
   // 画像がなければアラート
   $(".exhibition-content__form").on("submit", function(e){
-    e.preventDefault();
+    // e.preventDefault();
 
     var submitFileNumber = $("#insert-image-box").find(".upload-product").length
     if( submitFileNumber == 0){
@@ -246,7 +247,7 @@ $(document).on('turbolinks:load', function() {
     // formData.append("product[images][]", files_array)
     var url = $(this).attr('action')
     $.ajax({
-      url:         url,
+      url:         "/products/update",
       type:        "POST",
       data:        formData,
       contentType: false,

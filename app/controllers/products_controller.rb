@@ -95,7 +95,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @product.reload
     if current_user.id == @product.user_id
       @images = @product.images
       parent_category_id = Category.find(@product.category_id)
@@ -121,6 +120,13 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(create_params)
+       @product.images.attach(params[:product][:images])
+      if params[:product][:image_ids] 
+        params[:product][:image_ids].each do |image_id|
+        image = @product.images.find(image_id)
+        image.purge
+        end
+      end
     redirect_to :root
     else
       render :edit
@@ -145,6 +151,7 @@ class ProductsController < ApplicationController
   def create_params
     params.require(:product).permit(:name, :price, :category_id,:child_category_id, :grandchild_category_id, :brand, :size_id, :state_id, :burden_id, :shipping_id, :region_id, :leadtime_id, :explain).merge(user_id: current_user.id, status: "1" )
   end
+
   def set_product
     if params[:id] == "0"
       redirect_to :root
