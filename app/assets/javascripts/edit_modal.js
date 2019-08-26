@@ -1,9 +1,8 @@
 $(function(){  // 「.modal_open」をクリックしたらモーダルと黒い背景を表示する 
   $(document).on('click', '.prev-image-content__image-box__prev__update--edit', function(){ 
+    var child = $(this).next()
     $('body').append('<div class="delete_modal_bg"></div>');
     $('.delete_modal_bg').fadeIn(); 
-    id = $(".prev-image-content__image-box__prev__update--edit").data("image-edit-id")
-console.log(id)
 
     $("body").css({overflow:'hidden'}); //背景固定
       function modalResize(){
@@ -14,8 +13,8 @@ console.log(id)
         $(".edit_modal").css({'left': x + 'px','top': "10" + 'px'});
       }
       modalResize(); //真ん中表示
-    $(".edit_modal").fadeIn(); // modalをフェードインで表示
-    $('.edit_modal__inner__btn--cancel').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+    child.fadeIn(); // modalをフェードインで表示
+    $('.edit_modal__inner__btn--cancel, .edit_modal__inner__btn--done').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
       $('.edit_modal').fadeOut();
       $('.delete_modal_bg').fadeOut('slow',function(){
         $('.delete_modal_bg').remove();

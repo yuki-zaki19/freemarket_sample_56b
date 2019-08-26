@@ -34,8 +34,16 @@
           background: #f5f5f5;
           line-height: 44px;
           text-align: center;
-          cursor: pointer;
-
+          .delete_check{
+            display: none;
+          }
+          label{
+            display: block;
+            height:50px;
+            margin: 5px 1px ;
+            cursor: pointer;
+          }
+          
         }
       }
     }
