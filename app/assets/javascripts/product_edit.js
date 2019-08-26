@@ -43,6 +43,10 @@ function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
+      $(".editedit").css('maxWidth','380px');
+      $(".editedit").css('maxHeight','380px');
+      $(".real_image").css('maxWidth','110px');
+      $(".real_image").css('maxHeight','110px');
       $(parent).attr('src', e.target.result);
     }
     reader.readAsDataURL(input.files[0]);
