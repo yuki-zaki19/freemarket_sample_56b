@@ -1,71 +1,65 @@
 $(document).on('turbolinks:load', function() { 
+
   var files_array = [];
-  // var dropZone = document.getElementById("upload-dropbox");
 
-  // dropZone.addEventListener("dragover", function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   this.style.background = "#ea352d";
-  // }, false);
+  $('#upload-dropbox').on('dragover',function(e){
+    e.preventDefault();
+    this.style.background = "#ea352d";
+  });
 
-  // dropZone.addEventListener("dragleave", function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   this.style.background = "#f5f5f5";
-  // }, false);
+  $('#upload-dropbox').on('dragleave',function(e){
+    e.preventDefault();
+    this.style.background = "#f5f5f5";
+  });
 
-  // dropZone.addEventListener("drop", function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   this.style.background = "#f5f5f5";
+  $('#upload-dropbox').on('drop',function(e){
+    e.preventDefault();
+    this.style.background = "#f5f5f5";
 
-  //   var files = e.dataTransfer.files;
-  //   var fileNumber = files.length + $("#insert-image-box").find(".upload-product").length
-  //   if (fileNumber < 11){
-  //     var num = $("#insert-image-box").find(".upload-product").length + files.length
-  //     for (var i = 0; i < files.length; i++) {
-  //       (function() {
-
-
-  //         var fr = new FileReader();
-  //         fr.onload = function() {
-  //           var div = document.createElement('div');
-  //           div.className = 'upload-product';
-  //           div.innerHTML += '<img class="upload-product__image" src="' + fr.result + '" />';
-  //           div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
-  //           document.getElementById('insert-image-box').insertBefore(div, null);
-  //         };
-  //         fr.readAsDataURL(files[i]);
-  //       })();
-        
-  //       formData.append("file", files[i]);
-  //     }
-  //     if(num == 1){
-  //       $(".upload-dropbox").css('width','485px');
-  //     }else if(num == 2){
-  //       $(".upload-dropbox").css('width','350px');
-  //     }else if(num == 3){
-  //       $(".upload-dropbox").css('width','234px');
-  //     }else if(num == 4){
-  //       $(".upload-dropbox").css('width','110px');
-  //     }else if(num == 5){
-  //       $(".upload-dropbox").css('width','620px');
-  //       $("#insert-image-box").css('height','340px');
-  //     }else if(num == 6){
-  //       $(".upload-dropbox").css('width','485px');
-  //     }else if(num == 7){
-  //       $(".upload-dropbox").css('width','350px');
-  //     }else if(num == 8){
-  //       $(".upload-dropbox").css('width','234px');
-  //     }else if(num == 9){
-  //       $(".upload-dropbox").css('width','110px');
-  //     }else{
-  //       $(".upload-dropbox").css('display','none');
-  //     }
-  //   }else if(fileNumber > 10){
-  //     alert("現在のファイル選択数："+fileNumber+"です。再度しなおしてください。");
-  //   }
-  // }, false);
+    var files = e.originalEvent.dataTransfer.files;
+    var fileNumber = files.length + $("#insert-image-box").find(".upload-product").length
+    if (fileNumber < 11){
+      var num = $("#insert-image-box").find(".upload-product").length + files.length
+      for (var i = 0; i < files.length; i++) {
+        files_array.push(files[i]);
+        var fr = new FileReader();
+        fr.readAsDataURL(files[i]);
+        fr.onload = (function() {
+          return function (e) {
+            var div = document.createElement('div');
+            div.className = 'upload-product';
+            div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
+            div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
+            document.getElementById('insert-image-box').insertBefore(div, null);
+          }
+        })();
+      }
+      if(num == 1){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 2){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 3){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 4){
+        $(".upload-dropbox").css('width','110px');
+      }else if(num == 5){
+        $(".upload-dropbox").css('width','620px');
+        $("#insert-image-box").css('height','340px');
+      }else if(num == 6){
+        $(".upload-dropbox").css('width','485px');
+      }else if(num == 7){
+        $(".upload-dropbox").css('width','350px');
+      }else if(num == 8){
+        $(".upload-dropbox").css('width','234px');
+      }else if(num == 9){
+        $(".upload-dropbox").css('width','110px');
+      }else{
+        $(".upload-dropbox").css('display','none');
+      }
+    }else if(fileNumber > 10){
+      alert("現在のファイル選択数："+fileNumber+"です。再度しなおしてください。");
+    }
+  });
 
 
   function initializeFiles() {
@@ -76,31 +70,28 @@ $(document).on('turbolinks:load', function() {
     var fileList = document.getElementById("display-none").files;
     var fileNumber = fileList.length + $("#insert-image-box").find(".upload-product").length
     if (fileNumber < 11){
-
-      // ビュー側
       initializeFiles();
       var files = e.target.files;
       var num = $("#insert-image-box").find(".upload-product").length + files.length
       for (var i = 0, f; f = files[i] ; i++) {
         files_array.push(f);
-          // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
-          // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
-          var reader = new FileReader;
-          // 指定された Blob オブジェクト（ここではforの時に定義してるf）を読み込みます。終了後の result プロパティには、ファイルのデータを示す data: URL が格納されます。
-          reader.readAsDataURL(f);
-          // onloadで変数readerに画像が読み込まれたらfunction以下が実行される
-          reader.onload = (function() {
-            return function (e) {
-              var div = document.createElement('div');
-              div.className = 'upload-product';
-              div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
-              div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
-              //insertbeforeで第２引数のnullの前に第１引数の変数divを挿入
-              // document.getElementById('insert-image-box').insertBefore(div, null);
-              document.getElementById('insert-image-box').append(div);
-            }
-          })();
-        }
+        // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
+        // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
+        var reader = new FileReader;
+        // 指定された Blob オブジェクト（ここではforの時に定義してるf）を読み込みます。終了後の result プロパティには、ファイルのデータを示す data: URL が格納されます。
+        reader.readAsDataURL(f);
+        // onloadで変数readerに画像が読み込まれたらfunction以下が実行される
+        reader.onload = (function() {
+          return function (e) {
+            var div = document.createElement('div');
+            div.className = 'upload-product';
+            div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
+            div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
+            // document.getElementById('insert-image-box').insertBefore(div, null);
+            document.getElementById('insert-image-box').append(div);
+          }
+        })();
+      }
       if(num == 1){
         $(".upload-dropbox").css('width','485px');
       }else if(num == 2){
@@ -129,7 +120,7 @@ $(document).on('turbolinks:load', function() {
   });
 
   //削除ボタンを押すと、写真が削除されるコマンド
-  $(document).on("click", '.upload-product__button__delete', function(){
+  jQuery("#insert-image-box").on("click", '.upload-product__button__delete', function(){
     var numNum = $("#insert-image-box").find(".upload-product").length
     var index = $(".upload-product__button__delete").index(this);
     files_array.splice(index - 1, 1);
@@ -163,6 +154,7 @@ $(document).on('turbolinks:load', function() {
     };
   });
   
+  // 
 
   var form_shipping = $("#form-shipping")
   var select_form_shipping = $("#select-form-shipping")
@@ -243,7 +235,6 @@ $(document).on('turbolinks:load', function() {
     files_array.forEach(function(file){
       formData.append("product[images][]",file)
     });
-    // formData.append("product[images][]", files_array)
     var url = $(this).attr('action')
     $.ajax({
       url:         url,
