@@ -66,8 +66,8 @@ $(document).on('turbolinks:load', function() {
     // insert-image-boxの一番後ろに空の箱を挿入
     document.getElementById('insert-image-box').appendChild = '';
   }
-  $("#display-none1").on('change',function(e) {
-    var fileList = document.getElementById("display-none1").files;
+  $("#display-none").on('change',function(e) {
+    var fileList = document.getElementById("display-none").files;
     var fileNumber = fileList.length + $("#insert-image-box").find(".upload-product").length
     if (fileNumber < 11){
       initializeFiles();
@@ -238,7 +238,7 @@ $(document).on('turbolinks:load', function() {
     });
     var url = $(this).attr('action')
     $.ajax({
-      url:         "/products/update",
+      url:         url,
       type:        "POST",
       data:        formData,
       contentType: false,
