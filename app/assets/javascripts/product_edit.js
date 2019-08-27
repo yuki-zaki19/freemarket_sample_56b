@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function() { 
+  var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
+  console.log(num)
 
   function initializeFiles() {
     // insert-image-boxの一番後ろに空の箱を挿入
@@ -8,12 +11,13 @@ $(document).on('turbolinks:load', function() {
 
   $("#display-none1").on('change',function(e) {
     var fileList = document.getElementById("display-none1").files;
-    var fileNumber = fileList.length + $("#insert-image-box1").find(".upload-product").length
+    var fileNumber = fileList.length + $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
     if (fileNumber < 11){
       initializeFiles();
       var files = e.target.files;
-      var num = $("#insert-image-box1").find(".upload-product").length + files.length
+      var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length + files.length
       for (var i = 0, f; f = files[i] ; i++) {
+        console.log(num)
         files_array.push(f);
         // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
         // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
@@ -51,7 +55,9 @@ $(document).on('turbolinks:load', function() {
 
 
   $(delete_btn).on("click", function(){
-      $(this).parent().parent().parent().hide();
+
+      ee = $(this).parent().parent().parent().hide();
+      console.log(ee)
       num = num - 1
       console.log(num)
       var new_width = 140 * num

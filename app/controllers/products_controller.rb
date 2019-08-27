@@ -121,7 +121,6 @@ class ProductsController < ApplicationController
   def update
     if @product.update(create_params)
       if params[:product][:image_ids] && params[:product][:images]
-        binding.pry
           @product.images.attach(params[:product][:images])
           params[:product][:image_ids].each do |image_id|
           image = @product.images.find(image_id)
