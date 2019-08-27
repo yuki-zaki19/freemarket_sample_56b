@@ -51,12 +51,12 @@
                               .edit_modal__inner__btn--cancel
                                 キャンセル
                               .edit_modal__inner__btn--done
-                                = f.check_box :image_ids, {style: "display:none", class:"delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
-                                %label{for: "delete_check-#{image.id}", class: "delete-btn",id: "delete-check","data-delete-id": "#{i}"}完了
+                                = f.check_box :image_ids, {class:"done_check", id: "done_check-#{image.id}", multiple: true}, image.id, false
+                                %label{for: "done_check-#{image.id}",}完了
 
                         .prev-image-content__image-box__prev__update--delete
-                          = f.check_box :image_ids, {class:"delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
-                          %label{for: "delete_check-#{image.id}", class: "delete-btn",id: "delete-check","data-delete-id": "#{i}"}削除
+                          = f.check_box :image_ids, {class: "delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
+                          %label.delete-btn{for: "delete_check-#{image.id}"}削除
                           
                 .prev-image-content__upload-box
                   %label

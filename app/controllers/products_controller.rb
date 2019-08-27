@@ -120,8 +120,16 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(create_params)
-       @product.images.attach(params[:product][:images])
-      if params[:product][:image_ids] 
+      if params[:product][:image_ids] && params[:product][:images]
+        binding.pry
+          @product.images.attach(params[:product][:images])
+          params[:product][:image_ids].each do |image_id|
+          image = @product.images.find(image_id)
+          image.purge
+        end
+      elsif params[:product][:images]
+        @product.images.attach(params[:product][:images])
+      elsif params[:product][:image_ids] 
         params[:product][:image_ids].each do |image_id|
         image = @product.images.find(image_id)
         image.purge
