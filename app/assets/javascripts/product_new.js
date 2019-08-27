@@ -221,33 +221,33 @@ $(document).on('turbolinks:load', function() {
       tagOutputProfit.append(profit)
     }
   });
-  // 画像がなければアラート
-  $(".exhibition-content__form").on("submit", function(e){
-    // e.preventDefault();
+  // // 画像がなければアラート
+  // $(".exhibition-content__form").on("submit", function(e){
+  //   // e.preventDefault();
 
-    var submitFileNumber = $("#insert-image-box").find(".upload-product").length
-    if( submitFileNumber == 0){
-      alert("ファイルがアップロードされてません。アップロードしてください。");
-    }
+  //   var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+  //   if( submitFileNumber == 0){
+  //     alert("ファイルがアップロードされてません。アップロードしてください。");
+  //   }
 
-    // サーバー側
-    var formData = new FormData(this);
-    formData.delete("product[images][]");
-    files_array.forEach(function(file){
-      formData.append("product[images][]",file)
-    });
-    var url = $(this).attr('action')
-    $.ajax({
-      url:         url,
-      type:        "POST",
-      data:        formData,
-      contentType: false,
-      processData: false,
-      dataType:   'json'
-    })
-    .done(function(data){
-    });
-  });
+  //   // サーバー側
+  //   var formData = new FormData(this);
+  //   formData.delete("product[images][]");
+  //   files_array.forEach(function(file){
+  //     formData.append("product[images][]",file)
+  //   });
+  //   var url = $(this).attr('action')
+  //   $.ajax({
+  //     url:         url,
+  //     type:        "POST",
+  //     data:        formData,
+  //     contentType: false,
+  //     processData: false,
+  //     dataType:   'json'
+  //   })
+  //   .done(function(data){
+  //   });
+  // });
 });
 
 

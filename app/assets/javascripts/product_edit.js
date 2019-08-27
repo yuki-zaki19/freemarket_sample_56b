@@ -14,7 +14,6 @@ $(document).on('turbolinks:load', function() {
       var files = e.target.files;
       var num = $("#insert-image-box1").find(".upload-product").length + files.length
       for (var i = 0, f; f = files[i] ; i++) {
-        console.log(f)
         files_array.push(f);
         // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
         // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
@@ -37,6 +36,7 @@ $(document).on('turbolinks:load', function() {
 
   var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
   var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
+  console.log(num)
 
   if (num < 5){
     $(".prev-image-content__upload-box").css("display", "inline-block")
@@ -50,10 +50,10 @@ $(document).on('turbolinks:load', function() {
     }
 
 
-  $(".prev-image-content__image-box__prev__update--delete").on("click", delete_btn, function(){
-    if ($(".delete-btn").data("delete-id") == $(".prev-image-content__image-box__prev").data("image-id")){
-      $(this).parent().parent().remove()
+  $(delete_btn).on("click", function(){
+      $(this).parent().parent().parent().hide();
       num = num - 1
+      console.log(num)
       var new_width = 140 * num
     
   if (num < 5){
@@ -71,13 +71,11 @@ $(document).on('turbolinks:load', function() {
   else if(num == 10){
     $(".prev-image-content__upload-box2").css("display", "none")
   }
-}
 })
-  delete_id = $(".delete-btn").data("delete-id")
-  console.log(delete_id)
-  $(document).on("click", "delete_id",function(){
-    $("#delete-check").css("display","none")
-  })
+  // done_id = $(".done-btn").data("done-id")
+  // $(document).on("click", "done_id",function(){
+  //   $("#done-check").css("display","none")
+  // })
 
   $(".edit_modal").on("click", ".edit-image", function(){
 var a = $(this).prev()
@@ -109,7 +107,7 @@ function readURL(input) {
     $(".exhibition-content__form").on("submit", function(e){
       // e.preventDefault();
   
-      var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+      var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
       if( submitFileNumber == 0){
         alert("ファイルがアップロードされてません。アップロードしてください。");
       }
