@@ -20,7 +20,7 @@
               最大10枚までアップロードできます
             
             - if @images
-              .prev-image-content#insert-image-box
+              .prev-image-content#insert-image-box1
                 .prev-image-content__image-box
                   - @images.each.with_index(1) do |image,i|
                     .prev-image-content__image-box__prev.upload-product{"data-image-id": "#{i}"}
@@ -51,22 +51,23 @@
                               .edit_modal__inner__btn--cancel
                                 キャンセル
                               .edit_modal__inner__btn--done
-                                完了
+                                = f.check_box :image_ids, {style: "display:none", class:"delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
+                                %label{for: "delete_check-#{image.id}", class: "delete-btn",id: "delete-check","data-delete-id": "#{i}"}完了
 
                         .prev-image-content__image-box__prev__update--delete
                           = f.check_box :image_ids, {class:"delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
                           %label{for: "delete_check-#{image.id}", class: "delete-btn",id: "delete-check","data-delete-id": "#{i}"}削除
                           
-                .prev-image-content__upload-box.upload-dropbox#upload-dropbox
+                .prev-image-content__upload-box
                   %label
                     = f.file_field :images, type: 'file', id: "display-none1", multiple: true 
-                    .prev-image-content__upload-box__image_preview1
+                    .prev-image-content__upload-box__image_preview
                       ドラッグアンドドロップ
                       %br
                         またはクリックしてファイルをアップロード
 
                 -# 下段のアップローダー
-                .prev-image-content__upload-box2.upload-dropbox#upload-dropbox
+                .prev-image-content__upload-box2
                   %label
                     = f.file_field :images, type: 'file', id: "display-none2", multiple: true 
                     .prev-image-content__upload-box2__image_preview2
