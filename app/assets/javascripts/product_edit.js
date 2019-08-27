@@ -56,8 +56,9 @@ $(document).on('turbolinks:load', function() {
 
   $(delete_btn).on("click", function(){
 
-      ee = $(this).parent().parent().parent().hide();
-      console.log(ee)
+      ee = $(this).parent().parent().parent()
+      $(ee).removeClass("prev-image-content__image-box__prev")
+      $(this).parent().parent().parent().hide()
       num = num - 1
       console.log(num)
       var new_width = 140 * num
@@ -115,6 +116,7 @@ function readURL(input) {
   
       var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
       if( submitFileNumber == 0){
+        e.preventDefault();
         alert("ファイルがアップロードされてません。アップロードしてください。");
       }
   
