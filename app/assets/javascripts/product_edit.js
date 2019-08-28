@@ -1,9 +1,22 @@
 $(document).on('turbolinks:load', function() { 
 
-  var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
-  var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
-  console.log(num)
 
+  // 初期の画像の枚数
+  var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  // 初期のアップロードボックスの大きさ指定
+  if (num < 5){
+    default_width = num * 140
+    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    }
+    if (num >= 5){
+    default_width = (num - 5) * 140
+    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    }
+    if(num == 10){
+      $(".prev-image-content__upload-box").css("display", "none")
+    }
+
+  // 画像の追加
   function initializeFiles() {
     // insert-image-boxの一番後ろに空の箱を挿入
     document.getElementById('insert-image-box1').appendChild = '';
@@ -16,9 +29,22 @@ $(document).on('turbolinks:load', function() {
     if (fileNumber < 11){
       initializeFiles();
       var files = e.target.files;
+      // 追加された画像＋既存画像の枚数
       var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length + files.length
-      for (var i = 0, f; f = files[i] ; i++) {
-        console.log(num)
+      // 画像追加された際のアップロードボックスの大きさ指定
+        if (num < 5){
+          add_images_width = num * 140
+          $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+          }
+          else if (num >= 5){
+            var add_images_width = 140 * (num - 5 )
+            $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+          }
+          else if(num == 10){
+            $(".prev-image-content__upload-box").css("display", "none")
+          }
+
+        for (var i = 0, f; f = files[i] ; i++) {
         files_array.push(f);
         // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
         // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
@@ -30,8 +56,15 @@ $(document).on('turbolinks:load', function() {
           return function (e) {
             var div = document.createElement('div');
             div.className = 'prev-image-content__image-box__prev';
-            div.innerHTML += '<img class="prev-image-content__image-box__prev__image" src="' + e.target.result + '" />';
-            div.innerHTML += '<div class="prev-image-content__image-box__prev__update" >' + '<div class = prev-image-content__image-box__prev__update--edit>編集</div>' + '<div class = .prev-image-content__image-box__prev__update--delete>削除</div>' + '</div>';
+            div.innerHTML += '<div class="prev-image-content__image-box__prev__image">' 
+                          + '<img class="real_image" src="' + e.target.result + '"/>' 
+                          + '</div>';
+            div.innerHTML += '<div class="prev-image-content__image-box__prev__update" >'  
+                          + '<div class = prev-image-content__image-box__prev__update--edit>編集</div>' 
+                          + '<div class = prev-image-content__image-box__prev__update--delete>'
+                          + '<label class = "delete-btn" >削除</label>'
+                          + '</div>' 
+                          + '</div>';
             $('.prev-image-content__image-box').append(div);
           }
         })();
@@ -39,53 +72,64 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-  var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  // 追加した画像の削除
+  $(".prev-image-content__image-box").on("click", ".prev-image-content__image-box__prev__update--delete", function(){
+    var index = $(".prev-image-content__image-box__prev__update--delete").index(this)
+    files_array.splice(index-1 , 1);
+    var delete_image = $(this).parent().parent()
+    delete_image.removeClass("prev-image-content__image-box__prev")
+    delete_image.hide()
+    console.log(files_array)
+    var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+    if (num < 5){
+      default_width = num * 140
+      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      }
+      if (num >= 5){
+      default_width = (num - 5) * 140
+      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      }
+      if(num == 10){
+        $(".prev-image-content__upload-box").css("display", "none")
+      }
+    })
+
+
+
+
+  // 削除ボタンの記述
   var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
-  console.log(num)
-
-  if (num < 5){
-    $(".prev-image-content__upload-box").css("display", "inline-block")
-    }
-    if (num >= 5){
-      $(".prev-image-content__upload-box").css("display", "none")
-      $(".prev-image-content__upload-box2").css("display", "inline-block")
-    }
-    if(num == 10){
-      $(".prev-image-content__upload-box2").css("display", "none")
-    }
-
-
-
   $(delete_btn).on("click", function(){
-
-      ee = $(this).parent().parent().parent()
-      $(ee).removeClass("prev-image-content__image-box__prev")
+      // 削除ボタンの親要素取得
+      parent_box = $(this).parent().parent().parent()
+      delete_box = parent_box.children().children(".prev-image-content__image-box__prev__update--delete")
+      // 指定クラスの除去（画像枚数のカウントを変更するため）
+      $(delete_box).removeClass("prev-image-content__image-box__prev__update--delete")
+      $(parent_box).removeClass("prev-image-content__image-box__prev")
+      // 画像要素を見えなくする
       $(this).parent().parent().parent().hide()
+      
       num = num - 1
-      console.log(num)
-      var new_width = 140 * num
+      var delete_width = 140 * num
     
   if (num < 5){
   $(".prev-image-content__upload-box").css("display", "inline-block")
   $(".prev-image-content__upload-box2").css("display", "none")
-  $(".prev-image-content__upload-box").css("width", "620" - new_width + "px")
+  $(".prev-image-content__upload-box").css("width", "620" - delete_width + "px")
   }
   else if (num >= 5){
-    var new_width = 140 * (num - 5 )
+    var delete_width = 140 * (num - 5 )
     $(".prev-image-content__upload-box").css("display", "none")
     $(".prev-image-content__upload-box2").css("display", "inline-block")
-    $(".prev-image-content__upload-box2").css("width", "620" - new_width + "px")
+    $(".prev-image-content__upload-box2").css("width", "620" - delete_width + "px")
 
   }
   else if(num == 10){
     $(".prev-image-content__upload-box2").css("display", "none")
   }
 })
-  // done_id = $(".done-btn").data("done-id")
-  // $(document).on("click", "done_id",function(){
-  //   $("#done-check").css("display","none")
-  // })
 
+  // 編集ボタンの画像変更の記述
   $(".edit_modal").on("click", ".edit-image", function(){
 
 var a = $(this).prev()
@@ -107,16 +151,11 @@ function readURL(input) {
   $(a).change(function() {
     readURL(this);
   });
-
-  $(".edit_modal").on("click", ".edit_modal__inner__btn--done", function(){
-  })
-
   })
 
     // 画像がなければアラート
     $(".exhibition-content__form").on("submit", function(e){
-      // e.preventDefault();
-  
+      e.preventDefault();
       var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
       if( submitFileNumber == 0){
         e.preventDefault();
@@ -125,21 +164,33 @@ function readURL(input) {
   
       // サーバー側
       var formData = new FormData(this);
+      console.log(formData.getAll("product[images][]"))
       formData.delete("product[images][]");
+      console.log(formData.getAll("product[images][]"))
       files_array.forEach(function(file){
         formData.append("product[images][]",file)
+      console.log(formData.getAll("product[images][]"))
+
       });
+      var product_id = $(".prev-image-content").data("product-id")
       var url = $(this).attr('action')
+      var update_url = `/products/${product_id}`
       $.ajax({
-        url:         "/products/update",
+        url:         update_url,
         type:        "POST",
         data:        formData,
         contentType: false,
         processData: false,
         dataType:   'json'
       })
-      .done(function(data){
-      });
+      .done(function(){
+        location.href = "/"
+        alert("成功")
+      })
+      .fail(function(){
+        alert("失敗した")
+      })
+
     });
-  
+
 })

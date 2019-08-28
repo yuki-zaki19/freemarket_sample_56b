@@ -134,7 +134,7 @@ class ProductsController < ApplicationController
         image.purge
         end
       end
-    redirect_to :root
+    # redirect_to :root
     else
       render :edit
     end
