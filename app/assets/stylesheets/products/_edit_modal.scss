@@ -2,7 +2,6 @@
   display: none;
   z-index: 2222;
   position: fixed;
-
   &__inner{
     width: 600px;
     margin: 24px auto;
@@ -29,6 +28,10 @@
         width: 380px;
         height: 380px;
         background-color: black;
+        .upload-product__modal-image{
+          max-width: 380px;
+          max-height: 380px;
+        }
       }
       #edit_modal__inner__content--image--new{
         cursor: grab;
@@ -84,11 +87,11 @@
         float: left;
       }
       &--done{
+        display: none;
         width: 45%;
         background: $mercari-red;
         border: 1px solid $mercari-red;
         color: #fff;
-        display: block;
         line-height: 48px;
         font-size: 14px;
         border: 1px solid transparent;
@@ -97,7 +100,14 @@
         cursor: pointer;
         text-align: center;
         float: right;
-
+        .done_check{
+          display: none;
+        }
+        label{
+          display: block;
+          height:50px;
+          cursor: pointer;
+        }
       }
     }
     &__btn::after{
@@ -106,4 +116,7 @@
       clear: both;
     }
   }
+}
+.edit_modal--add{
+  display: none;
 }

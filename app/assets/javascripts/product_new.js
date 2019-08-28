@@ -290,36 +290,36 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  // 画像がなければアラート
-  $(".exhibition-content__form").on("submit", function(e){
-    e.preventDefault();
-    var submitFileNumber = $("#insert-image-box").find(".upload-product").length
-    if( submitFileNumber == 0){
-      e.preventDefault();
-      alert("ファイルがアップロードされてません。アップロードしてください。");
-    }
-    var formData = new FormData(this);
-    formData.delete("product[images][]");
-    files_array.forEach(function(file){
-      formData.append("product[images][]",file)
-    });
-    var url = $(this).attr('action')
-    $.ajax({
-      url:         url,
-      type:        "POST",
-      data:        formData,
-      contentType: false,
-      processData: false,
-      dataType:   'json'
-    })
-    .done(function(){
-      alert("出品が成功しました")
-      location.href ="/"
-    })
-    .fail(function(){
-      alert("出品が失敗しました");
-    });
-  });
+  // // 画像がなければアラート
+  // $(".exhibition-content__form").on("submit", function(e){
+  //   e.preventDefault();
+  //   var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+  //   if( submitFileNumber == 0){
+  //     e.preventDefault();
+  //     alert("ファイルがアップロードされてません。アップロードしてください。");
+  //   }
+  //   var formData = new FormData(this);
+  //   formData.delete("product[images][]");
+  //   files_array.forEach(function(file){
+  //     formData.append("product[images][]",file)
+  //   });
+  //   var url = $(this).attr('action')
+  //   $.ajax({
+  //     url:         url,
+  //     type:        "POST",
+  //     data:        formData,
+  //     contentType: false,
+  //     processData: false,
+  //     dataType:   'json'
+  //   })
+  //   .done(function(){
+  //     alert("出品が成功しました")
+  //     location.href ="/"
+  //   })
+  //   .fail(function(){
+  //     alert("出品が失敗しました");
+  //   });
+  // });
 });
 
 

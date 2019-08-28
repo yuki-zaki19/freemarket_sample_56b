@@ -66,6 +66,29 @@
                       %br
                         またはクリックしてファイルをアップロード
 
+                -# 追加商品の編集モーダル
+                .edit_modal--add
+                  .edit_modal--add__inner
+                    .edit_modal__inner__header.clearfix
+                      .edit_modal--add__inner__header--left
+                        写真を切り取る
+                      .edit_modal--add__inner__header--right
+                        = f.file_field :images, type: "file", style: "display:none", id: "image-id"
+                        %label{for: "image-id",class: "edit-image--add"}写真を変更する
+                    .edit_modal--add__inner__content
+                      .edit_modal--add__inner__content--image--add
+                      .edit_modal--add__inner__content__range
+                        .edit_modal--add__inner__content__range__left
+                          📷
+                        .edit_modal--add__inner__content__range__center
+                        .edit_modal--add__inner__content__range__right
+                          📷
+                    .edit_modal--add__inner__btn
+                      .edit_modal--add__inner__btn--cancel
+                        キャンセル
+                      .edit_modal--add__inner__btn--done
+                        完了
+
             - else            
               %div
                 #insert-image-box
