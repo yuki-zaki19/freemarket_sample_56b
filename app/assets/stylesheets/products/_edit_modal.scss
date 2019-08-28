@@ -30,6 +30,17 @@
         height: 380px;
         background-color: black;
       }
+      #edit_modal__inner__content--image--new{
+        cursor: grab;
+        width: 380px;
+        height: 380px;
+        background-color: black;
+        .upload-product__modal-image{
+          max-width: 380px;
+          max-height: 380px;
+        }
+      }
+
       &__range{
         width: 300px;
         position: relative;

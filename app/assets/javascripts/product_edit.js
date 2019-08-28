@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() { 
+
   var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
   var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
   console.log(num)
@@ -54,6 +55,7 @@ $(document).on('turbolinks:load', function() {
     }
 
 
+
   $(delete_btn).on("click", function(){
 
       ee = $(this).parent().parent().parent()
@@ -85,6 +87,7 @@ $(document).on('turbolinks:load', function() {
   // })
 
   $(".edit_modal").on("click", ".edit-image", function(){
+
 var a = $(this).prev()
 var parent = $(this).parent().parent().parent().parent().parent().parent().find("img")
 
