@@ -20,7 +20,7 @@
               最大10枚までアップロードできます
             
             - if @images
-              .prev-image-content#insert-image-box1
+              .prev-image-content#insert-image-box1{"data-product-id": "#{@product.id}"}
                 .prev-image-content__image-box
                   - @images.each.with_index(1) do |image,i|
                     .prev-image-content__image-box__prev.upload-product{"data-image-id": "#{i}"}
@@ -60,7 +60,7 @@
                           
                 .prev-image-content__upload-box
                   %label
-                    = f.file_field :images, type: 'file', id: "display-none1", multiple: true 
+                    = f.file_field :images, type: 'file', id: "display-none1",name: "product[images][]", multiple: true 
                     .prev-image-content__upload-box__image_preview
                       ドラッグアンドドロップ
                       %br
@@ -69,7 +69,7 @@
                 -# 下段のアップローダー
                 .prev-image-content__upload-box2
                   %label
-                    = f.file_field :images, type: 'file', id: "display-none2", multiple: true 
+                    = f.file_field :images, type: 'file', id: "display-none1",name: "product[images][]", multiple: true 
                     .prev-image-content__upload-box2__image_preview2
                       ドラッグアンドドロップ
                       %br

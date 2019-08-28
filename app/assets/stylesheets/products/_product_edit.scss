@@ -12,12 +12,13 @@
       &__image{
         width: 110px;
         height: 110px;
-        vertical-align: top;
-        display: table-cell;
+        vertical-align: bottom;
       }
       &__update{
         font-size: 14px;
         width: 100%;
+        height: 60px;
+        vertical-align: bottom;
         color:$mercari-blue;
         display: table;
         &--edit{
@@ -97,4 +98,8 @@
       display: table-cell;
     }  
   }
+}
+.real_image{
+  width: 110px;
+  height: 110px;
 }
