@@ -1,21 +1,20 @@
 $(document).on('turbolinks:load', function() { 
 
-
   // 初期の画像の枚数
   var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  console.log(num)
   // 初期のアップロードボックスの大きさ指定
   if (num < 5){
-    default_width = num * 140
-    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    default_width = num * 124
+    $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
     if (num >= 5){
-    default_width = (num - 5) * 140
-    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    default_width = (num - 5) * 124
+    $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
     if(num == 10){
       $(".prev-image-content__upload-box").css("display", "none")
     }
-
   // 画像の追加
   function initializeFiles() {
     // insert-image-boxの一番後ろに空の箱を挿入
@@ -33,12 +32,12 @@ $(document).on('turbolinks:load', function() {
       var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length + files.length
       // 画像追加された際のアップロードボックスの大きさ指定
         if (num < 5){
-          add_images_width = num * 140
-          $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+          add_images_width = num * 124
+          $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
           else if (num >= 5){
-            var add_images_width = 140 * (num - 5 )
-            $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+            var add_images_width = 124 * (num - 5 )
+            $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
           else if(num == 10){
             $(".prev-image-content__upload-box").css("display", "none")
@@ -60,7 +59,7 @@ $(document).on('turbolinks:load', function() {
                           + '<img class="real_image" src="' + e.target.result + '"/>' 
                           + '</div>';
             div.innerHTML += '<div class="prev-image-content__image-box__prev__update" >'  
-                          + '<div class = prev-image-content__image-box__prev__update--edit>編集</div>' 
+                          + '<div class = prev-image-content__image-box__prev__update--edit--add>編集</div>' 
                           + '<div class = prev-image-content__image-box__prev__update--delete>'
                           + '<label class = "delete-btn" >削除</label>'
                           + '</div>' 
@@ -82,12 +81,12 @@ $(document).on('turbolinks:load', function() {
     console.log(files_array)
     var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
     if (num < 5){
-      default_width = num * 140
-      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      default_width = num * 124
+      $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
       if (num >= 5){
-      default_width = (num - 5) * 140
-      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      default_width = (num - 5) * 124
+      $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
       if(num == 10){
         $(".prev-image-content__upload-box").css("display", "none")
@@ -110,22 +109,17 @@ $(document).on('turbolinks:load', function() {
       $(this).parent().parent().parent().hide()
       
       num = num - 1
-      var delete_width = 140 * num
-    
+      var delete_width = 124 * num
+      console.log(delete_width)
   if (num < 5){
-  $(".prev-image-content__upload-box").css("display", "inline-block")
-  $(".prev-image-content__upload-box2").css("display", "none")
-  $(".prev-image-content__upload-box").css("width", "620" - delete_width + "px")
+  $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
   }
   else if (num >= 5){
-    var delete_width = 140 * (num - 5 )
-    $(".prev-image-content__upload-box").css("display", "none")
-    $(".prev-image-content__upload-box2").css("display", "inline-block")
-    $(".prev-image-content__upload-box2").css("width", "620" - delete_width + "px")
-
+    var delete_width = 124 * (num - 5 )
+    $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
   }
   else if(num == 10){
-    $(".prev-image-content__upload-box2").css("display", "none")
+    $(".prev-image-content__upload-box").css("display", "none")
   }
 })
 
@@ -149,34 +143,145 @@ function readURL(input) {
   }
 }
   $(a).change(function() {
+    $(".edit_modal__inner__btn--done").css("display","block")
     readURL(this);
   });
   })
 
+
+// // 編集ボタンを押すとモーダルがでるコマンド
+// $(document).on('click', ".prev-image-content__image-box__prev__update--edit--add", function(){
+// var nextThis = this
+// $(".upload-product__modal-image").remove()
+// var child = $("#insert-image-box1").children(".edit_modal--add")
+// console.log(child)
+// $('body').append('<div class="delete_modal_bg"></div>');
+// $('.delete_modal_bg').fadeIn(); 
+
+// // $("body").css({overflow:'hidden'}); //背景固定
+// function modalResize(){
+// var w = $(window).width();
+// var h = $(window).height();
+// var x = (w - $(".edit_modal--add").outerWidth(true)) / 2;
+// var y = (h - $(".edit_modal--add").outerHeight(true)) / 2;
+// $(".edit_modal--add").css({'left': x + 'px','top': "10" + 'px'});
+// }
+// modalResize(); //真ん中表示
+
+// var index = $(".prev-image-content__image-box__prev__update--edit--add").index(this)
+// console.log(index)
+// var reader = new FileReader;
+// reader.readAsDataURL(files_array[index]);
+// reader.onload = (function() {
+// return function (e) {
+// $(".edit_modal--add__inner__content--image--add").append('<img class="upload-product__modal-image" src="' + e.target.result + '" />');
+// }
+// })();
+// child.fadeIn(); // modalをフェードインで表示
+
+// // モーダルの画像変更ボタンを押した時の挙動
+// $(".edit_modal--add").on("click", ".edit-image--add", function(){
+// // input要素取得
+// var a = $(this).prev()
+// // モーダルの画像を変更
+// var parent = $(this).parent().parent().next().children(".edit_modal--add__inner__content--image--add")
+// console.log(parent)
+// var parent2 = $(nextThis).parent(".prev-image-content__image-box__prev__image")
+// console.log(parent2)
+// function readURL(input) {
+// // ここで配列に画像データを入れることが必要
+// if (input.files && input.files[0]) {
+// var reader = new FileReader();
+// reader.onload = function (e) {
+// $(".upload-product__modal-image").css('maxWidth','380px');
+// $(".upload-product__modal-image").css('maxHeight','380px');
+// $(".real_image").css('maxWidth','110px');
+// $(".real_image").css('maxHeight','110px');
+// $(parent).attr('src', e.target.result);
+// $(parent2).attr('src', e.target.result);
+// }
+// reader.readAsDataURL(input.files[0]);
+// files_array.splice(index, 1, input.files[0])
+// }
+// }
+// $(a).change(function() {
+// readURL(this);
+// });
+// })
+
+// $('.edit_modal--add__inner__btn--cancel, .edit_modal--add__inner__btn--done').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+// $('.edit_modal--add').fadeOut();
+// $('.delete_modal_bg').fadeOut('slow',function(){
+// $('.delete_modal_bg').remove();
+// $('html, body').removeClass('lock');
+// $("body").css({overflow:''}); //背景戻す
+// });
+// });
+// // ウィンドウがリサイズされたらモーダルの位置を再計算する
+// $(window).on('resize', function(){
+// modalResize();
+// });
+
+// });
+  
+
+// 画像がなければアラート
+if (num >= 1){
+$(".exhibition-content__form").on("submit", function(e){
+  e.preventDefault();
+  var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
+  if( submitFileNumber == 0){
+    e.preventDefault();
+    alert("ファイルがアップロードされてません。アップロードしてください。");
+  }
+
+  // サーバー側
+  var formData = new FormData(this);
+  console.log(formData.getAll("product[images][]"))
+  formData.delete("product[images][]");
+  console.log(formData.getAll("product[images][]"))
+  files_array.forEach(function(file){
+    formData.append("product[images][]",file)
+  console.log(formData.getAll("product[images][]"))
+
+  });
+  var product_id = $(".prev-image-content").data("product-id")
+  var url = $(this).attr('action')
+  var update_url = `/products/${product_id}`
+  $.ajax({
+    url:         update_url,
+    type:        "POST",
+    data:        formData,
+    contentType: false,
+    processData: false,
+    dataType:   'json'
+  })
+  .done(function(){
+    location.href = "/"
+    alert("成功です")
+  })
+  .fail(function(){
+    alert("失敗です")
+  })
+});
+}
+  if (num == 0){
     // 画像がなければアラート
     $(".exhibition-content__form").on("submit", function(e){
       e.preventDefault();
-      var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
+      var submitFileNumber = $("#insert-image-box").find(".upload-product").length
       if( submitFileNumber == 0){
         e.preventDefault();
         alert("ファイルがアップロードされてません。アップロードしてください。");
       }
-  
-      // サーバー側
       var formData = new FormData(this);
-      console.log(formData.getAll("product[images][]"))
       formData.delete("product[images][]");
-      console.log(formData.getAll("product[images][]"))
       files_array.forEach(function(file){
         formData.append("product[images][]",file)
-      console.log(formData.getAll("product[images][]"))
-
       });
-      var product_id = $(".prev-image-content").data("product-id")
       var url = $(this).attr('action')
-      var update_url = `/products/${product_id}`
       $.ajax({
-        url:         update_url,
+        url:         url,
         type:        "POST",
         data:        formData,
         contentType: false,
@@ -184,13 +289,12 @@ function readURL(input) {
         dataType:   'json'
       })
       .done(function(){
-        location.href = "/"
-        alert("成功")
+        alert("出品が成功しました")
+        location.href ="/"
       })
       .fail(function(){
-        alert("失敗した")
-      })
-
+        alert("出品が失敗しました");
+      });
     });
-
+  }
 })

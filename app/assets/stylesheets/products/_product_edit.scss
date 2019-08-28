@@ -4,11 +4,14 @@
   min-height: 160px;
   display: inline-block;
   &__image-box{
-    display: inline-block;
+    // display: inline-block;
+    // 子要素のinline-blockの隙間削除
+    font-size: 0;
     &__prev{
       width: 110px;
-      margin: 0 0 8px 8px;
+      margin: 0 0 10px 14px;
       display: inline-block;
+      float: left;
       &__image{
         width: 110px;
         height: 110px;
@@ -50,21 +53,22 @@
   }
   &__upload-box{
     display: inline-block;
-    float: right;
-    width: 100%;
+    width: 606px;
     min-width: 100px;
     box-sizing: border-box;
-    margin: 0 10px ;
+    // margin: 0 10px ;
     height: 176px;
     border: 1px dashed #ccc;
     border-width: thin;
     background-color: $mercari_grey;
     cursor: pointer;
+    float: right;
+    bottom: 0;
     #display-none1{
       display: none;
     }
     &__image_preview{
-      width: 620px;
+      width: 606px;
       height: 160px;
       text-align: center;
       vertical-align: middle;
@@ -72,31 +76,6 @@
       cursor: pointer;
       display: table-cell;
     }
-  }
-  &__upload-box2{
-    display: none;
-    float: right;
-    width: 620px;
-    min-width: 100px;
-    box-sizing: border-box;
-    margin: 0 10px ;
-    height: 176px;
-    border: 1px dashed #ccc;
-    border-width: thin;
-    background-color: $mercari_grey;
-    cursor: pointer;
-    #display-none2{
-      display: none;
-    }
-    &__image_preview2{
-      width: 620px;
-      height: 160px;
-      text-align: center;
-      vertical-align: middle;
-      font-size: 14px;
-      cursor: pointer;
-      display: table-cell;
-    }  
   }
 }
 .real_image{
