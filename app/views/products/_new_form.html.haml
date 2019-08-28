@@ -84,6 +84,30 @@
                         ドラッグアンドドロップ
                         %br
                           またはクリックしてファイルをアップロード
+                -# newページモーダル
+                .edit_modal
+                  .edit_modal__inner
+                    .edit_modal__inner__header.clearfix
+                      .edit_modal__inner__header--left
+                        写真を切り取る
+                      .edit_modal__inner__header--right
+                        = f.file_field :images, type: "file", style: "display:none", id:"edit-new-image", name: "product[images][]"
+                        %label{for: "edit-new-image", class: "edit-new-image"}写真を変更する
+                    .edit_modal__inner__content
+                      #edit_modal__inner__content--image--new
+                        -# = image_tag(class: "editedit")
+                      .edit_modal__inner__content__range
+                        .edit_modal__inner__content__range__left
+                          📷
+                        .edit_modal__inner__content__range__center
+                        .edit_modal__inner__content__range__right
+                          📷
+                    .edit_modal__inner__btn
+                      .edit_modal__inner__btn--cancel
+                        キャンセル
+                      .edit_modal__inner__btn--done
+                        完了
+
 
           .exhibition-content__form__explain
             .product-name-form

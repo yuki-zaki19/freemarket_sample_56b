@@ -144,7 +144,6 @@ class ProductsController < ApplicationController
   def create
     @production = Product.create(create_params)
     @production.images.attach(params[:product][:images])
-    redirect_to controller: :products, action: :index
   end
 
   private
