@@ -289,6 +289,7 @@ $(document).on('turbolinks:load', function() {
       tagOutputProfit.append(profit)
     }
   });
+
   // 画像がなければアラート
   $(".exhibition-content__form").on("submit", function(e){
     e.preventDefault();

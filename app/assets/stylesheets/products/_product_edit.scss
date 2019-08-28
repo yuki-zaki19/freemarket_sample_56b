@@ -1,8 +1,8 @@
 .prev-image-content{
   margin-top: 16px;
   width: 620px;
-  position: relative;
   min-height: 160px;
+  display: inline-block;
   &__image-box{
     display: inline-block;
     &__prev{
@@ -43,26 +43,23 @@
             margin: 5px 1px ;
             cursor: pointer;
           }
-          
         }
       }
     }
   }
   &__upload-box{
     display: inline-block;
-    width: 620px;
-    min-width: 110px;
+    float: right;
+    width: 100%;
+    min-width: 100px;
     box-sizing: border-box;
-    margin: 0 auto 0;
-    height: 160px;
+    margin: 0 10px ;
+    height: 176px;
     border: 1px dashed #ccc;
     border-width: thin;
     background-color: $mercari_grey;
     cursor: pointer;
-    position: absolute;
-    bottom: 10%;
-    right: 1%;
-    #display-none{
+    #display-none1{
       display: none;
     }
     &__image_preview{
@@ -73,24 +70,21 @@
       font-size: 14px;
       cursor: pointer;
       display: table-cell;
-    }  
+    }
   }
-  
   &__upload-box2{
     display: none;
+    float: right;
     width: 620px;
-    min-width: 110px;
+    min-width: 100px;
     box-sizing: border-box;
-    margin: 0 auto 0;
-    height: 160px;
+    margin: 0 10px ;
+    height: 176px;
     border: 1px dashed #ccc;
     border-width: thin;
     background-color: $mercari_grey;
     cursor: pointer;
-    position: absolute;
-    bottom: 5%;
-    right: 1%;
-    #display-none{
+    #display-none2{
       display: none;
     }
     &__image_preview2{
