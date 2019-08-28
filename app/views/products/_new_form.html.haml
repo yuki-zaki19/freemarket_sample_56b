@@ -58,19 +58,10 @@
                           = f.check_box :image_ids, {class: "delete_check", id: "delete_check-#{image.id}", multiple: true}, image.id, false
                           %label.delete-btn{for: "delete_check-#{image.id}"}削除
                           
-                .prev-image-content__upload-box
+                .prev-image-content__upload-box.clearfix
                   %label
                     = f.file_field :images, type: 'file', id: "display-none1",name: "product[images][]", multiple: true 
                     .prev-image-content__upload-box__image_preview
-                      ドラッグアンドドロップ
-                      %br
-                        またはクリックしてファイルをアップロード
-
-                -# 下段のアップローダー
-                .prev-image-content__upload-box2
-                  %label
-                    = f.file_field :images, type: 'file', id: "display-none1",name: "product[images][]", multiple: true 
-                    .prev-image-content__upload-box2__image_preview2
                       ドラッグアンドドロップ
                       %br
                         またはクリックしてファイルをアップロード

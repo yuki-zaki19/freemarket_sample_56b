@@ -5,12 +5,12 @@ $(document).on('turbolinks:load', function() {
   var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
   // 初期のアップロードボックスの大きさ指定
   if (num < 5){
-    default_width = num * 140
-    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    default_width = num * 124
+    $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
     if (num >= 5){
-    default_width = (num - 5) * 140
-    $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+    default_width = (num - 5) * 124
+    $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
     if(num == 10){
       $(".prev-image-content__upload-box").css("display", "none")
@@ -33,12 +33,12 @@ $(document).on('turbolinks:load', function() {
       var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length + files.length
       // 画像追加された際のアップロードボックスの大きさ指定
         if (num < 5){
-          add_images_width = num * 140
-          $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+          add_images_width = num * 124
+          $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
           else if (num >= 5){
-            var add_images_width = 140 * (num - 5 )
-            $(".prev-image-content__upload-box").css("width", "620" - add_images_width + "px")
+            var add_images_width = 124 * (num - 5 )
+            $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
           else if(num == 10){
             $(".prev-image-content__upload-box").css("display", "none")
@@ -82,12 +82,12 @@ $(document).on('turbolinks:load', function() {
     console.log(files_array)
     var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
     if (num < 5){
-      default_width = num * 140
-      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      default_width = num * 124
+      $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
       if (num >= 5){
-      default_width = (num - 5) * 140
-      $(".prev-image-content__upload-box").css("width", "620" - default_width + "px")
+      default_width = (num - 5) * 124
+      $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
       if(num == 10){
         $(".prev-image-content__upload-box").css("display", "none")
@@ -110,22 +110,17 @@ $(document).on('turbolinks:load', function() {
       $(this).parent().parent().parent().hide()
       
       num = num - 1
-      var delete_width = 140 * num
-    
+      var delete_width = 124 * num
+      console.log(delete_width)
   if (num < 5){
-  $(".prev-image-content__upload-box").css("display", "inline-block")
-  $(".prev-image-content__upload-box2").css("display", "none")
-  $(".prev-image-content__upload-box").css("width", "620" - delete_width + "px")
+  $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
   }
   else if (num >= 5){
-    var delete_width = 140 * (num - 5 )
-    $(".prev-image-content__upload-box").css("display", "none")
-    $(".prev-image-content__upload-box2").css("display", "inline-block")
-    $(".prev-image-content__upload-box2").css("width", "620" - delete_width + "px")
-
+    var delete_width = 124 * (num - 5 )
+    $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
   }
   else if(num == 10){
-    $(".prev-image-content__upload-box2").css("display", "none")
+    $(".prev-image-content__upload-box").css("display", "none")
   }
 })
 
