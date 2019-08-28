@@ -74,7 +74,6 @@ $(document).on('turbolinks:load', function() {
       var files = e.target.files;
       var num = $("#insert-image-box").find(".upload-product").length + files.length
       for (var i = 0, f; f = files[i] ; i++) {
-        console.log(f)
         files_array.push(f);
         // filereaderオブジェクトを用いることでファイルを非同期で読み込む。
         // 読み込むファイルやデータは File ないし Blob オブジェクトとして指定します。
@@ -87,7 +86,7 @@ $(document).on('turbolinks:load', function() {
             var div = document.createElement('div');
             div.className = 'upload-product';
             div.innerHTML += '<img class="upload-product__image" src="' + e.target.result + '" />';
-            div.innerHTML += '<div class="upload-product__button" >' + '<a href class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
+            div.innerHTML += '<div class="upload-product__button" >' + '<a class = upload-product__button__edit>編集</a>' + '<a class = upload-product__button__delete>削除</a>' + '</div>';
             // document.getElementById('insert-image-box').insertBefore(div, null);
             document.getElementById('insert-image-box').append(div);
           }
@@ -155,7 +154,76 @@ $(document).on('turbolinks:load', function() {
     };
   });
   
-  // 
+  // 編集ボタンを押すとモーダルがでるコマンド
+  $("#insert-image-box").on('click', ".upload-product__button__edit", function(){
+    var nextThis = this
+    $(".upload-product__modal-image").remove()
+    var child = $("#insert-image-box").next()
+    $('body').append('<div class="delete_modal_bg"></div>');
+    $('.delete_modal_bg').fadeIn(); 
+
+    $("body").css({overflow:'hidden'}); //背景固定
+      function modalResize(){
+        var w = $(window).width();
+        var h = $(window).height();
+        var x = (w - $(".edit_modal").outerWidth(true)) / 2;
+        var y = (h - $(".edit_modal").outerHeight(true)) / 2;
+        $(".edit_modal").css({'left': x + 'px','top': "10" + 'px'});
+      }
+      modalResize(); //真ん中表示
+      var index = $(".upload-product__button__edit").index(this);
+      var reader = new FileReader;
+      reader.readAsDataURL(files_array[index]);
+      reader.onload = (function() {
+        return function (e) {
+          $("#edit_modal__inner__content--image--new").append('<img class="upload-product__modal-image" src="' + e.target.result + '" />');
+        }
+      })();
+    child.fadeIn(); // modalをフェードインで表示
+
+      // モーダルの画像変更ボタンを押した時の挙動
+    $(".edit_modal").on("click", ".edit-new-image", function(){
+      var a = $(this).prev()
+      // モーダルの画像を変更
+      var parent = $(this).parent().parent().parent().parent().parent().parent().children().next().next().children().next().children().children().next().children().children()
+      var parent2 = $(nextThis).parent().parent().children()
+      function readURL(input) {
+        // ここで配列に画像データを入れることが必要
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $(".upload-product__modal-image").css('maxWidth','380px');
+            $(".upload-product__modal-image").css('maxHeight','380px');
+            $(".real_image").css('maxWidth','110px');
+            $(".real_image").css('maxHeight','110px');
+            $(parent).attr('src', e.target.result);
+            $(parent2).attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+            files_array.splice(index, 1, input.files[0])
+        }
+      }
+      $(a).change(function() {
+        readURL(this);
+      });
+    })
+
+    $('.edit_modal__inner__btn--cancel, .edit_modal__inner__btn--done').off().click(function(){ // .modal_bgか.modal_closeをクリックしたらモーダルと背景をフェードアウトさせる
+      $('.edit_modal').fadeOut();
+      $('.delete_modal_bg').fadeOut('slow',function(){
+        $('.delete_modal_bg').remove();
+        $('html, body').removeClass('lock');
+        $("body").css({overflow:''}); //背景戻す
+      });
+    });
+    // ウィンドウがリサイズされたらモーダルの位置を再計算する
+    $(window).on('resize', function(){
+      modalResize();
+    });
+
+  });
+
+    
 
   var form_shipping = $("#form-shipping")
   var select_form_shipping = $("#select-form-shipping")
@@ -221,33 +289,37 @@ $(document).on('turbolinks:load', function() {
       tagOutputProfit.append(profit)
     }
   });
-  // // 画像がなければアラート
-  // $(".exhibition-content__form").on("submit", function(e){
-  //   // e.preventDefault();
 
-  //   var submitFileNumber = $("#insert-image-box").find(".upload-product").length
-  //   if( submitFileNumber == 0){
-  //     alert("ファイルがアップロードされてません。アップロードしてください。");
-  //   }
-
-  //   // サーバー側
-  //   var formData = new FormData(this);
-  //   formData.delete("product[images][]");
-  //   files_array.forEach(function(file){
-  //     formData.append("product[images][]",file)
-  //   });
-  //   var url = $(this).attr('action')
-  //   $.ajax({
-  //     url:         url,
-  //     type:        "POST",
-  //     data:        formData,
-  //     contentType: false,
-  //     processData: false,
-  //     dataType:   'json'
-  //   })
-  //   .done(function(data){
-  //   });
-  // });
+  // 画像がなければアラート
+  $(".exhibition-content__form").on("submit", function(e){
+    e.preventDefault();
+    var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+    if( submitFileNumber == 0){
+      e.preventDefault();
+      alert("ファイルがアップロードされてません。アップロードしてください。");
+    }
+    var formData = new FormData(this);
+    formData.delete("product[images][]");
+    files_array.forEach(function(file){
+      formData.append("product[images][]",file)
+    });
+    var url = $(this).attr('action')
+    $.ajax({
+      url:         url,
+      type:        "POST",
+      data:        formData,
+      contentType: false,
+      processData: false,
+      dataType:   'json'
+    })
+    .done(function(){
+      alert("出品が成功しました")
+      location.href ="/"
+    })
+    .fail(function(){
+      alert("出品が失敗しました");
+    });
+  });
 });
 
 

@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() { 
 
+
   // 初期の画像の枚数
   var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
   // 初期のアップロードボックスの大きさ指定
@@ -95,6 +96,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
+
   // 削除ボタンの記述
   var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
   $(delete_btn).on("click", function(){
@@ -129,6 +131,7 @@ $(document).on('turbolinks:load', function() {
 
   // 編集ボタンの画像変更の記述
   $(".edit_modal").on("click", ".edit-image", function(){
+
 var a = $(this).prev()
 var parent = $(this).parent().parent().parent().parent().parent().parent().find("img")
 
