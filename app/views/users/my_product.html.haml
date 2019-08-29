@@ -7,7 +7,17 @@
       = @product.name
     .product__details-main-content.clearfix
       .product__details-photo
-        = image_tag(@product.images[0].variant(resize: "300x300"))
+        .product__details-photo__all
+          - @images.each_with_index do |image,i|
+            .product__details-photo__all__selected{"data-big-photo-id": "#{i}"}
+              = image_tag(image.variant(resize: "300x300"))
+        .product__details-photo__all-img-box
+          - @images.each_with_index do |image,i|
+            .product__details-photo__all-img-box__dot{"data-small-photo-id": "#{i}"}
+              = image_tag(image.variant(resize: "60x60"), id: "small_photo")
+
+
+
       %table.product__details-table
         %tr
           %th 出品者
@@ -49,8 +59,6 @@
           %th 発送日の目安
           %td
             = @product.leadtime.name
-
-
 
     .product__details-price-box
       .product__details-price

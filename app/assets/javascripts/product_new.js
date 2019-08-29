@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function() { 
-  var defaultnum = $("#insert-image-box").find(".upload-product").length
+
+  defaultNum = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  console.log(defaultNum)
 
   var files_array = [];
 
@@ -292,7 +294,7 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  if(defaultnum == 0){
+  if(defaultNum == 0){
   // 画像がなければアラート
   $(".exhibition-content__form").on("submit", function(e){
     e.preventDefault();
@@ -323,7 +325,7 @@ $(document).on('turbolinks:load', function() {
       alert("出品が失敗しました");
     });
   });
-}
+  }
 });
 
 

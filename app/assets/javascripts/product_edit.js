@@ -1,18 +1,18 @@
 $(document).on('turbolinks:load', function() { 
 
   // 初期の画像の枚数
-  var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
-  console.log(num)
+  defaultNum = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+  console.log(defaultNum)
   // 初期のアップロードボックスの大きさ指定
-  if (num < 5){
-    default_width = num * 124
+  if (defaultNum < 5){
+    default_width = defaultNum * 124
     $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
-    if (num >= 5){
-    default_width = (num - 5) * 124
+    if (defaultNum >= 5){
+    default_width = (defaultNum - 5) * 124
     $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
     }
-    if(num == 10){
+    if(defaultNum == 10){
       $(".prev-image-content__upload-box").css("display", "none")
     }
 
@@ -31,16 +31,17 @@ $(document).on('turbolinks:load', function() {
       var files = e.target.files;
       // 追加された画像＋既存画像の枚数
       var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length + files.length
+      console.log(num)
       // 画像追加された際のアップロードボックスの大きさ指定
         if (num < 5){
           add_images_width = num * 124
           $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
-          else if (num >= 5){
+        if (num >= 5){
             var add_images_width = 124 * (num - 5 )
             $(".prev-image-content__upload-box").css("width", "606" - add_images_width + "px")
           }
-          else if(num == 10){
+        if(num == 10){
             $(".prev-image-content__upload-box").css("display", "none")
           }
 
@@ -80,16 +81,18 @@ $(document).on('turbolinks:load', function() {
     var delete_image = $(this).parent().parent()
     delete_image.removeClass("prev-image-content__image-box__prev")
     delete_image.hide()
-    var num = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
-    if (num < 5){
-      default_width = num * 124
+    var addNum = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length 
+    if (addNum < 5){
+      default_width = addNum * 124
+      $(".prev-image-content__upload-box").css("display", "inline-block")
       $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
-      if (num >= 5){
-      default_width = (num - 5) * 124
+      if (addNum >= 5){
+      default_width = (addNum - 5) * 124
+      $(".prev-image-content__upload-box").css("display", "inline-block")
       $(".prev-image-content__upload-box").css("width", "606" - default_width + "px")
       }
-      if(num == 10){
+      if(addNum == 10){
         $(".prev-image-content__upload-box").css("display", "none")
       }
     })
@@ -98,28 +101,33 @@ $(document).on('turbolinks:load', function() {
 
 
   // 削除ボタンの記述
-  var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children("label")
+  var delete_btn = $(".prev-image-content__image-box__prev__update--delete").children(".delete-btn")
   $(delete_btn).on("click", function(){
       // 削除ボタンの親要素取得
       parent_box = $(this).parent().parent().parent()
       delete_box = parent_box.children().children(".prev-image-content__image-box__prev__update--delete")
+      console.log(parent_box)
       // 指定クラスの除去（画像枚数のカウントを変更するため）
       $(delete_box).removeClass("prev-image-content__image-box__prev__update--delete")
       $(parent_box).removeClass("prev-image-content__image-box__prev")
       // 画像要素を見えなくする
       $(this).parent().parent().parent().hide()
       
-      num = num - 1
-      var delete_width = 124 * num
+      deleteNum = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
+      console.log(deleteNum)
+      // deleteNum = deleteNum - 1
+      var delete_width = 124 * deleteNum
       console.log(delete_width)
-  if (num < 5){
-  $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
-  }
-  else if (num >= 5){
-    var delete_width = 124 * (num - 5 )
+  if (deleteNum < 5){
+    $(".prev-image-content__upload-box").css("display", "inline-block")
     $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
   }
-  else if(num == 10){
+  if (deleteNum >= 5){
+    var delete_width = 124 * (deleteNum - 5 )
+    $(".prev-image-content__upload-box").css("display", "inline-block")
+    $(".prev-image-content__upload-box").css("width", "606" - delete_width + "px")
+  }
+  if(deleteNum == 10){
     $(".prev-image-content__upload-box").css("display", "none")
   }
 })
@@ -157,7 +165,7 @@ console.log(child)
 $('body').append('<div class="delete_modal_bg"></div>');
 $('.delete_modal_bg').fadeIn(); 
 
-// $("body").css({overflow:'hidden'}); //背景固定
+$("body").css({overflow:'hidden'}); //背景固定
 function modalResize(){
 var w = $(window).width();
 var h = $(window).height();
@@ -227,7 +235,7 @@ modalResize();
   
 
 // 画像がなければアラート
-if (num >= 1){
+if(defaultNum >= 1){
 $(".exhibition-content__form").on("submit", function(e){
   e.preventDefault();
   var submitFileNumber = $("#insert-image-box1").find(".prev-image-content__image-box__prev").length
@@ -237,28 +245,66 @@ $(".exhibition-content__form").on("submit", function(e){
   }
   // サーバー側
   var formData = new FormData(this);
+  console.log(formData.get('product[images][]'));
   formData.delete("product[images][]");
+  console.log(formData.get('product[images][]'));
   files_array.forEach(function(file){
-    formData.append("product[images][]",file)
+  console.log(files_array);
+  formData.append("product[images][]",file)
+  console.log(file);
   });
   var product_id = $(".prev-image-content").data("product-id")
-  var url = $(this).attr('action')
   var update_url = `/products/${product_id}`
+  var url = $(this).attr('action')
+  console.log(url)
   $.ajax({
     url:         update_url,
     type:        "POST",
     data:        formData,
     contentType: false,
     processData: false,
-    dataType:   'json',
+    // dataType:   'json',
   })
   .done(function(){
     location.href = "/"
     alert("成功です")
   })
-  .fail(function(){
-    alert("失敗です")
+  .fail(function(err){
+    alert("失敗です");
   })
 });
 }
+
+  // else{
+  //   // 画像がなければアラート
+  //   $(".exhibition-content__form").on("submit", function(e){
+  //     e.preventDefault();
+  //     var submitFileNumber = $("#insert-image-box").find(".upload-product").length
+  //     if( submitFileNumber == 0){
+  //       e.preventDefault();
+  //       alert("ファイルがアップロードされてません。アップロードしてください。");
+  //     }
+  //     var formData = new FormData(this);
+  //     formData.delete("product[images][]");
+  //     files_array.forEach(function(file){
+  //       formData.append("product[images][]",file)
+  //     });
+  //     var url = $(this).attr('action')
+  //     $.ajax({
+  //       url:         url,
+  //       type:        "POST",
+  //       data:        formData,
+  //       contentType: false,
+  //       processData: false,
+  //       // dataType:   'json',
+  //     })
+  //     .done(function(){
+  //       alert("出品が成功しました")
+  //       location.href ="/"
+  //     })
+  //     .fail(function(){
+  //       alert("出品が失敗しました");
+  //     });
+  //   });
+  // }
 })

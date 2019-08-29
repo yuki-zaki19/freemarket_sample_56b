@@ -73,7 +73,7 @@
                       .edit_modal--add__inner__header--left
                         写真を切り取る
                       .edit_modal--add__inner__header--right
-                        = f.file_field :images, type: "file", style: "display:none", id: "image-id"
+                        = f.file_field :images, type: "file", style: "display:none", id: "image-id", name: "product[images][]"
                         %label{for: "image-id",class: "edit-image--add"}写真を変更する
                     .edit_modal--add__inner__content
                       .edit_modal--add__inner__content--image--add
