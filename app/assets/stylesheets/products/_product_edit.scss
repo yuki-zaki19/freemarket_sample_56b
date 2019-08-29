@@ -32,7 +32,31 @@
           text-align: center;
           cursor: pointer;
         }
+        &--edit--add{
+          display: table-cell;
+          width: 50%;
+          background: #f5f5f5;
+          line-height: 44px;
+          text-align: center;
+          cursor: pointer;
+        }
         &--delete{
+          display: table-cell;
+          width: 50%;
+          background: #f5f5f5;
+          line-height: 44px;
+          text-align: center;
+          .delete_check{
+            display: none;
+          }
+          label{
+            display: block;
+            height:50px;
+            margin: 5px 1px ;
+            cursor: pointer;
+          }
+        }
+        &--delete--add{
           display: table-cell;
           width: 50%;
           background: #f5f5f5;
