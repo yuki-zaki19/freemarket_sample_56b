@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def my_product
     @product = Product.find(params[:id])
     @user = User.find(@product.user_id )
+    @images = @product.images
   end
 
   def trade
